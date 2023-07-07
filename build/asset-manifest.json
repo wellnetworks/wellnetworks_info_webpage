@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a8ba80ee.css",
+    "main.js": "/static/js/main.b604ff64.js",
+    "static/js/787.e9cdb8d6.chunk.js": "/static/js/787.e9cdb8d6.chunk.js",
+    "static/media/NotoSansKR-Black.otf": "/static/media/NotoSansKR-Black.dba005b6b1bed712b472.otf",
+    "static/media/NotoSansKR-Bold.otf": "/static/media/NotoSansKR-Bold.c252383c4f70753be0e7.otf",
+    "static/media/NotoSansKR-Medium.otf": "/static/media/NotoSansKR-Medium.56207b5e52841342a21b.otf",
+    "static/media/NotoSansKR-Regular.otf": "/static/media/NotoSansKR-Regular.e1aa54c04a18648e6468.otf",
+    "static/media/NotoSansKR-Light.otf": "/static/media/NotoSansKR-Light.636ff9b51e826a733c3d.otf",
+    "static/media/Gotham-Black.ttf": "/static/media/Gotham-Black.8c419f68c27774b4d63c.ttf",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.a8ba80ee.css.map": "/static/css/main.a8ba80ee.css.map",
+    "main.b604ff64.js.map": "/static/js/main.b604ff64.js.map",
+    "787.e9cdb8d6.chunk.js.map": "/static/js/787.e9cdb8d6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a8ba80ee.css",
+    "static/js/main.b604ff64.js"
+  ]
+}

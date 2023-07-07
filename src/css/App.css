@@ -1206,12 +1206,19 @@ ul.menu_wrap li{
 
     /* 업무방식 - 우리가 일하는 방식 */
     .workflow_text {
+      width: 900px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
       margin: 30px auto 0 auto;
     }
     .workflow_text p{
       font-size: 18px;
       font-family: NotoSansKR-Light!important;
-      
+      text-align: center;      
+    }
+    .workflow_box {
+      display: flex;
     }
 }
 

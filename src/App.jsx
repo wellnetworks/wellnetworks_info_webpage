@@ -689,8 +689,8 @@ function App() {
                           <img className="purple_1" src="../img/common/icon-emoji-4.png" alt="개통 서비스" style={{ left: "18%" }}/>
                         </div>
                         <div>
-                          <p className="main_text" style={{ fontSize: "20px" }}>MVNO 선불폰 특화<br/>고객관리 전산 시스템 개발</p>
-                          <p className="sub_text" style={{ fontSize: "15px" }}>선불폰 판매관리를 위한 주문통합<br/>관리 및 고객관리 전산 시스템 개발</p>
+                          <p className="main_text" style={{ fontSize: "18px" }}>MVNO 선불폰 특화<br/>고객관리 전산 시스템 개발</p>
+                          <p className="sub_text" style={{ fontSize: "14px" }}>선불폰 판매관리를 위한 주문통합<br/>관리 및 고객관리 전산 시스템 개발</p>
                         </div>
                       </div>
                       <div className="service_card green">
@@ -1005,6 +1005,20 @@ function App() {
                 <LaptopAfter>
                   <div className="workflow_text">
                     <p>웰네트웍스는 모든것에 우연은 없다는 일념으로 데이터 분석 기반 업무에 초점을 두고 있습니다.<br/>또한, 다양한 협업툴을 적극 활용하여 업무 집중도를 높이는 데에 기여 하고 있으며, 짧은 주기의<br/>계획, 실행,  피드백이 이루어지는 에자일 조직으로 성장중입니다.</p>
+                  </div>
+                  <div className="workflow_box">
+                    <div className="workflow_box">
+                      <img src="../img/common/icon-workMethod-1.svg" alt="1번슬라이드" />
+                      <div className="main_text">Agile</div>
+                    </div>
+                    <div className="workflow_box">
+                      <img src="../img/common/icon-workMethod-1.svg" alt="1번슬라이드" />
+                      <div className="main_text">Agile</div>
+                    </div>
+                    <div className="workflow_box">
+                      <img src="../img/common/icon-workMethod-1.svg" alt="1번슬라이드" />
+                      <div className="main_text">Agile</div>
+                    </div>                                        
                   </div>
                 </LaptopAfter>                
                 <LaptopBefore>
