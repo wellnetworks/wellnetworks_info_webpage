@@ -1,0 +1,989 @@
+
+/* 모바일 좌우 스크롤 금지하는 overflow가 있어서 sticky가 동작하지않습니다
+그래서 useEffect 함수를 사용하여 해결합니다. 2023.07.04 윤지석 */
+
+/* 모바일 좌우(수평) 스크롤 금지 */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  }
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100vw;
+  background: #4D6DED;
+  box-sizing: border-box;
+  position: relative;
+}
+header main img {
+ max-width: 100%;
+ height: auto;
+}
+main {
+  padding-bottom : 50px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+nav.side_menu {
+  z-index:999; 
+  background: #fff;
+}
+
+ul.menu_wrap {
+  list-style: none;
+  font-family: NotoSansKR-Bold;
+  font-size: 20px; 
+  color: #293F52;
+  padding-left: 24px;
+}
+ul.menu_wrap li{
+  margin-bottom: 30px; 
+}
+
+.navigation {
+  display: flex;
+  width: 100vw;
+  height: 58px;
+  filter: drop-shadow(0px 3px 20px rgba(0, 0, 0, 0.150));
+  background: #fff;
+  font-family: NotoSansKR-Bold;
+  padding-left: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  z-index:990;
+}
+
+.navigation.opacity {
+  opacity: 0;
+}
+.navigation .top_menu {
+  display: flex;
+  align-items: center;
+}
+
+.navigation .top_menu span{
+  color: #DBDBDB;
+  text-decoration: none;
+} 
+
+#sticker {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+.sticky {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+/* 서비스 1 wellpps 솔루션 -------------------------------------*/
+
+.serviceBox {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 0 16px; 
+  position: relative;
+ }
+
+ .serviceBox_1 .service_subtext {
+  font-family: NotoSansKR-Light;
+ }
+ .serviceBox_1 .sub_style {
+  margin-bottom: 4px;
+ }
+ .serviceBox_1 .service_maintext {
+  font-family: NotoSansKR-Bold;
+ }
+
+ .serviceBox_1 img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 4px;
+ }
+
+ /* 이미지 슬라이더 */
+ .slider_box {
+  box-sizing: border-box;
+  padding: 0 16px 0 16px;
+ }
+ .purple {
+  background: #EFF0FF;
+ }
+ .deep_purple {
+  background: #DBDEFC;
+ }
+ .green {
+  background: #E8F8E9; 
+ }
+ .deep_green {
+  background: #D2EBD3;
+ }
+
+ .yellow {
+  background: #FDF8E5; 
+ }
+ .deep_yellow {
+  background: #F7ECC4;
+ }
+
+ .slider_info .main_text {
+  font-family: NotoSansKR-Bold;
+ }
+ .slider_info .sub_text {
+  font-family: NotoSansKR-Light;
+  
+ }
+
+ /* 주요서비스 1 배경색 */
+ .wellpps_background {
+  background-color: #E3F0F9;  
+ }
+ .phoneissue_background {
+  background-color: #FFEDDD;  
+ }
+ .ppspay_background {
+  background-color: #FFD6D6;  
+ }
+ .wellnanum_background {
+  background-color: #E0FBFF;  
+ }
+ .lab_background {
+  background-color: #C9DEF4;  
+ }
+
+ /* 주요서비스 1 폰트컬러 */
+ .wellpps_fontColor{
+  color: #1D425C!important;  
+ }
+ .phoneissue_fontColor{
+  color: #FF7600;  
+ }
+ .ppspay_fontColor{
+  color: #E61515;  
+ }
+ .wellnanum_fontColor{
+  color: #0F5591;  
+ }
+ .lab_fontColor{
+  color: #0C182F;  
+ }
+
+
+ /* 업무방식 >> 우리가 일하는 방식 -------------------------------------*/
+
+ .slider_box2 {
+  box-sizing: border-box;
+  padding: 24px;
+  font-family: GothamBlack;
+  font-size: 40px;
+ }
+
+ .slider_box2 .slider_child {
+  height: 328px;
+  border-radius: 16px;
+  box-shadow: 6px 3px 32px #00000024;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+
+ }
+ .slider_child .workflow_img {
+  width: 220px;
+  margin: 0 auto;
+ }
+
+ .slider_blueBack {
+  background-color: #0382FA!important;
+ }
+ .slider_purpleBack {
+  background: #441949;
+ }
+
+ .workflow_para {
+  font-family: NotoSansKR-Light;
+  padding: 0 24px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 24px;
+ }
+
+/* 조직구성 >> 우리의 구성원들 -------------------------------------*/
+.team_card {  
+  box-sizing: border-box;
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
+.team_card_margin {
+  margin-top: 28px;
+}
+.team_wrap {
+  width: 100%;
+  height: 150px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 3px 32px #00000024;
+}
+
+.team_wrap .emoji {
+  width: 88px;
+  height: 88px;
+  position:relative;
+}
+.team_wrap .emoji img {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  left: 25%;
+  top: 15%;
+  object-fit: cover;
+}
+.team_info .team_main {
+  font-family: NotoSansKR-Bold!important;
+  font-size: 20px;
+}
+.team_info .team_sub {
+  font-family: NotoSansKR-Light!important;
+  font-size: 16px;
+}
+
+/* 걸어온길 >> 연혁 -------------------------------------*/
+
+#history_wrap {
+  width: 100%;
+  margin-top: 28px;
+}
+#history_wrap .year {
+  padding: 0 16px;
+  box-sizing: border-box;  
+  margin-bottom: 40px;
+}
+
+.year_text {
+  border-bottom: 1px solid #0077ed;
+  font-family: NotoSansKR-Bold;
+  font-size: 24px;
+  color: #0077ed;
+  line-height: 50px;
+}
+.month_wrap {
+  margin-top: 16px;
+  font-size: 14px;
+  font-family: NotoSansKR-Medium;
+  display: flex;
+  color: #656565;
+
+}
+
+.month_wrap .month {
+  font-family: NotoSansKR-Bold;
+  font-size: 18px;
+  color: #0077ed;
+  margin-right: 14px;
+  flex-basis: 20%;
+}
+.month_wrap .sub_text {
+  flex-basis: 55%;
+  position: relative;
+  top: 4px;
+}
+.month_wrap .month_img{
+  padding: 8px;
+  flex-basis: 25%;
+  position:relative;
+}
+.month_wrap .month_img img{
+  padding: 10px;
+  border: 1px solid #D6D6D6;
+  border-radius: 8px;
+  box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.05);
+  position:absolute;
+  top: 0;
+  right: 0;
+}
+
+/* CONTACT >> 우리와 함께 하는 방법 -------------------------------------*/
+
+.tab_wrap {
+  margin-top: 28px;
+}
+.tab_wrap .tab_bar {
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 16px;
+  color: #D6D6D6;
+  font-family: NotoSansKR-Bold;
+  margin-bottom: 30px;
+}
+
+.tab_wrap .tab_bar .active_tab {
+  border-bottom: 2px solid #1A1A1A;
+  color: #1A1A1A;
+  padding-bottom: 4px;
+}
+.active_margin {
+  margin-right: 36px;
+}
+.address_box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 32px;
+}
+
+.address_box .address_wrap {
+  height: 300px;
+}
+
+.address_list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.address_list .title {
+  font-size: 18px;
+  color: #0077ed;
+  font-family: NotoSansKR-Bold;
+  flex-basis: 40%;
+}
+
+.address_list .info {
+  font-size: 14px;
+  color: #656565;
+  font-family: NotoSansKR-Medium;
+  flex-basis: 60%; 
+}
+.address_wrap .map {
+  height: 300px;
+}
+
+
+
+
+/* Mobile1 --------------------------------------------------*/
+@media (min-width: 360px) {
+  body {
+    overflow-x : hidden;
+  }
+  nav {
+    padding: 16px 24px; 
+  }
+  main {    
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+  }
+  main p {
+    padding-left: 16px;
+    margin: 0;
+  }
+  main .sub_text {
+    font-family: NotoSansKR-Medium;
+    font-size: 16px; 
+  }
+  main .main_text {
+    font-family: GothamBlack; 
+    margin-top: 8px; 
+    font-size: 44px;
+    line-height: 54px;
+    filter: drop-shadow(4px 3px 5px rgba(0, 0, 0, 0.25));
+  }
+  .navigation {
+    box-sizing: border-box;
+    overflow-x: scroll;
+  }
+
+  .navigation .top_menu span{
+    width: 100px;
+    font-size: 16px;
+  }
+
+
+  #service {
+    margin-top: 80px; 
+   }
+   #service p {
+    font-family: NotoSansKR-Bold;
+    margin: 0 16px;
+   }
+   #service .service_subText {
+    font-size: 20px; 
+    margin-bottom: 8px;
+    color: #0077ed;
+   }
+   
+   #service .service_slogan {
+    font-size: 26px;
+    color: #1A1A1A;
+   }
+
+   /* wellpps 서비스소개 - 360px */
+   .serviceBox {
+    padding: 0 16px; 
+   }
+   .serviceBox_1 {
+    box-sizing: border-box;
+    padding: 40px 30px 0 30px;
+    margin-top: 28px;
+    border-radius: 16px;
+    position: relative;
+    transition: 0.5s;
+   }
+
+   .serviceBox_1 span.pop_text {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    padding: 0 30px;
+    color: #fff;
+    font-family: NotoSansKR-Light;
+    line-height: 28px;
+   }
+   .serviceBox_1 .service_subtext {
+    font-size: 20px;
+   }
+   .serviceBox_1 .service_maintext {
+    font-size: 20px;
+    margin-bottom: 16px;
+   }
+  }
+
+  /* wellpps 이미지 슬라이드 */
+  .slider_box {
+    height: 328px; 
+    margin-top: 16px;
+   }
+   .slider_child {
+    height: 100%;
+    border-radius: 16px;
+   }
+
+   .slider_info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+   }
+   .icon_box {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 16px;
+    margin-top: 40px;
+   }
+   .icon_box img.purple_1 {
+    position: absolute;
+    top: 18%;
+    left: 12%;
+    width: 64%;
+    height: 64%;
+    object-fit: cover;
+   }
+   .icon_box img.purple_1_1 {
+    position: absolute;
+    top: 18%;
+    left: 18%;
+    width: 64%;
+    height: 64%;
+    object-fit: cover;
+   }   
+
+   .icon_box img.green_1 {
+    position: absolute;
+    top: 18%;
+    left: 18%;
+    width: 64%;
+    height: 64%;
+    object-fit: cover;
+   }   
+
+   .icon_box img.yellow_1 {
+    position: absolute;
+    top: 12%;
+    left: 12%;
+    width: 72%;
+    height: 72%;
+    object-fit: cover;
+   }      
+
+   .slider_info .main_text {
+    margin-top: 20px;
+    font-size: 24px;
+    box-sizing: border-box;
+    padding: 0 16px;
+   }
+   .slider_info .sub_text {
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 0 24px;
+   }
+
+   .textPop_close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #1a1a1a;
+    position: absolute;
+    z-index: 20;
+    right: 8px; 
+    top: -12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .textPop_close img {
+    width:14px;
+    height: 14px;
+   }
+
+/* Mobile2 --------------------------------------------------*/
+@media (min-width: 452px) {
+
+  nav#moblie_global {
+    padding: 20px 26px;
+  }  
+  main p {
+    padding-left: 24px;
+    margin: 0;
+  }
+  nav#moblie_global .logo {
+    width: 100px;
+  }
+  nav#moblie_global .ham {
+    width: 24px;
+  }
+  main .sub_text {
+    font-size: 18px;
+  }
+  main .main_text {
+    font-size: 52px;
+    line-height: 62px;
+  }
+  .navigation {
+    box-sizing: border-box;
+    overflow-x: scroll;    
+    height: 72px;
+  }
+  .navigation .top_menu span{
+    width: 100px;
+    font-size: 16px;
+  }  
+  
+   #service p {
+    padding: 0 24px;
+   }
+   #service .service_subText {
+    font-size: 22px; 
+   }
+   
+   #service .service_slogan {
+    font-size: 30px;
+   }  
+
+   /* wellpps 서비스소개 - 452px */
+   .serviceBox {
+    padding: 0 24px; 
+   }
+   .serviceBox_1 .service_subtext {
+    font-size: 26px;
+   }
+   .serviceBox_1 .service_maintext {
+    font-size: 26px;
+    margin-bottom: 16px;
+   }   
+   .slider_box {
+    box-sizing: border-box;
+    padding: 0 24px;
+   }
+   #history_wrap .year {
+    padding: 0 40px;
+ }   
+}
+
+
+/* Mobile3 --------------------------------------------------*/
+@media (min-width: 641px) {
+  body {
+    overflow-x:hidden;
+  }
+
+  nav#moblie_global .logo {
+    width: 120px;
+  }
+  nav#moblie_global .ham {
+    width: 28px;
+  }
+  main .sub_text {
+    font-size: 24px;
+  }
+  main .main_text {
+    font-size: 72px;
+    line-height: 86px;
+  }
+
+   #service .service_subText {
+    font-size: 26px; 
+    margin-bottom: 8px;
+   }
+   
+   #service .service_slogan {
+    font-size: 38px;
+   }   
+  /* wellpps 서비스소개 - 641px */
+  .serviceBox {
+    padding: 0 40px; 
+    }
+    .serviceBox_1 {
+      padding: 40px 50px 0 50px;
+      margin-top: 28px;
+     }    
+    .serviceBox_1 .service_subtext {
+    font-size: 38px;
+    }
+    .serviceBox_1 .service_maintext {
+    font-size: 38px;
+    margin-bottom: 16px;
+    } 
+    .slider_box {
+      box-sizing: border-box;
+      padding: 0 40px;
+     }   
+     
+     .serviceBox_1 span.pop_text {
+      font-size: 24px;
+      line-height: 40px;;
+     }
+     .textPop_close {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #1a1a1a;
+      z-index: 20;
+      right: 24px; 
+      top: -20px;
+     }
+     .textPop_close img {
+      width:28px;
+      height: 28px;
+     }     
+
+     #history_wrap .year {
+        padding: 0 40px;
+     }
+}
+
+/* Tablet --------------------------------------------------*/
+@media (min-width: 768px) {
+  nav#moblie_global .logo {
+    width: 150px;
+  }
+  nav#moblie_global .ham {
+    width: 36px;
+  }
+  main .sub_text {
+    font-size: 30px;
+  }
+  main .main_text {
+    font-size: 90px;
+    line-height: 110px;
+  }
+  .navigation .top_menu span{
+    width: 110px;
+    font-size: 18px;
+  }   
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 24px;
+    height: 64px;
+    box-sizing: border-box;
+  }
+
+  #service .service_subText {
+    font-size: 32px; 
+    margin-bottom: 8px;
+   }
+   
+   #service .service_slogan {
+    font-size: 46px;
+   }
+  /* wellpps 서비스소개 - 768px */
+  .serviceBox {
+      padding: 0 40px; 
+    }
+    .serviceBox_1 {
+      padding: 50px 60px 0 60px;
+      border-radius: 26px;
+    }
+    .serviceBox_1 .service_subtext {
+      font-size: 48px;
+    }
+    .serviceBox_1 .service_maintext {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }    
+    .slider_child {
+      border-radius: 26px;
+     }    
+
+     .serviceBox_1 span.pop_text {
+      font-size: 32px;
+      line-height: 56px;
+     }
+     .textPop_close {
+      width: 60px;
+      height: 60px;
+      border: 2px solid #1a1a1a;
+      z-index: 20;
+      right: 24px; 
+      top: -20px;
+     }
+     .textPop_close img {
+      width:34px;
+      height: 34px;
+     }        
+  
+}
+
+/* Laptop --------------------------------------------------*/
+@media (min-width: 1024px) {
+
+  header main img {
+    width: 800px;
+    height: 605;
+    margin: 0 auto;
+   }
+
+  nav#moblie_global {
+    padding: 28px 34px;
+  }  
+  main p {
+    padding-left: 34px;
+    margin: 0;
+  }
+  main .sub_text {
+    font-size: 40px;
+  }
+  main .main_text {
+    font-size: 114px;
+    line-height: 134px;
+  }
+  .navigation .top_menu span{
+    width: 110px;
+    font-size: 18px;
+  }   
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 24px;
+    height: 72px;
+  }
+  #service {
+    margin-top: 120px; 
+   }
+  #service p {
+    padding: 0;
+    margin: 0;
+   }
+   #service .service_subText {
+    font-size: 30px; 
+    text-align: center;
+   }
+   
+   #service .service_slogan {
+    font-size: 40px;
+    text-align: center;
+   } 
+
+     /* wellpps 서비스소개 - 1024px */
+    #service_laptop {
+      width: 900px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between; 
+      margin: 80px auto 0 auto;   
+    }
+    #service_laptop .left_explainBox {
+      width: 500px;
+    }
+    .left_explainBox p.main_text{
+      font-family: NotoSansKR-Bold!important;
+      font-size: 28px;
+      color: #1A1A1A;
+    }
+    .left_explainBox p.sub_text{
+      font-family: NotoSansKR-Medium!important;
+      font-size: 16px;
+      color: #A0A0A0;
+    }
+    .left_explainBox p.paragraph{
+      font-family: NotoSansKR-Light!important;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 20px 0 60px 0!important;
+      color: #1A1A1A;
+    }
+    #service_laptop .right_explainBox{
+      width: 380px;
+    }
+    .service_card {
+      width: 100%;
+      box-sizing: border-box;
+      height: 200px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+    .wellpps_img img{
+      box-shadow: 6px 3px 16px #00000024;
+      border-radius: 30px;
+    }
+
+    .icon_box {
+      width: 88px;
+      height: 88px;
+      border-radius: 16px;
+      margin: 0 30px 0 40px;
+     }
+     .icon_box img.purple_1 {
+      position: absolute;
+      top: 18%;
+      left: 12%;
+      width: 64%;
+      height: 64%;
+      object-fit: cover;
+     }
+  
+     .icon_box img.green_1 {
+      position: absolute;
+      top: 18%;
+      left: 18%;
+      width: 64%;
+      height: 64%;
+      object-fit: cover;
+     }   
+  
+     .icon_box img.yellow_1 {
+      position: absolute;
+      top: 12%;
+      left: 12%;
+      width: 72%;
+      height: 72%;
+      object-fit: cover;
+     }    
+
+     .service_card .main_text {
+      font-family: NotoSansKR-Bold!important;
+      font-size: 22px;
+      color: #1A1A1A;      
+     }
+     .service_card .sub_text {
+      font-family: NotoSansKR-Light!important;
+      font-size: 20px;
+      color: #1A1A1A;
+     }
+     .service_card .sub_text_1 {
+      font-family: NotoSansKR-Light!important;
+      font-size: 14px;
+      color: #1A1A1A;
+     }     
+}
+
+/* Desktop --------------------------------------------------*/
+@media (min-width: 1400px) {
+  main {
+    width: 1400px;
+    margin: 0 auto;
+  }
+  main p {
+    padding-left: 20px;
+  }  
+  header main img {
+    margin: 120px 0 0 0;
+  }
+  #nav_box {
+    width: 100vw;
+    border-bottom: 1px solid #fff;
+  }
+  nav#desktop {
+    width: 1400px;
+    height: 100px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0 auto;
+  }
+  nav#desktop span .logo {
+   width: 120px; 
+  }
+  nav#desktop span{
+    font-family: NotoSansKR-Black;
+    font-size: 20px; 
+    color: #fff
+  }
+  nav#desktop span:hover {
+    text-decoration: underline;
+    cursor:pointer;
+  }
+  main {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  main .sub_text {
+    font-size: 30px;
+  }
+  main .main_text {
+    font-size: 94px;
+    line-height: 114px;
+  }
+  .text_wrap {
+    margin-top: 250px;
+    position: relative;
+    left: 20px;
+  }
+  #navigation-wrap {
+    width: 100vw;
+    height: 90px;
+    box-shadow: 0px 27px 66.42px 14.58px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    background: #fff;
+  }
+
+  .navigation .top_menu span{
+    width: 200px;
+    font-size: 20px;
+  }   
+  .navigation .top_menu span:hover {
+    color: #293F52;
+  }
+  .navigation {
+    margin: 0 auto;
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    height: 90px;
+    filter: none;
+    overflow-x:hidden;
+  }
+  #service {
+    margin-top: 200px; 
+   }
+
+}

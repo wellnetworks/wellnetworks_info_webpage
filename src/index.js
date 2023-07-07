@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// viewport 설정
+const metaViewport = document.createElement('meta');
+metaViewport.name = 'viewport';
+metaViewport.content = 'width=device-width, initial-scale=1.0';
+document.head.appendChild(metaViewport);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
