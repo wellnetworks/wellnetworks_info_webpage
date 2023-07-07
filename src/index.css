@@ -34,6 +34,11 @@ code {
 }
 
 @font-face {
+  font-family: NotoSansKR-Regular;
+  src: url("../public/font/NotoSansKR-Regular.otf");
+}
+
+@font-face {
   font-family: NotoSansKR-Light;
   src: url("../public/font/NotoSansKR-Light.otf");
 }

@@ -45,6 +45,24 @@ function App() {
     };
   }, []);
 
+  // 햄버거 메뉴 오픈 > 스크롤 방지
+  const disableScroll = () => {
+    document.body.style.position = 'fixed';
+  };
+
+  const enableScroll = () => {
+    document.body.style.position = '';
+  };
+  
+
+  // 스크롤 시 메뉴 컬러 Active
+    const [activeSection, setActiveSection] = useState(1);
+  
+    const handleSetActive = (to) => {
+      const currentSection = Number(to.split('section')[1]);
+      setActiveSection(currentSection);
+    };
+
 
   // 이미지 슬라이더 - 주요서비스 //
       const settings = {
@@ -93,7 +111,7 @@ function App() {
     scroll.scrollToTop();
   };
 
-  // 모바일 일때 설명문구 전환
+  // 모바일 일때 설명문구 전환 State
   const [textPop, setTextPop] = useState(false);
   const handleTextPopOpen = () => {
     setTextPop(true);
@@ -134,12 +152,13 @@ function App() {
     setTextPop5(false);
   } 
 
-  // tab ui 
+  // CONCTACT tab ui 
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
+
 
 
 
@@ -186,8 +205,8 @@ function App() {
                         top: "0",
                         left: "0",
                         width: "100vw",
-                        height: "100%",
-                        overflowY: "hidden",
+                        height: "100vh",
+                        overflowY: "scroll",
                         background: "#fff",
                         zIndex:"999",
                         opacity: "0.98",
@@ -195,14 +214,16 @@ function App() {
                     >
                       <nav id="moblie_global" className="side_menu">
                         <span><img className="logo" src="../img/m/icon-logo-m.svg" alt="로고"/></span>
-                        <div onClick={() => setIsVisible(false)}><img className="ham" src="../img/m/icon-close-m.svg" alt="햄버거버튼"/></div>
+                        <div onClick={() => {setIsVisible(false); enableScroll();}}><img className="ham" src="../img/m/icon-close-m.svg" alt="닫기버튼"/></div>
                       </nav>
                       <ul className="menu_wrap">
                         <Link 
                           to="section1"
                           offset={-250}
                           smooth={true} duration={300}
-                          onClick={() => setIsVisible(false)}
+                          onClick={() => {setIsVisible(false); enableScroll();}}
+                          spy={true}
+                          onSetActive={handleSetActive}
                         >
                           <li>주요서비스</li> 
                         </Link>     
@@ -210,13 +231,42 @@ function App() {
                           to="section2"
                           offset={-150}
                           smooth={true} duration={300}
-                          onClick={() => setIsVisible(false)}
+                          onClick={() => {setIsVisible(false); enableScroll();}}
+                          spy={true}
+                          onSetActive={handleSetActive}
                         >
                           <li>업무방식</li>  
                         </Link>
-                        <li>조직구성</li>  
-                        <li>걸어온길</li>  
-                        <li>CONTACNT</li>  
+                        <Link 
+                          to="section3"
+                          offset={-150}
+                          smooth={true} duration={300}
+                          onClick={() => {setIsVisible(false); enableScroll();}}
+                          spy={true}
+                          onSetActive={handleSetActive}
+                        >
+                          <li>조직구성</li>  
+                        </Link>
+                        <Link 
+                          to="section4"
+                          offset={-150}
+                          smooth={true} duration={300}
+                          onClick={() => {setIsVisible(false); enableScroll();}}
+                          spy={true}
+                          onSetActive={handleSetActive}
+                        >
+                          <li>걸어온길</li>
+                        </Link> 
+                        <Link 
+                          to="section5"
+                          offset={-150}
+                          smooth={true} duration={300}
+                          onClick={() => {setIsVisible(false); enableScroll();}}
+                          spy={true}
+                          onSetActive={handleSetActive}
+                        >
+                          <li>CONTACNT</li>  
+                        </Link>                        
                       </ul>
                       <ButtonWrap>
                         <button className='askBtn'>1566-0261</button>
@@ -227,7 +277,7 @@ function App() {
                 </AnimatePresence>                
                 <nav id="moblie_global">
                   <a><img className="logo" src="../img/m/icon-logoWhite-m.svg" alt="로고"/></a>
-                  <div onClick={() => setIsVisible(true)}><img className="ham" src="../img/m/icon-ham-m.svg" alt="햄버거버튼"/></div>
+                  <div onClick={() => {setIsVisible(true); disableScroll();}}><img className="ham" src="../img/m/icon-ham-m.svg" alt="햄버거버튼"/></div>
                 </nav>
               </MobileGlobal>
               <Desktop>
@@ -238,6 +288,8 @@ function App() {
                       to="section1"
                       offset={-250}
                       smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}
                     >
                       <span>주요서비스</span>
                     </Link>
@@ -245,13 +297,38 @@ function App() {
                       to="section2"
                       offset={-150}
                       smooth={true} duration={300}
-                      onClick={() => setIsVisible(false)}
+                      spy={true}
+                      onSetActive={handleSetActive}
                     >
                       <span>업무방식</span>
                     </Link>                    
-                    <span>조직구성</span>
-                    <span>걸어온길</span>
-                    <span>CONTACT</span>
+                    <Link 
+                      to="section3"
+                      offset={-150}
+                      smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}
+                    >
+                      <span>조직구성</span>
+                    </Link>
+                    <Link 
+                      to="section4"
+                      offset={-150}
+                      smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}
+                    >
+                      <span>걸어온길</span>
+                    </Link>
+                    <Link 
+                      to="section5"
+                      offset={-150}
+                      smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}
+                    >
+                      <span>CONTACT</span>
+                    </Link>
                   </nav>
                 </div>
               </Desktop>
@@ -289,30 +366,74 @@ function App() {
                   isVisible ? "opacity navigation" : "navigation"}
               >
                 <div className="top_menu">
-                  <span>
+                  <span className={`${activeSection === 1 ? 'Active_menu' : ''}`}>
                     <Link 
                       to="section1"
                       offset={-250}
                       smooth={true} duration={300}
+                      onClick={() => setIsVisible(false)}
+                      spy={true}
+                      onSetActive={handleSetActive}
                     >주요서비스
                     </Link>
                   </span>
                 </div>
                 <div className="top_menu">
-                  <span>
+                  <span className={`${activeSection === 2 ? 'Active_menu' : ''}`}>
                   <Link 
                     to="section2"
                     offset={-150}
                     smooth={true} duration={300}
                     onClick={() => setIsVisible(false)}
+                    spy={true}
+                    onSetActive={handleSetActive}
                   >
                     업무방식
                     </Link>
                   </span>
                 </div>
-                <div className="top_menu"><span>조직구성</span></div>
-                <div className="top_menu"><span>걸어온길</span></div>
-                <div className="top_menu"><span>CONTACT</span></div>
+                <div className="top_menu">
+                  <span className={`${activeSection === 3 ? 'Active_menu' : ''}`}>
+                  <Link 
+                    to="section3"
+                    offset={-150}
+                    smooth={true} duration={300}
+                    onClick={() => setIsVisible(false)}
+                    spy={true}
+                    onSetActive={handleSetActive}
+                  >
+                    조직구성
+                    </Link>
+                  </span>
+                </div>
+                <div className="top_menu">
+                  <span className={`${activeSection === 4 ? 'Active_menu' : ''}`}>
+                  <Link 
+                    to="section4"
+                    offset={-150}
+                    smooth={true} duration={300}
+                    onClick={() => setIsVisible(false)}
+                    spy={true}
+                    onSetActive={handleSetActive}
+                  >
+                    걸어온길
+                    </Link>
+                  </span>
+                </div>
+                <div className="top_menu">
+                  <span className={`${activeSection === 5 ? 'Active_menu' : ''}`}>
+                  <Link 
+                    to="section5"
+                    offset={-150}
+                    smooth={true} duration={300}
+                    onClick={() => setIsVisible(false)}
+                    spy={true}
+                    onSetActive={handleSetActive}
+                  >
+                    CONTACT
+                    </Link>
+                  </span>
+                </div>
               </div> 
             </MobileGlobal>
             <Desktop>
@@ -326,25 +447,56 @@ function App() {
                       to="section1"
                       offset={-250}
                       smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}                      
                     >
-                      <span>주요서비스</span>
+                      <span className={`${activeSection === 1 ? 'Active_menu' : ''}`}>주요서비스</span>
                     </Link>
                   </div>
                   <div className="top_menu">
-                    <span>
                     <Link 
                       to="section2"
                       offset={-150}
                       smooth={true} duration={300}
-                      onClick={() => setIsVisible(false)}
+                      spy={true}
+                      onSetActive={handleSetActive}
                     >
-                      업무방식
+                      <span className={`${activeSection === 2 ? 'Active_menu' : ''}`}>업무방식</span>
                       </Link>
-                    </span>
                   </div>
-                  <div className="top_menu"><span>조직구성</span></div>
-                  <div className="top_menu"><span>걸어온길</span></div>
-                  <div className="top_menu"><span>CONTACT</span></div>
+                  <div className="top_menu">
+                    <Link 
+                      to="section3"
+                      offset={-150}
+                      smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}
+                    >
+                      <span className={`${activeSection === 3 ? 'Active_menu' : ''}`}>조직구성</span>
+                      </Link>
+                  </div>
+                  <div className="top_menu">
+                    <Link 
+                      to="section4"
+                      offset={-150}
+                      smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}
+                    >
+                      <span className={`${activeSection === 4 ? 'Active_menu' : ''}`}>걸어온길</span>
+                      </Link>
+                  </div>
+                  <div className="top_menu">
+                    <Link 
+                      to="section5"
+                      offset={-150}
+                      smooth={true} duration={300}
+                      spy={true}
+                      onSetActive={handleSetActive}
+                    >
+                      <span className={`${activeSection === 5 ? 'Active_menu' : ''}`}>CONTACT</span>
+                      </Link>
+                  </div>
                 </div> 
               </div>            
             </Desktop>
@@ -462,7 +614,7 @@ function App() {
                       <p className="main_text">WELLPPS 솔루션</p>
                       <p className="sub_text">MVNO 서비스 유통 통합 관리 시스템</p>
                       <p className="paragraph">WELLPPS 솔루션을 대리점에게 일부 권한 이양 하여 고객의 MVNO 서비스를<br/> 더욱 쉽고 빠르게 처리 할 수 있게 합니다.<br/><br/>이와 같은 서비스는 사후 관리 측면에서도 비용 및 시간을<br/>크게 절약 할 수 있는 장점을 가집니다.<br/><br/>웰네트웍스는 MVNO 사업 뿐아니라,Top-up서비스(해외선불폰충전),<br/>MANGO(국제 전화카드충전)등사업 확장의 연구와 개발에 몰두하고있습니다.</p>
-                      <div className="wellpps_img"><img src="../img/common/image-wellpps-l.png" alt="well_laptop" /></div>
+                      <div className="wellpps_img"><img className="box_shadow" src="../img/common/image-wellpps-l.png" alt="well_laptop" /></div>
                     </div>
                     <div  className="right_explainBox">
                       <div className="service_card purple">
@@ -493,7 +645,74 @@ function App() {
                         </div>
                       </div>
                     </div>
-                  </div>                  
+                  </div>   
+                  <div id="service_laptop">
+                    <div className="left_explainBox2">
+                      <p className="main_text">PHONEISSUE.COM</p>
+                      <p className="sub_text">선불폰 충전, 개통 Hub & 쇼핑몰</p>
+                      <p className="paragraph">현재 폰이슈 사이트는 협업중인 사이트(유통망)로 선불폰 개통, 충전<br/>서비스를 연계하고 있으며, Research&Development 진행중입니다.<br/><br/>향후 다양한 상품과 서비스로 발전 시킬 예정입니다</p>
+                    </div>
+                    <div  className="right_explainBox2">
+                      <div className="wellpps_img"><img src="../img/common/image-phoneissue-l.png" alt="well_laptop" /></div>
+                    </div>
+                  </div>
+                  <div id="service_laptop">
+                    <div  className="right_explainBox3">
+                      <div className="wellpps_img"><img src="../img/common/image-ppspay-l.png" alt="well_laptop" /></div>
+                    </div>
+                    <div className="left_explainBox3">
+                      <p className="main_text">PPSPAY</p>
+                      <p className="sub_text">선불폰의 쉽고 빠른 충전</p>
+                      <p className="paragraph">선불폰을 사용중인 고객 누구나 24시간 언제든 요금 충전<br/>서비스를 제공합니다. 충전 서비스가상계좌/신용카드를 이용하여 충전 가능하며, 별도의 로그인 없이 휴대전화 번호만으로<br/>요금제 충전 및 조회를 해소 할 수 있습니다.<br/><br/>충전 결과 조회 기능으로 충전상태조회 / 대체충전 시도 / 환불 신청을 가능하게 함으로써 고객 편의성을 증대하였습니다.<br/><br/>PPSPAY는 나날이 고객 사용/충전량이 꾸준히 증가하고 있는 추세로 지속성장하고있습니다.</p>
+                    </div>                    
+                  </div> 
+                  <div id="service_laptop">
+                    <div className="left_explainBox4">
+                      <p className="main_text">통신나눔</p>
+                      <p className="sub_text">통신 취약계층을 위한 최선의 선택</p>
+                      <p className="paragraph">현대사회는 바야흐로 스마트 통신의 시대입니다.<br/>하지만 모든 사람들이 그 혜택을 누리진 않습니다.<br/>우리의 생각보다 통신을 이용하기 어려운 사람들이 많습니다.<br/><br/>웰네트웍스는 이러한 사람들에게 통신의 혜택을 나누고자 합니다.<br/>통신나눔을 통해 기업의 사회적 책임을 이행하고<br/>보다 많은 이들이 통신의 사각지대에서 벗어날 수 있도록 도울 것입니다.<br/><br/>복지 단체 및 시설과 협약하여 선불휴대전화 개통서비스를 제공합니다.</p>
+                    </div>
+                    <div  className="right_explainBox4">
+                      <div className="wellpps_img"><img src="../img/common/image-wellnanum-l.png" alt="well_laptop" /></div>
+                    </div>
+                  </div>  
+                  <div id="service_laptop">
+                    <div className="left_explainBox">
+                      <p className="main_text">기업부설연구소</p>
+                      <p className="sub_text">다양한 플랫폼 개발을 위한 연구소 설립</p>
+                      <p className="paragraph">사업의 발전을 위해 기업부설연구소를 설립하였습니다.<br/>현재 연구과제로 MVNO 사업 관련 연구를 진행하고있지만<br/>추후 다양한 분야로 사업을 확장시킬 계획입니다.</p>
+                      <div className="wellpps_img"><img className="box_shadow" src="../img/common/image-lab-l.png" alt="well_laptop" /></div>
+                    </div>
+                    <div  className="right_explainBox">
+                      <div className="service_card purple">
+                        <div className="icon_box deep_purple">
+                          <img className="purple_1" src="../img/common/icon-emoji-4.png" alt="개통 서비스" style={{ left: "18%" }}/>
+                        </div>
+                        <div>
+                          <p className="main_text" style={{ fontSize: "20px" }}>MVNO 선불폰 특화<br/>고객관리 전산 시스템 개발</p>
+                          <p className="sub_text" style={{ fontSize: "15px" }}>선불폰 판매관리를 위한 주문통합<br/>관리 및 고객관리 전산 시스템 개발</p>
+                        </div>
+                      </div>
+                      <div className="service_card green">
+                        <div className="icon_box deep_green">
+                          <img className="green_1" src="../img/common/icon-emoji-5.png" alt="충전 서비스" />
+                        </div>
+                        <div>
+                          <p className="main_text">충전 API 개발</p>
+                          <p className="sub_text_1">MVNO 통신사 선불폰 충전<br></br>API 서버 개발</p>
+                        </div>
+                      </div>
+                      <div className="service_card yellow">
+                        <div className="icon_box deep_yellow">
+                          <img className="yellow_1" src="../img/common/icon-emoji-6.png" alt="대리점 업무지원" />
+                        </div>
+                        <div>
+                          <p className="main_text">고객 분석 연구</p>
+                          <p className="sub_text_1">사례분석 및 사업 유입량 분석 등<br></br>고객 분석 마케팅 연구</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                                                   
                 </LaptopAfter>
                 <LaptopBefore>
                   <div className="serviceBox" style={{ marginTop: "46px" }}>
@@ -783,6 +1002,11 @@ function App() {
               <section id="service">
                 <p className="service_subText">업무방식</p>
                 <p className="service_slogan">우리가 일하는 방식</p>
+                <LaptopAfter>
+                  <div className="workflow_text">
+                    <p>웰네트웍스는 모든것에 우연은 없다는 일념으로 데이터 분석 기반 업무에 초점을 두고 있습니다.<br/>또한, 다양한 협업툴을 적극 활용하여 업무 집중도를 높이는 데에 기여 하고 있으며, 짧은 주기의<br/>계획, 실행,  피드백이 이루어지는 에자일 조직으로 성장중입니다.</p>
+                  </div>
+                </LaptopAfter>                
                 <LaptopBefore>
                   <Slider {...settings2}>
                     <div>
@@ -996,7 +1220,7 @@ function App() {
                 </LaptopBefore>
               </section>                   
             </Element>  
-            <Element name="section5">
+            <Element name="section5" style={{ marginBottom: "100px" }}>
               <section id="service">
                 <p className="service_subText">CONTACT</p>
                 <p className="service_slogan">우리와 함께 하는 방법</p>
@@ -1036,12 +1260,67 @@ function App() {
                           </div>                                             
                         </div>
                       </div>}
-                      {activeTab === 1 && <div>Tab 2 Content</div>}
+                      {activeTab === 1 && <div className='input_box'>
+                          <div className="input_wrap">
+                            <div className="input_list">
+                              <div>이름 입력</div>
+                              <input type="text" placeholder='성함을 입력해주세요'></input>
+                            </div>
+                            <div className="input_list">
+                              <div>연락처 입력</div>
+                              <input type="text" placeholder='연락처를 입력해주세요'></input>
+                            </div>                            
+                            <div className="input_list">
+                              <div>개인정보 수집 동의</div>
+                              <div class="radio-container">
+                                <input type="radio" id="option1" name="radio" />
+                                <label for="option1">동의</label>
+                                
+                                <input type="radio" id="option2" name="radio" />
+                                <label for="option2">미동의</label>
+                              </div>
+                            </div>
+                            <div className="input_list">
+                              <div className="request_btn">요청</div>
+                            </div>               
+                          </div>
+                        </div>}
                     </div>
                   </div>
                 </LaptopBefore>                
               </section>
-            </Element>       
+            </Element>  
+            <footer id="footer">
+              <div className="ask_us">
+                <div className="ask_child">전화문의</div>
+                <div className="ask_child">카카오톡</div>
+              </div>
+              <div className="family_site">
+                  <div className='family_wrap'>
+                    <div className="site_list">
+                      <span>WELLPPS.com</span>
+                      <span><img src="../img/m/icon-footer_arrow-m.svg" alt="패밀리사이트 화살표" /></span>
+                    </div>
+                    <div className="site_list">
+                      <span>PHONEISSUE.COM</span>
+                      <span><img src="../img/m/icon-footer_arrow-m.svg" alt="패밀리사이트 화살표" /></span>
+                    </div>
+                    <div className="site_list">
+                      <span>PPSPAY</span>
+                      <span><img src="../img/m/icon-footer_arrow-m.svg" alt="패밀리사이트 화살표" /></span>
+                    </div>
+                    <div className="site_list">
+                      <span>통신나눔</span>
+                      <span><img src="../img/m/icon-footer_arrow-m.svg" alt="패밀리사이트 화살표" /></span>
+                    </div>                                                            
+                  </div>
+              </div>
+              <div className="infomation_footer">
+                <img src="../img/common/icon-footer-logo.svg" alt="푸터 폰이슈 로고" />
+                <div className="footer_info">본사 : (주) 웰네트웍스 ㅣ 대표 : 김형술<br/>사업자등록번호 : 128-87-06924<br/>통신판매업신고번호: 2020-고양일산동-0390호<br/>경기도 고양시 일산동구 일산로 67, 명성프라자 5층(백석동)<br/>대표전화 : 1566-0261<br/>e-mail : phoneissue@wellpps.com<br/>Copyright(C)2023 by wellnetworks.co.kr<br/>All rights reserved.</div>
+              </div>
+            </footer>
+            
           </>
   );
 }

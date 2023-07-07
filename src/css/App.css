@@ -68,6 +68,12 @@ ul.menu_wrap li{
   align-items: center;
 }
 
+.navigation .top_menu span.Active_menu {
+  color:#293F52!important;
+  font-family: NotoSansKR-Black!important;
+
+}
+
 .navigation .top_menu span{
   color: #DBDBDB;
   text-decoration: none;
@@ -315,7 +321,7 @@ ul.menu_wrap li{
   right: 0;
 }
 
-/* CONTACT >> 우리와 함께 하는 방법 -------------------------------------*/
+/* CONTACT - 오시는길 -------------------------------------*/
 
 .tab_wrap {
   margin-top: 28px;
@@ -370,6 +376,141 @@ ul.menu_wrap li{
   height: 300px;
 }
 
+/* CONTACT- 업무제휴 -------------------------------------------*/
+.input_box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16px;
+}
+.input_box .input_wrap {
+  font-size: 14px;
+  color: #1A1A1A;
+  font-family: NotoSansKR-Medium;
+}
+.input_list{
+  margin-bottom: 30px;
+}
+.input_list input {
+  margin-top: 10px;
+  width: 100%;
+  height: 42px;
+  border: 1px solid #0077ed;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding-left: 16px;
+  color: #0077ed;
+  font-family: NotoSansKR-Bold;
+  font-size: 16px;
+  box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.1);
+}
+.input_list input::placeholder {
+  color: #D6D6D6;
+}
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.radio-container input[type="radio"] {
+  display: none;
+}
+
+.radio-container label {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
+  border: 1px solid #D6D6D6;
+  box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.1);
+  color: #D6D6D6;
+  font-family: NotoSansKR-Bold;
+  font-size: 16px;
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.radio-container input[type="radio"]:checked + label {
+  border: 1px solid #0077ed;
+  color: #0077ed;
+}
+
+.request_btn {
+  height: 54px;
+  box-shadow: 6px 3px 32px #00000024;
+  border-radius: 8px;
+  background-color: #0077ed;
+  font-family: NotoSansKR-Black;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+.request_btn:active{
+  position: relative;
+  top: 1px;
+  right: 1px;
+  box-shadow: none;
+}
+
+/* footer --------------------------------------------------- */
+#footer {
+  box-sizing: border-box;
+}
+.ask_us {
+  display: flex;
+  justify-content: space-between;
+}
+.ask_us .ask_child {
+  flex-basis: 50%;
+  text-align: center;
+  font-family: NotoSansKR-Black;
+  font-size: 14px;
+  color: #fff;
+  padding : 24px 0;
+  background-color: #202020;
+}
+.family_site {
+  
+}
+.family_wrap {
+  box-sizing: border-box;
+  padding: 0 8%;
+  background-color: #141414;
+}
+.site_list {
+  display: flex;
+  justify-content: space-between;
+  color: #808080;
+  font-family: NotoSansKR-Medium;
+  font-size: 16px;
+  padding: 16px;
+  box-sizing: border-box; 
+  border-bottom: 1px solid #555555;
+}
+
+.infomation_footer {
+  padding: 16px 8% 40px 8%;
+  box-sizing: border-box; 
+  background-color: #202020;
+}
+.infomation_footer img {
+  width: 7rem;
+  margin: 20px 0 ;
+}
+
+.footer_info {
+  font-family: NotoSansKR-Regular;
+  color: #808080;
+  font-size: 14px;
+  line-height: 22px;
+}
 
 
 
@@ -756,7 +897,87 @@ ul.menu_wrap li{
      .textPop_close img {
       width:34px;
       height: 34px;
-     }        
+     }      
+     
+    /* 업무방식 - 우리가 일하는 방식 ------------------------------------*/
+     .slider_box2 {
+      padding: 36px;
+    }
+    .workflow_para {
+      padding: 0 36px;
+      font-size: 20px;
+      line-height: 30px;
+     }
+
+/* 조직구성 - 우리의 구성원들 ------------------------------------*/
+     .team_card {  
+      padding: 0 36px;
+    }
+    .team_wrap {
+      height: 160px;
+    }
+
+/* 걸어온길 >> 연혁 -------------------------------------*/
+
+.year_text {
+  font-size: 34px;
+}
+.month_wrap {
+  font-size: 18px;
+
+}
+
+.month_wrap .month {
+
+  font-size: 26px;
+}
+
+
+/* CONTACT - 오시는길 -------------------------------------*/
+
+  .tab_wrap .tab_bar {
+    padding: 0 40px;
+    font-size: 22px;
+  }
+  .address_box {
+    padding: 0 56px;
+  }
+  .address_list .title {
+    font-size: 22px;
+  }
+
+  .address_list .info {
+    font-size: 18px;
+  }
+
+/* CONTACT- 업무제휴 ------------------------------------------- */
+  .input_box {
+    padding: 0 40px;
+  }
+  .input_box .input_wrap {
+    font-size: 18px;
+  }
+  .input_list {
+    margin-bottom: 40px;
+  }
+  .input_list input {
+    margin-top: 14px;
+    height: 54px;
+    font-size: 20px;
+  }
+    
+  .radio-container {
+    margin-top: 14px;
+  }
+  .radio-container label {
+    padding: 16px 12px;
+    font-size: 20px;
+  }
+  .request_btn {
+    height: 64px;
+    margin-top: 50px;
+    font-size: 24px;
+  }
   
 }
 
@@ -850,7 +1071,7 @@ ul.menu_wrap li{
       display: flex;
       align-items: center;
     }
-    .wellpps_img img{
+    .wellpps_img img.box_shadow{
       box-shadow: 6px 3px 16px #00000024;
       border-radius: 30px;
     }
@@ -903,6 +1124,95 @@ ul.menu_wrap li{
       font-size: 14px;
       color: #1A1A1A;
      }     
+     /* phoneissue 서비스소개 - 1024px */     
+     #service_laptop .right_explainBox2{
+      width: 460px;
+    }
+    #service_laptop .left_explainBox2 {
+      width: 400px;
+      position: relative;
+      top: 100px;
+    }
+    .left_explainBox2 p.main_text{
+      font-family: NotoSansKR-Bold!important;
+      font-size: 28px;
+      color: #1A1A1A;
+    }
+    .left_explainBox2 p.sub_text{
+      font-family: NotoSansKR-Medium!important;
+      font-size: 16px;
+      color: #A0A0A0;
+    }
+    .left_explainBox2 p.paragraph{
+      font-family: NotoSansKR-Light!important;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 20px 0 60px 0!important;
+      color: #1A1A1A;
+    }
+
+    /* ppspay 서비스소개 - 1024px */     
+    #service_laptop .right_explainBox3{
+      width: 460px;
+    }
+    #service_laptop .left_explainBox3 {
+      width: 350px;
+      position: relative;
+      top: 30px;
+    }
+    .left_explainBox3 p.main_text{
+      font-family: NotoSansKR-Bold!important;
+      font-size: 28px;
+      color: #1A1A1A;
+    }
+    .left_explainBox3 p.sub_text{
+      font-family: NotoSansKR-Medium!important;
+      font-size: 16px;
+      color: #A0A0A0;
+    }
+    .left_explainBox3 p.paragraph{
+      font-family: NotoSansKR-Light!important;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 20px 0 60px 0!important;
+      color: #1A1A1A;
+    }    
+    /* 통신나눔 서비스소개 - 1024px */     
+    #service_laptop .right_explainBox4{
+      width: 460px;
+    }
+    #service_laptop .left_explainBox4 {
+      width: 410px;
+      position: relative;
+      top: 10px;
+    }
+    .left_explainBox4 p.main_text{
+      font-family: NotoSansKR-Bold!important;
+      font-size: 28px;
+      color: #1A1A1A;
+    }
+    .left_explainBox4 p.sub_text{
+      font-family: NotoSansKR-Medium!important;
+      font-size: 16px;
+      color: #A0A0A0;
+    }
+    .left_explainBox4 p.paragraph{
+      font-family: NotoSansKR-Light!important;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 20px 0 60px 0!important;
+      color: #1A1A1A;
+    }      
+
+    /* 업무방식 - 우리가 일하는 방식 */
+    .workflow_text {
+      margin: 30px auto 0 auto;
+    }
+    .workflow_text p{
+      font-size: 18px;
+      font-family: NotoSansKR-Light!important;
+      
+    }
 }
 
 /* Desktop --------------------------------------------------*/
