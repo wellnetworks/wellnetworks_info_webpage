@@ -381,9 +381,6 @@ ul.menu_wrap li {
   padding: 0 32px;
 }
 
-.address_box .address_wrap {
-  height: 300px;
-}
 
 .address_list {
   display: flex;
@@ -406,6 +403,7 @@ ul.menu_wrap li {
 .address_wrap .map {
   height: 350px;
 }
+
 
 /* CONTACT- 업무제휴 -------------------------------------------*/
 .input_box {
@@ -542,6 +540,7 @@ ul.menu_wrap li {
   line-height: 22px;
 }
 
+
 /* Mobile1 --------------------------------------------------*/
 @media (min-width: 360px) {
   body {
@@ -629,6 +628,16 @@ ul.menu_wrap li {
     font-size: 20px;
     margin-bottom: 16px;
   }
+  .address_wrap .map {
+    width: 100%;
+    height: 300px;
+    box-shadow: 0px 27px 66.42px 14.58px rgba(0, 0, 0, 0.085);
+    border-radius: 16px;
+    margin-top: 50px;
+  }  
+  .address_box {
+    padding: 0 16px;
+  }  
 }
 
 /* wellpps 이미지 슬라이드 */
@@ -799,6 +808,12 @@ ul.menu_wrap li {
   .tab_wrap .tab_bar {
     padding: 0 40px;
   }
+  .address_box {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 40px;
+  }
+
 }
 
 /* Mobile3 --------------------------------------------------*/

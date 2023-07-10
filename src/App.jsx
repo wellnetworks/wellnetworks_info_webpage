@@ -21,6 +21,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link, Element, Events, animateScroll as scroll } from "react-scroll";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 /// 이미지 import ///
 import logoM from "./img/m/icon-logo-m.svg";
@@ -1909,6 +1910,21 @@ function App() {
                         <span className="title">운영시간</span>
                         <span className="info">10:00 ~ 20:00 (연중무휴)</span>
                       </div>
+                      <Map
+                        className="map"
+                        center={{ lat: 37.6442802725939, lng: 126.789008621492 }}
+                      >
+                        <MapMarker
+                          position={{ lat: 37.6442802725939, lng: 126.789008621492 }}
+                        >
+                          <div style={{
+                              width:"130px",
+                              textAlign:"center",
+                              fontFamily: "NotoSansKR-Bold",
+                              color: "#0077ed",
+                          }}>(주)웰네트웍스</div>
+                        </MapMarker>
+                      </Map>                      
                     </div>
                   </div>
                 )}
@@ -1941,7 +1957,7 @@ function App() {
                       </div>
                       <div className="input_list">
                         <div className="request_btn">요청</div>
-                      </div>
+                      </div>                     
                     </div>
                   </div>
                 )}
@@ -1965,7 +1981,21 @@ function App() {
                   <span className="title address_margin">운영시간</span>
                   <span className="sub_text">10:00 ~ 20:00 (연중무휴)</span>
                 </div>
-                <div className="map">카카오맵</div>
+                <Map
+                  className="map"
+                  center={{ lat: 37.6442802725939, lng: 126.789008621492 }}
+                >
+                  <MapMarker
+                    position={{ lat: 37.6442802725939, lng: 126.789008621492 }}
+                  >
+                    <div style={{
+                        width:"130px",
+                        textAlign:"center",
+                        fontFamily: "NotoSansKR-Bold",
+                        color: "#0077ed",
+                    }}>(주)웰네트웍스</div>
+                  </MapMarker>
+                </Map>               
               </div>
               <div className="request_wrap">
                 <div className="request_title">
