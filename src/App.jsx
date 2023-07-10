@@ -552,7 +552,6 @@ function App() {
             <img src={mainPC} alt="메인 비주얼 (제일큰)" />
           </Desktop>
           <div className="text_wrap">
-            <p className="sub_text">(주)웰네트웍스 기업 홈페이지</p>
             <p className="main_text">
               Your Best
               <br />
