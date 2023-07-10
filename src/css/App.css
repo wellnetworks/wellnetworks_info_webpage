@@ -218,6 +218,39 @@ ul.menu_wrap li {
   color: #0c182f;
 }
 
+.img_url {
+  display: flex;
+  justify-content: center;
+}
+.img_url_child {
+  font-size: 16px;
+  font-family: NotoSansKR-Medium;
+  color:rgba(217,108,61, 1.0);
+  text-align: center;
+  margin: 40px auto 0 auto;
+  padding: 8px 36px;
+  border-radius: 24px;
+  border: 1px solid rgba(217,108,61, 1.0);
+  background-color: #fff;
+  box-shadow: 4px 6px 12px rgba(217,108,61, 0.08);
+  cursor: pointer;
+  text-decoration: none;
+}
+.img_url_child:active {
+  position: relative;
+  top: 1px;
+  right: 1px;
+  box-shadow: none;
+}
+.img_url_colorRed {
+  border: 1px solid #ff5050;
+  color: #ff5050;
+}
+.img_url_colorskyblue {
+  border: 1px solid #1788cd;
+  color: #1788cd;
+}
+
 /* 업무방식 >> 우리가 일하는 방식 -------------------------------------*/
 
 .slider_box2 {
@@ -292,6 +325,7 @@ ul.menu_wrap li {
 .team_info .team_main {
   font-family: NotoSansKR-Bold !important;
   font-size: 20px;
+  margin-bottom: 4px!important;
 }
 .team_info .team_sub {
   font-family: NotoSansKR-Light !important;
@@ -480,12 +514,16 @@ ul.menu_wrap li {
   font-size: 18px;
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
   margin-top: 40px;
+  cursor:pointer;
 }
 .request_btn:active {
   position: relative;
   top: 1px;
   right: 1px;
   box-shadow: none;
+}
+.off {
+  display: none;
 }
 
 /* footer --------------------------------------------------- */
@@ -639,7 +677,6 @@ ul.menu_wrap li {
     padding: 0 16px;
   }  
 }
-
 /* wellpps 이미지 슬라이드 */
 .slider_box {
   height: 328px;
@@ -1112,6 +1149,11 @@ ul.menu_wrap li {
     margin: 20px 0 60px 0 !important;
     color: #1a1a1a;
   }
+  p.paragraph .blue {
+    color: #0077ed;
+    font-family: NotoSansKR-Medium;
+    font-size: 16px;
+  }
   #service_laptop .right_explainBox {
     width: 380px;
   }
@@ -1169,7 +1211,7 @@ ul.menu_wrap li {
   }
   .service_card .sub_text {
     font-family: NotoSansKR-Light !important;
-    font-size: 20px;
+    font-size: 14px;
     color: #1a1a1a;
   }
   .service_card .sub_text_1 {
@@ -1257,6 +1299,14 @@ ul.menu_wrap li {
     color: #1a1a1a;
   }
 
+  .img_url_child {
+    font-size: 14px;
+    font-family: NotoSansKR-Medium;
+    margin: 30px auto 0 auto;
+    padding: 8px 36px;
+    border-radius: 24px;
+  }
+
   /* 업무방식 - 우리가 일하는 방식 */
   .workflow_text {
     width: 900px;
@@ -1305,6 +1355,8 @@ ul.menu_wrap li {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    width: 900px;
+    margin: 28px auto 0 auto;
   }
   .team_card {
     width: 430px;
@@ -1510,7 +1562,7 @@ ul.menu_wrap li {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    margin: 160px auto 0 auto;
+    margin: 200px auto 0 auto;
   }
   #service_laptop .left_explainBox {
     width: 754px;
@@ -1533,6 +1585,11 @@ ul.menu_wrap li {
     color: #1a1a1a;
     line-height: 24px;
   }
+  p.paragraph .blue {
+    color: #0077ed;
+    font-family: NotoSansKR-Medium;
+    font-size: 20px;
+  }  
   #service_laptop .right_explainBox {
     width: 622px;
   }
@@ -1596,7 +1653,7 @@ ul.menu_wrap li {
   }
   .service_card .sub_text_1 {
     font-family: NotoSansKR-Light !important;
-    font-size: 20px;
+    font-size: 22px;
     color: #1a1a1a;
   }
 
@@ -1686,6 +1743,13 @@ ul.menu_wrap li {
     position: relative;
     top: 70px;
   }
+  .img_url_child {
+    font-size: 16px;
+    font-family: NotoSansKR-Medium;
+    margin: 40px auto 0 auto;
+    padding: 8px 36px;
+    border-radius: 24px;
+  }  
 
   /* 업무방식 - 우리가 일하는 방식 ------------------------------------------------------------*/
 
@@ -1832,7 +1896,7 @@ ul.menu_wrap li {
     top: 3px;
   }
   .input_box_labtop {
-    margin-top: 42px;
+    margin-top: 28px;
     display: flex;
     flex-direction: column;
   }
@@ -1840,6 +1904,21 @@ ul.menu_wrap li {
     font-family: NotoSansKR-Medium !important;
     font-size: 14px;
   }
+  .textarea {
+    box-sizing: border-box;
+    padding: 12px;
+    font-family: NotoSansKR-Bold !important;
+    font-size: 16px;
+    border-radius: 8px;
+    height: 200px;
+    border: 1px solid #0077ed;
+    box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.1);
+    margin-top: 10px;
+    color: #0077ed;
+  }
+  .textarea::placeholder {
+    color: #d6d6d6;
+  }  
   input.input_text {
     box-sizing: border-box;
     padding-left: 12px;

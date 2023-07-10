@@ -273,6 +273,35 @@ function App() {
     setActiveTab(index);
   };
 
+  // CONTACT labtop & desktop Step UI
+  const [nextStep, setNextStep] = useState(0);
+
+  const handleNextStepClick = (index) => {
+    setNextStep(index);
+  };  
+
+  console.log(nextStep);
+  // 전화번호 하이픈 추가 기능 +(문자 /전화번호10자리 이상 X )
+  const [phoneNumbering, setPhoneNumbering] = useState('');
+
+  const handlePhoneNumberChange = (e) => {
+    const input = e.target.value;
+    const sanitizedInput = input.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+    let formattedInput = '';
+
+    if (sanitizedInput.length <= 3) {
+      formattedInput = sanitizedInput;
+    } else if (sanitizedInput.length <= 7) {
+      formattedInput = `${sanitizedInput.slice(0, 3)}-${sanitizedInput.slice(3)}`;
+    } else {
+      formattedInput = `${sanitizedInput.slice(0, 3)}-${sanitizedInput.slice(3, 7)}-${sanitizedInput.slice(7, 11)}`;
+    }
+
+    setPhoneNumbering(formattedInput);
+  };
+
+  console.log(phoneNumbering);
+
   const ButtonWrap = styled.div`
     display: flex;
     flex-direction: column;
@@ -523,7 +552,7 @@ function App() {
             <img src={mainPC} alt="메인 비주얼 (제일큰)" />
           </Desktop>
           <div className="text_wrap">
-            <p className="sub_text">(주)웰네트웍스 채용플랫폼</p>
+            <p className="sub_text">(주)웰네트웍스 기업 홈페이지</p>
             <p className="main_text">
               Your Best
               <br />
@@ -714,7 +743,7 @@ function App() {
               >
                 {textPop ? (
                   <span className="pop_text">
-                    WELLPPS 솔루션을 대리점에게 일부 권한 이양하여 고객의 MVNO
+                    WELLPPS 솔루션을 파트너점에게 제공하여 고객의 MVNO
                     휴대전화 서비스를 더욱 쉽고 빠르게 처리 할 수 있게 합니다.
                     이와 같은 서비스는 사후 관리 측면에서도 비용 및 시간을 크게
                     절약 할 수 있는 장점을 가집니다.웰네트웍스는 MVNO 사업
@@ -785,9 +814,15 @@ function App() {
                           alt="개통서비스"
                         />
                       </div>
-                      <div className="main_text">개통 서비스</div>
+                      <div
+                        className="main_text"
+                        style={{ marginBottom: "12px" }}
+                        >고객센터 운영
+                      </div>
                       <div className="sub_text">
-                        SK/KT/LG MVNO 고객센터 운영
+                        개통서비스
+                        <br/>
+                        MVNO 가입자 유치 전산 운영
                       </div>
                     </div>
                   </div>
@@ -804,10 +839,10 @@ function App() {
                           alt="충전서비스"
                         />
                       </div>
-                      <div className="main_text">충전 서비스</div>
+                      <div className="main_text"style={{ marginBottom: "4px" }}>24시간 충전서비스</div>
                       <div className="sub_text">
-                        예치금 활용 충전서비스 제공 모든 통신사 선불폰 충전 /
-                        국제전화카드 충전 / 해외선불폰 충전(Top-up Service)
+                        예치금 활용 자동 충전서비스 제공<br/>모든 통신사 선불폰 충전 /
+                        국제전화카드 충전 /<br/>해외선불폰 충전(Top-up Service)
                       </div>
                     </div>
                   </div>
@@ -824,9 +859,9 @@ function App() {
                           alt="대리점 업무지원"
                         />
                       </div>
-                      <div className="main_text">대리점 업무지원</div>
+                      <div className="main_text"style={{ marginBottom: "12px" }}>파트너점 업무지원</div>
                       <div className="sub_text">
-                        개통 실적 조회 및 정산내역서 제공 각종 서식지 및 홍보물,
+                        개통 실적 조회 및 정산내역서 제공<br/>각종 서식지 및 홍보물,
                         유심 지원
                       </div>
                     </div>
@@ -841,7 +876,7 @@ function App() {
                 <p className="main_text">WELLPPS 솔루션</p>
                 <p className="sub_text">MVNO 서비스 유통 통합 관리 시스템</p>
                 <p className="paragraph">
-                  WELLPPS 솔루션을 대리점에게 일부 권한 이양 하여 고객의 MVNO
+                  WELLPPS 솔루션을 파트너점에게 제공하여 고객의 MVNO
                   서비스를
                   <br /> 더욱 쉽고 빠르게 처리 할 수 있게 합니다.
                   <br />
@@ -859,20 +894,22 @@ function App() {
                 </p>
                 <Laptop>
                   <div className="wellpps_img">
+                  <a href="https://www.wellpps.com" rel="noreferrer" target="_blank">
                     <img
                       className="box_shadow"
                       src={wellppsL}
                       alt="well_laptop"
-                    />
+                    /></a>
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="wellpps_img">
+                    <a href="https://www.wellpps.com" rel="noreferrer" target="_blank">
                     <img
                       className="box_shadow"
                       src={wellppsPC}
                       alt="well_laptop"
-                    />
+                    /></a>
                   </div>
                 </Desktop>
               </div>
@@ -882,11 +919,11 @@ function App() {
                     <img className="purple_1" src={emoji1} alt="개통 서비스" />
                   </div>
                   <div>
-                    <p className="main_text">개통 서비스</p>
+                    <p className="main_text">고객센터 운영</p>
                     <p className="sub_text">
-                      SK/KT/LG MVNO
+                      개통서비스
                       <br />
-                      고객센터 운영
+                      MVNO 가입자 유치 전산 운영
                     </p>
                   </div>
                 </div>
@@ -895,21 +932,21 @@ function App() {
                     <img className="green_1" src={emoji2} alt="충전 서비스" />
                   </div>
                   <div>
-                    <p className="main_text">충전 서비스</p>
+                    <p className="main_text">24시간 충전서비스</p>
                     <Laptop>
                       <p className="sub_text_1">
-                        예치금 활용 충전서비스 제공
+                        예치금 활용 자동 충전서비스 제공
                         <br />
-                        모든 통신사 선불폰 충전 /국제전화 카드
+                        모든 통신사 선불폰 충전 /국제전화 
                         <br />
-                        충전/해외선불폰 충전
+                        카드 충전/해외선불폰 충전
                         <br />
                         (Top-up Service)
                       </p>
                     </Laptop>
                     <Desktop>
                       <p className="sub_text_1">
-                        예치금 활용 충전서비스 제공
+                        예치금 활용 자동 충전서비스 제공
                         <br />
                         모든 통신사 선불폰 충전 / 국제전화
                         <br />
@@ -929,7 +966,7 @@ function App() {
                     />
                   </div>
                   <div>
-                    <p className="main_text">대리점 업무지원</p>
+                    <p className="main_text">파트너점 업무지원</p>
                     <p className="sub_text_1">
                       개통 실적 조회 및 정산내역서 제공
                       <br />
@@ -941,7 +978,7 @@ function App() {
             </div>
             <div id="service_laptop">
               <div className="left_explainBox2">
-                <p className="main_text">PHONEISSUE.COM</p>
+                <p className="main_text">PHONEISSUE</p>
                 <p className="sub_text">선불폰 충전, 개통 Hub & 쇼핑몰</p>
                 <p className="paragraph">
                   현재 폰이슈 사이트는 협업중인 사이트(유통망)로 선불폰 개통,
@@ -961,23 +998,34 @@ function App() {
                 </Laptop>
                 <Desktop>
                   <div className="wellpps_img">
-                    <img src={phoneissuePC} alt="well_laptop" />
+                  <a href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                    <img src={phoneissuePC} alt="well_laptop" /></a>
                   </div>
                 </Desktop>
+                <div className="img_url">
+                  <a  className="img_url_child" href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                  <span>phoneissue.com</span></a>
+                </div>
               </div>
             </div>
             <div id="service_laptop">
               <div className="right_explainBox3">
                 <Laptop>
                   <div className="wellpps_img">
-                    <img src={ppspayL} alt="well_laptop" />
+                  <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                    <img src={ppspayL} alt="well_laptop" /></a>
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="wellpps_img">
-                    <img src={ppspayPC} alt="well_laptop" />
+                  <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                    <img src={ppspayPC} alt="well_laptop" /></a>
                   </div>
                 </Desktop>
+                <div className="img_url">
+                <a  className="img_url_colorRed img_url_child" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                  <span>ppspay.co.kr</span></a>
+                </div>                
               </div>
               <div className="left_explainBox3">
                 <p className="main_text">PPSPAY</p>
@@ -993,10 +1041,6 @@ function App() {
                   <br />
                   충전 결과 조회 기능으로 충전상태조회 / 대체충전 시도 / 환불
                   신청을 가능하게 함으로써 고객 편의성을 증대하였습니다.
-                  <br />
-                  <br />
-                  PPSPAY는 나날이 고객 사용/충전량이 꾸준히 증가하고 있는 추세로
-                  지속성장하고있습니다.
                 </p>
               </div>
             </div>
@@ -1012,7 +1056,7 @@ function App() {
                   우리의 생각보다 통신을 이용하기 어려운 사람들이 많습니다.
                   <br />
                   <br />
-                  웰네트웍스는 이러한 사람들에게 통신의 혜택을 나누고자 합니다.
+                  <span className="blue">웰네트웍스</span>는 이러한 사람들에게 통신의 혜택을 나누고자 합니다.
                   <br />
                   통신나눔을 통해 기업의 사회적 책임을 이행하고
                   <br />
@@ -1027,14 +1071,20 @@ function App() {
               <div className="right_explainBox4">
                 <Laptop>
                   <div className="wellpps_img">
-                    <img src={wellnanumL} alt="well_laptop" />
+                    <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
+                    <img src={wellnanumL} alt="well_laptop" /></a>
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="wellpps_img">
-                    <img src={wellnanumPC} alt="well_laptop" />
+                    <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
+                      <img src={wellnanumPC} alt="well_laptop" /></a>
                   </div>
                 </Desktop>
+                <div className="img_url">
+                  <a  className="img_url_colorskyblue img_url_child" href="https://wellnanum.com/" rel="noreferrer" target="_blank">
+                  <span>wellnanum.com</span></a>
+                </div>                
               </div>
             </div>
             <div id="service_laptop">
@@ -1053,7 +1103,7 @@ function App() {
                   className="sub_text"
                   style={{ position: "relative", left: "100px" }}
                 >
-                  다양한 플랫폼 개발을 위한 연구소 설립
+                  다양한 플랫폼&솔루션 개발을 위한 연구활동
                 </p>
                 <p
                   className="paragraph"
@@ -1086,27 +1136,35 @@ function App() {
                       style={{ left: "18%" }}
                     />
                   </div>
-                  <div>
-                    <p className="main_text" style={{ fontSize: "24px" }}>
-                      MVNO 선불폰 특화
-                      <br />
-                      고객관리 전산 시스템 개발
-                    </p>
-                    <p className="sub_text" style={{ fontSize: "18px" }}>
-                      선불폰 판매관리를 위한 주문통합
-                      <br />
-                      관리 및 고객관리 전산 시스템 개발
-                    </p>
-                  </div>
+                  <Laptop>
+                    <div>
+                      <p className="main_text" style={{ fontSize: "18px" }}>
+                        MVNO 유통서비스<br/>전산시스템 개발
+                      </p>
+                      <p className="sub_text" style={{ fontSize: "14px" }}>
+                        유통 및 판매관리를 위한<br />주문통합 전산 시스템 개발
+                      </p>
+                    </div>
+                  </Laptop>
+                  <Desktop>
+                    <div>
+                      <p className="main_text">
+                        MVNO 유통서비스<br/>전산시스템 개발
+                      </p>
+                      <p className="sub_text">
+                        유통 및 판매관리를 위한<br />주문통합 전산 시스템 개발
+                      </p>
+                    </div>
+                  </Desktop>                  
                 </div>
                 <div className="service_card green">
                   <div className="icon_box deep_green">
                     <img className="green_1" src={emoji5} alt="충전 서비스" />
                   </div>
                   <div>
-                    <p className="main_text">충전 API 개발</p>
+                    <p className="main_text">선불요금충전 API 개발</p>
                     <p className="sub_text_1">
-                      MVNO 통신사 선불폰 충전<br></br>API 서버 개발
+                    MVNO 통신사 선불요금충전<br/>API 서버 개발
                     </p>
                   </div>
                 </div>
@@ -1119,9 +1177,9 @@ function App() {
                     />
                   </div>
                   <div>
-                    <p className="main_text">고객 분석 연구</p>
+                    <p className="main_text">데이터 분석 연구</p>
                     <p className="sub_text_1">
-                      사례분석 및 사업 유입량 분석 등<br></br>고객 분석 마케팅
+                      사례분석 및 사업 유입량 분석 등<br></br>데이터 분석 마케팅
                       연구
                     </p>
                   </div>
@@ -1160,7 +1218,7 @@ function App() {
                   className=" phoneissue_fontColor service_maintext main_style"
                   style={textPop2 ? { opacity: "0" } : null}
                 >
-                  PHONEISSUE.COM
+                  PHONEISSUE
                 </div>
                 <Mobile1>
                   <img
@@ -1214,9 +1272,7 @@ function App() {
                     가능하며, 별도의 로그인 없이 휴대전화 번호만으로 요금제 충전
                     및 조회를 해소 할 수 있습니다. 충전 결과 조회 기능으로
                     충전상태조회 / 대체충전 시도 / 환불 신청을 가능하게 함으로써
-                    고객 편의성을 증대하였습니다.PPSPAY는 나날이 고객
-                    사용/충전량이 꾸준히 증가하고 있는 추세로
-                    지속성장하고있습니다
+                    고객 편의성을 증대하였습니다.
                   </span>
                 ) : null}
                 <div
@@ -1363,9 +1419,9 @@ function App() {
                   className="lab_fontColor service_subtext sub_style"
                   style={textPop5 ? { opacity: "0" } : null}
                 >
-                  다양한 플랫폼 개발을 위한
+                  다양한 플랫폼&솔루션
                   <br />
-                  연구소 설립
+                  개발을 위한 연구활동
                   <br />
                 </div>
 
@@ -1423,9 +1479,7 @@ function App() {
                         />
                       </div>
                       <div className="main_text">
-                        MVNO 선불폰 특화
-                        <br />
-                        고객관리 전산 시스템 개발
+                        MVNO 유통서비스<br/>전산시스템 개발
                       </div>
                       <div className="sub_text">
                         선불폰 판매관리를 위한 주문통합
@@ -1447,9 +1501,9 @@ function App() {
                           alt="충전서비스"
                         />
                       </div>
-                      <div className="main_text">충전 API 개발</div>
+                      <div className="main_text">선불요금충전 API 개발</div>
                       <div className="sub_text">
-                        MVNO 통신사 선불폰 충전 API 서버 개발
+                      MVNO 통신사 선불요금충전<br/>API 서버 개발
                       </div>
                     </div>
                   </div>
@@ -1466,10 +1520,10 @@ function App() {
                           alt="대리점 업무지원"
                         />
                       </div>
-                      <div className="main_text">고객 분석 연구</div>
+                      <div className="main_text">데이터 분석 연구</div>
                       <div className="sub_text">
                         사례분석 및 사업 유입량 분석 등<br />
-                        고객 분석 마케팅 연구
+                        데이터 분석 마케팅 연구
                       </div>
                     </div>
                   </div>
@@ -1667,7 +1721,7 @@ function App() {
                   <p className="team_sub">
                     분석 기반 오프라인 B2B 영업
                     <br />
-                    영업 데이터 수집
+                    파트너쉽 구축 활동
                   </p>
                 </div>
               </div>
@@ -1702,7 +1756,7 @@ function App() {
                     className="team_main"
                     style={{ position: "relative", right: "22px" }}
                   >
-                    CMS팀
+                    CMS팀<br/>(개통실&고객센터)
                   </p>
                   <p
                     className="team_sub"
@@ -1942,8 +1996,12 @@ function App() {
                         <div>연락처 입력</div>
                         <input
                           type="text"
+                          value={phoneNumbering}
+                          onChange={handlePhoneNumberChange}
+                          maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
+                          className="input_text"
                           placeholder="연락처를 입력해주세요"
-                        ></input>
+                        />
                       </div>
                       <div className="input_list">
                         <div>개인정보 수집 동의</div>
@@ -2002,39 +2060,86 @@ function App() {
                   <img src={emoji11} alt="업무제휴 아이콘" />
                   <div style={{ marginLeft: "12px" }}>업무제휴 신청하기</div>
                 </div>
-                <div className="input_box_labtop">
-                  <span className="input_title">성함 입력</span>
-                  <input
-                    type="text"
-                    className="input_text"
-                    placeholder="성함을 입력해주세요"
-                  ></input>
-                </div>
-                <div className="input_box_labtop">
-                  <span className="input_title">연락처 입력</span>
-                  <input
-                    type="text"
-                    className="input_text"
-                    placeholder="연락처를 입력해주세요"
-                  ></input>
-                </div>
-                <div className="input_box_labtop">
-                  <span className="input_title">개인정보 수집 동의</span>
-                  <div class="radio-container">
-                    <input type="radio" id="option1" name="radio" />
-                    <label for="option1" style={{ marginRight: "8px" }}>
-                      동의
-                    </label>
-
-                    <input type="radio" id="option2" name="radio" />
-                    <label for="option2" style={{ marginLeft: "8px" }}>
-                      미동의
-                    </label>
-                  </div>
-                </div>
-                <div className="input_list">
-                  <div className="request_btn">요청</div>
-                </div>
+                {nextStep === 0 ? (   
+                  <>
+                    <div className="input_box_labtop">
+                      <span className="input_title">담당자 성함</span>
+                      <input
+                        type="text"
+                        className="input_text"
+                        placeholder="성함을 입력해주세요"
+                      ></input>
+                    </div>
+                    <div className="input_box_labtop">
+                      <span className="input_title">업체명</span>
+                      <input
+                        type="text"
+                        className="input_text"
+                        placeholder="업체명을 입력해주세요"
+                      ></input>
+                    </div>
+                    <div className="input_box_labtop">
+                      <span className="input_title">부서명</span>
+                      <input
+                        type="text"
+                        className="input_text"
+                        placeholder="부서를 입력해주세요"
+                      ></input>
+                    </div>                                
+                    <div className="input_box_labtop">
+                      <span className="input_title">연락처 입력</span>
+                      <input
+                        type="text"
+                        value={phoneNumbering}
+                        onChange={handlePhoneNumberChange}
+                        maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
+                        className="input_text"
+                        placeholder="연락처를 입력해주세요"
+                      />
+                    </div>
+                  </>  ) : null}
+                  {nextStep === 1 ?( 
+                    <>
+                      <div className="input_box_labtop">
+                        <span className="input_title">비고내용(추가전달 사항)</span>
+                        <textarea
+                          type="textarea"
+                          className="textarea input_text"
+                          placeholder="추가로 전달하고 싶은 내용을 입력해주세요"
+                        ></textarea>
+                      </div>                
+                      <div className="input_box_labtop">
+                        <span className="input_title">개인정보 수집 동의</span>
+                        <div class="radio-container">
+                          <input type="radio" id="option1" name="radio" />
+                          <label for="option1" style={{ marginRight: "8px" }}>
+                            동의
+                          </label>
+                          <input type="radio" id="option2" name="radio" />
+                          <label for="option2" style={{ marginLeft: "8px" }}>
+                            미동의
+                          </label>
+                        </div>
+                      </div>
+                  </> ): null}                   
+                <motion.div
+                  onClick={() => handleNextStepClick(0)}
+                  whileTap={{ scale: 0.9 }}
+                  className={nextStep === 0 ? "off" : ""}
+                >
+                  <div className="input_list">
+                    <div className="request_btn">이전단계</div>
+                  </div>                  
+                </motion.div>
+                <motion.div
+                  onClick={() => handleNextStepClick(1)}
+                  whileTap={{ scale: 0.9 }}
+                  className={nextStep === 1 ? "off" : ""}
+                >
+                  <div className="input_list">
+                    <div className="request_btn">다음단계</div>
+                  </div>                  
+                </motion.div>                
               </div>
             </div>
           </LaptopAfter>
@@ -2074,7 +2179,7 @@ function App() {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  PHONEISSUE.COM
+                  PHONEISSUE
                 </a>
               </span>
               <span>
