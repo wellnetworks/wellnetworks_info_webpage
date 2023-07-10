@@ -150,7 +150,7 @@ function App() {
     setActiveSection(currentSection);
   };
 
-  // 이미지 슬라이더 - 주요서비스 //
+  // 이미지 슬라이더 - Service //
   const settings = {
     dots: true,
     infinite: true,
@@ -273,7 +273,7 @@ function App() {
     setActiveTab(index);
   };
 
-  // CONTACT labtop & desktop Step UI
+  // Contact labtop & desktop Step UI
   const [nextStep, setNextStep] = useState(0);
 
   const handleNextStepClick = (index) => {
@@ -383,7 +383,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>주요서비스</li>
+                    <li>Service</li>
                   </Link>
                   <Link
                     to="section2"
@@ -397,7 +397,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>업무방식</li>
+                    <li>Work method</li>
                   </Link>
                   <Link
                     to="section3"
@@ -411,7 +411,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>조직구성</li>
+                    <li>Our Team</li>
                   </Link>
                   <Link
                     to="section4"
@@ -425,7 +425,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>걸어온길</li>
+                    <li>History</li>
                   </Link>
                   <Link
                     to="section5"
@@ -439,7 +439,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>CONTACNT</li>
+                    <li>Contact</li>
                   </Link>
                 </ul>
                 <ButtonWrap>
@@ -485,7 +485,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>주요서비스</span>
+                <span>Service</span>
               </Link>
               <Link
                 to="section2"
@@ -495,7 +495,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>업무방식</span>
+                <span>Work method</span>
               </Link>
               <Link
                 to="section3"
@@ -505,7 +505,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>조직구성</span>
+                <span>Our Team</span>
               </Link>
               <Link
                 to="section4"
@@ -515,7 +515,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>걸어온길</span>
+                <span>History</span>
               </Link>
               <Link
                 to="section5"
@@ -525,7 +525,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>CONTACT</span>
+                <span>Contact</span>
               </Link>
             </nav>
           </div>
@@ -579,7 +579,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                주요서비스
+                Service
               </Link>
             </span>
           </div>
@@ -594,7 +594,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                업무방식
+                Work method
               </Link>
             </span>
           </div>
@@ -609,7 +609,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                조직구성
+                Our Team
               </Link>
             </span>
           </div>
@@ -624,7 +624,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                걸어온길
+                History
               </Link>
             </span>
           </div>
@@ -639,7 +639,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                CONTACT
+                Contact
               </Link>
             </span>
           </div>
@@ -658,7 +658,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 1 ? "Active_menu" : ""}`}>
-                  주요서비스
+                  Service
                 </span>
               </Link>
             </div>
@@ -672,7 +672,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 2 ? "Active_menu" : ""}`}>
-                  업무방식
+                  Work method
                 </span>
               </Link>
             </div>
@@ -686,7 +686,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 3 ? "Active_menu" : ""}`}>
-                  조직구성
+                  Our Team
                 </span>
               </Link>
             </div>
@@ -700,7 +700,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 4 ? "Active_menu" : ""}`}>
-                  걸어온길
+                  History
                 </span>
               </Link>
             </div>
@@ -714,7 +714,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 5 ? "Active_menu" : ""}`}>
-                  CONTACT
+                  Contact
                 </span>
               </Link>
             </div>
@@ -726,7 +726,7 @@ function App() {
 
       <Element name="section1">
         <section id="service">
-          <p className="service_subText">주요 서비스</p>
+          <p className="service_subText">Service</p>
           <p className="service_slogan">
             MVNO 서비스 유통,
             <br />
@@ -1537,7 +1537,7 @@ function App() {
 
       <Element name="section2">
         <section id="service">
-          <p className="service_subText">업무방식</p>
+          <p className="service_subText">Work method</p>
           <p className="service_slogan">우리가 일하는 방식</p>
           <LaptopAfter>
             <div className="workflow_text">
@@ -1708,7 +1708,7 @@ function App() {
       </Element>
       <Element name="section3">
         <section id="service">
-          <p className="service_subText">조직구성</p>
+          <p className="service_subText">Our Team</p>
           <p className="service_slogan">우리의 구성원들</p>
           <div className="team_card_bundle">
             <div className="team_card">
@@ -1792,7 +1792,7 @@ function App() {
       </Element>
       <Element name="section4">
         <section id="service">
-          <p className="service_subText">걸어온길</p>
+          <p className="service_subText">History</p>
           <p className="service_slogan">
             다양한 혁신과 서비스개선,
             <br />
@@ -1909,7 +1909,7 @@ function App() {
       </Element>
       <Element name="section5" style={{ marginBottom: "100px" }}>
         <section id="service">
-          <p className="service_subText">CONTACT</p>
+          <p className="service_subText">Contact</p>
           <p className="service_slogan">우리와 함께 하는 방법</p>
           <LaptopBefore>
             <div className="tab_wrap">
