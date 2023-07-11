@@ -1146,7 +1146,7 @@ ul.menu_wrap li {
     font-family: NotoSansKR-Light !important;
     font-size: 14px;
     line-height: 20px;
-    margin: 20px 0 60px 0 !important;
+    margin: 20px 0 100px 0 !important;
     color: #1a1a1a;
   }
   p.paragraph .blue {
@@ -1175,7 +1175,7 @@ ul.menu_wrap li {
     width: 88px;
     height: 88px;
     border-radius: 16px;
-    margin: 0 30px 0 40px;
+    margin: 0 20px 0 40px;
   }
   .icon_box img.purple_1 {
     position: absolute;
@@ -1467,7 +1467,106 @@ ul.menu_wrap li {
     font-size: 18px;
     margin-top: 30px;
   }
+  /* 커스텀 체크박스 ---=------=-------=  */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    display: none;
+  }
+  
+  .checkbox-container label {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 10px 10px 0;
+    border: 1px solid #d6d6d6;
+    box-shadow: 6px 4px 12px rgba(0, 0, 0, 0.1);
+    color: #d6d6d6;
+    font-family: NotoSansKR-Bold;
+    font-size: 16px;
+  }
+  
+  .checkbox-container input[type="checkbox"]:checked + label {
+    border: 1px solid #0077ed;
+    color: #0077ed;
+  }
+
+
+  .open_writing {
+    width:100%;
+    height:1px;
+    background-color: #0077ed;
+    border: 1px solid #0077ed;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+  }
+  .opening_btn{
+    position:relative;
+    bottom: 12px;
+    width: 30px;
+    height: 30px;
+    background-color: #0077ed;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 4px 4px 16px rgb(0, 0, 0, 0.35);
+  }
+
 }
+
+/* Laptop --------------------------------------------------*/
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .service_card .main_text {  
+    line-height: 26px;
+    margin-bottom: 6px!important; 
+  }
+  .phoneissue_img {
+    display: flex;
+    justify-content: space-between;
+  }
+  .phoneissue_img a img{
+    box-shadow: 6px 3px 8px rgba(0,0,0, 0.08);
+    border-radius: 20px;
+  }
+  .phoneissue_img a.pi_2 {
+    margin-top: 70px;
+  }  
+  .ppspay_img {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ppspay_img a img{
+    box-shadow: 6px 3px 16px #00000024;
+    border-radius: 30px;
+  }
+  .ppspay_img a.py_2 {
+    position:relative;
+    top: 80px;
+    right: 100px;
+  }    
+  .wellnanum_img img {
+    box-shadow: rgba(0, 0, 0, 0.14) 6px 3px 16px;
+    border-radius: 30px;
+  }   
+  .lab_img img {
+    box-shadow: rgba(0, 0, 0, 0.14) 6px 3px 16px;
+    border-radius: 30px;
+  }     
+}
+
 
 /* Desktop --------------------------------------------------*/
 @media (min-width: 1400px) {
@@ -1684,6 +1783,17 @@ ul.menu_wrap li {
     color: #1a1a1a;
     line-height: 24px;
   }
+  .phoneissue_img {
+    display: flex;
+    justify-content: space-between;
+  }
+  .phoneissue_img a img{
+    box-shadow: 6px 3px 16px #00000024;
+    border-radius: 30px;
+  }
+  .phoneissue_img a.pi_2 {
+    margin-top: 70px;
+  }
 
   /* ppspay 서비스소개 - 1400px */
   #service_laptop .right_explainBox3 {
@@ -1712,6 +1822,20 @@ ul.menu_wrap li {
     color: #1a1a1a;
     line-height: 24px;
   }
+  .ppspay_img {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ppspay_img a img{
+    box-shadow: 6px 3px 16px #00000024;
+    border-radius: 20px;
+  }
+  .ppspay_img a.py_2 {
+    position:relative;
+    top: 120px;
+    right: 120px;
+  }    
+
   /* 통신나눔 서비스소개 - 1400px */
   #service_laptop .right_explainBox4 {
     width: 754px;
@@ -1741,7 +1865,7 @@ ul.menu_wrap li {
   }
   .lab_img {
     position: relative;
-    top: 70px;
+    top: 32px;
   }
   .img_url_child {
     font-size: 16px;
@@ -1750,6 +1874,16 @@ ul.menu_wrap li {
     padding: 8px 36px;
     border-radius: 24px;
   }  
+  .wellnanum_img a img{
+    box-shadow: 6px 3px 16px #00000024;
+    border-radius: 20px;
+  } 
+  .lab_img img{
+    box-shadow: 6px 3px 16px #00000024;
+    border-radius: 30px;
+  }    
+
+
 
   /* 업무방식 - 우리가 일하는 방식 ------------------------------------------------------------*/
 
@@ -1875,11 +2009,14 @@ ul.menu_wrap li {
     box-shadow: 0px 27px 66.42px 14.58px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
   }
+  .request_wrap_Expand {
+    height: 1100px!important;
+  }
   .request_wrap {
     box-sizing: border-box;
-    padding: 50px;
+    padding: 30px 50px 0px 50px;
     width: 100%;
-    height: 640px;
+    height: 860px;
     background: #fff;
     box-shadow: 0px 27px 66.42px 14.58px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
@@ -1900,9 +2037,21 @@ ul.menu_wrap li {
     display: flex;
     flex-direction: column;
   }
+  .title_wrap{
+    display: flex;
+    justify-content: space-between;
+  }
   .input_title {
     font-family: NotoSansKR-Medium !important;
     font-size: 14px;
+  }
+  .detail_info {
+    color: #0077ed;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #0077ed;
+    font-family: NotoSansKR-bold !important;
+    box-sizing: border-box;
+    cursor:pointer;
   }
   .textarea {
     box-sizing: border-box;
@@ -1949,9 +2098,14 @@ ul.menu_wrap li {
     margin-top: 50px;
   }
 
-  .address_wrap .map {
-    height: 448px;
+  .map_Expand {
+    height: 888px!important;
   }
+
+  .address_wrap .map {
+    height: 648px;
+  }
+  
 
   /* 푸터  --------------------------------------------------------------------------------*/
   .site_list {

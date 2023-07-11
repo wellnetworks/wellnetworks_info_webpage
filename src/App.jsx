@@ -46,15 +46,19 @@ import phoneissueM from "./img/m/image-phoneissue-m.png";
 import phoneissueM1 from "./img/m/image-phoneissue-m1.png";
 import phoneissueM2 from "./img/m/image-phoneissue-m2.png";
 import phoneissueT from "./img/m/image-phoneissue-t.png";
-import phoneissueL from "./img/common/image-phoneissue-l.png";
-import phoneissuePC from "./img/pc/image-phoneissue-pc.png";
+import phoneissueL1 from "./img/common/image-phoneissue-l1.png";
+import phoneissueL2 from "./img/common/image-phoneissue-l2.png";
+import phoneissuePC1 from "./img/pc/image-phoneissue-pc1.png";
+import phoneissuePC2 from "./img/pc/image-phoneissue-pc2.png";
 
 import ppspayM from "./img/m/image-ppspay-m.png";
 import ppspayM1 from "./img/m/image-ppspay-m1.png";
 import ppspayM2 from "./img/m/image-ppspay-m2.png";
 import ppspayT from "./img/m/image-ppspay-t.png";
-import ppspayL from "./img/common/image-ppspay-l.png";
-import ppspayPC from "./img/pc/image-ppspay-pc.png";
+import ppspayL1 from "./img/common/image-ppspay-l1.png";
+import ppspayL2 from "./img/common/image-ppspay-l2.png";
+import ppspayPC1 from "./img/pc/image-ppspay-pc1.png";
+import ppspayPC2 from "./img/pc/image-ppspay-pc2.png";
 
 import wellnanumM from "./img/m/image-wellnanum-m.png";
 import wellnanumM1 from "./img/m/image-wellnanum-m1.png";
@@ -273,14 +277,16 @@ function App() {
     setActiveTab(index);
   };
 
-  // Contact labtop & desktop Step UI
-  const [nextStep, setNextStep] = useState(0);
+  // // Contact labtop & desktop Step UI
+  const [expand, setExpand] = useState(0);
 
-  const handleNextStepClick = (index) => {
-    setNextStep(index);
+  const handleExpandClick = (index) => {
+    setExpand(index);
   };  
 
-  console.log(nextStep);
+  console.log(expand);
+
+
   // 전화번호 하이픈 추가 기능 +(문자 /전화번호10자리 이상 X )
   const [phoneNumbering, setPhoneNumbering] = useState('');
 
@@ -383,7 +389,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>Service</li>
+                    <li>Signatures</li>
                   </Link>
                   <Link
                     to="section2"
@@ -397,7 +403,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>Work method</li>
+                    <li>How to work?</li>
                   </Link>
                   <Link
                     to="section3"
@@ -411,7 +417,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>Our Team</li>
+                    <li>Crew</li>
                   </Link>
                   <Link
                     to="section4"
@@ -425,7 +431,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>History</li>
+                    <li>Journey</li>
                   </Link>
                   <Link
                     to="section5"
@@ -485,7 +491,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>Service</span>
+                <span>Signatures</span>
               </Link>
               <Link
                 to="section2"
@@ -495,7 +501,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>Work method</span>
+                <span>How to work?</span>
               </Link>
               <Link
                 to="section3"
@@ -505,7 +511,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>Our Team</span>
+                <span>Crew</span>
               </Link>
               <Link
                 to="section4"
@@ -515,7 +521,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>History</span>
+                <span>Journey</span>
               </Link>
               <Link
                 to="section5"
@@ -578,7 +584,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                Service
+                Signatures
               </Link>
             </span>
           </div>
@@ -593,7 +599,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                Work method
+                How to work?
               </Link>
             </span>
           </div>
@@ -608,7 +614,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                Our Team
+                Crew
               </Link>
             </span>
           </div>
@@ -623,7 +629,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                History
+                Journey
               </Link>
             </span>
           </div>
@@ -657,7 +663,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 1 ? "Active_menu" : ""}`}>
-                  Service
+                  Signatures
                 </span>
               </Link>
             </div>
@@ -671,7 +677,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 2 ? "Active_menu" : ""}`}>
-                  Work method
+                  How to work?
                 </span>
               </Link>
             </div>
@@ -685,7 +691,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 3 ? "Active_menu" : ""}`}>
-                  Our Team
+                  Crew
                 </span>
               </Link>
             </div>
@@ -699,7 +705,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 4 ? "Active_menu" : ""}`}>
-                  History
+                  Journey
                 </span>
               </Link>
             </div>
@@ -725,7 +731,7 @@ function App() {
 
       <Element name="section1">
         <section id="service">
-          <p className="service_subText">Service</p>
+          <p className="service_subText">Signatures</p>
           <p className="service_slogan">
             MVNO 서비스 유통,
             <br />
@@ -991,14 +997,19 @@ function App() {
               </div>
               <div className="right_explainBox2">
                 <Laptop>
-                  <div className="wellpps_img">
-                    <img src={phoneissueL} alt="well_laptop" />
+                  <div className="phoneissue_img wellpps_img">
+                    <a href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissueL1} alt="phoneissue_pc" /></a>
+                    <a className="pi_2" href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissueL2} alt="phoneissue_pc" /></a>
                   </div>
                 </Laptop>
                 <Desktop>
-                  <div className="wellpps_img">
-                  <a href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
-                    <img src={phoneissuePC} alt="well_laptop" /></a>
+                  <div className="phoneissue_img wellpps_img">
+                    <a href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissuePC1} alt="phoneissue_pc" /></a>
+                    <a className="pi_2" href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissuePC2} alt="phoneissue_pc" /></a>
                   </div>
                 </Desktop>
                 <div className="img_url">
@@ -1010,19 +1021,23 @@ function App() {
             <div id="service_laptop">
               <div className="right_explainBox3">
                 <Laptop>
-                  <div className="wellpps_img">
-                  <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
-                    <img src={ppspayL} alt="well_laptop" /></a>
+                  <div className="wellpps_img ppspay_img">
+                    <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                      <img src={ppspayL1} alt="well_laptop" /></a>
+                    <a className="py_2" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                    <img src={ppspayL2} alt="well_laptop" /></a>                      
                   </div>
                 </Laptop>
                 <Desktop>
-                  <div className="wellpps_img">
-                  <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
-                    <img src={ppspayPC} alt="well_laptop" /></a>
+                  <div className="wellpps_img ppspay_img">
+                    <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                      <img src={ppspayPC1} alt="well_laptop" /></a>
+                    <a className="py_2" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                    <img src={ppspayPC2} alt="well_laptop" /></a>                      
                   </div>
                 </Desktop>
-                <div className="img_url">
-                <a  className="img_url_colorRed img_url_child" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                <div className="img_url" style={{ marginTop: "40px" }}>
+                  <a  className="img_url_colorRed img_url_child" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
                   <span>ppspay.co.kr</span></a>
                 </div>                
               </div>
@@ -1069,13 +1084,13 @@ function App() {
               </div>
               <div className="right_explainBox4">
                 <Laptop>
-                  <div className="wellpps_img">
+                  <div className="wellnanum_img wellpps_img">
                     <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
                     <img src={wellnanumL} alt="well_laptop" /></a>
                   </div>
                 </Laptop>
                 <Desktop>
-                  <div className="wellpps_img">
+                  <div className="wellnanum_img wellpps_img">
                     <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
                       <img src={wellnanumPC} alt="well_laptop" /></a>
                   </div>
@@ -1115,12 +1130,12 @@ function App() {
                   추후 다양한 분야로 사업을 확장시킬 계획입니다.
                 </p>
                 <Laptop>
-                  <div className="wellpps_img">
+                  <div className="lab_img wellpps_img">
                     <img className="lab_img" src={labL} alt="well_laptop" />
                   </div>
                 </Laptop>
                 <Desktop>
-                  <div className="wellpps_img">
+                  <div className="lab_img wellpps_img">
                     <img className="lab_img" src={labPC} alt="well_laptop" />
                   </div>
                 </Desktop>
@@ -1137,7 +1152,7 @@ function App() {
                   </div>
                   <Laptop>
                     <div>
-                      <p className="main_text" style={{ fontSize: "18px" }}>
+                      <p className="main_text" style={{ fontSize: "20px" }}>
                         MVNO 유통서비스<br/>전산시스템 개발
                       </p>
                       <p className="sub_text" style={{ fontSize: "14px" }}>
@@ -1481,9 +1496,9 @@ function App() {
                         MVNO 유통서비스<br/>전산시스템 개발
                       </div>
                       <div className="sub_text">
-                        선불폰 판매관리를 위한 주문통합
+                        유통 및 판매관리를 위한
                         <br />
-                        관리 및 고객관리 전산 시스템 개발
+                        주문통합 전산 시스템 개발
                       </div>
                     </div>
                   </div>
@@ -1536,7 +1551,7 @@ function App() {
 
       <Element name="section2">
         <section id="service">
-          <p className="service_subText">Work method</p>
+          <p className="service_subText">How to work?</p>
           <p className="service_slogan">우리가 일하는 방식</p>
           <LaptopAfter>
             <div className="workflow_text">
@@ -1707,7 +1722,7 @@ function App() {
       </Element>
       <Element name="section3">
         <section id="service">
-          <p className="service_subText">Our Team</p>
+          <p className="service_subText">Crew</p>
           <p className="service_slogan">우리의 구성원들</p>
           <div className="team_card_bundle">
             <div className="team_card">
@@ -1791,7 +1806,7 @@ function App() {
       </Element>
       <Element name="section4">
         <section id="service">
-          <p className="service_subText">History</p>
+          <p className="service_subText">Journey</p>
           <p className="service_slogan">
             다양한 혁신과 서비스개선,
             <br />
@@ -1874,7 +1889,7 @@ function App() {
             </div>
             <div className="year">
               <div className="year_text">2023</div>
-              <div className="month_wrap">
+              {/* <div className="month_wrap">
                 <span className="month">· 02</span>
                 <span className="sub_text">(주)PTSK 업무 제휴 계약</span>
                 <div className="month_img">
@@ -1884,12 +1899,11 @@ function App() {
                     alt="ptsk 아이콘"
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="month_wrap">
                 <span className="month">· 03</span>
                 <span className="sub_text">
-                  일반 고객용 (B to C) 선불 전화 통합 요금 충전 서비스 PPSPAY
-                  특허 등록 완료
+                  일반 고객용 (B to C) 선불 전화 통합 요금 충전 서비스 특허 등록 완료
                 </span>
                 <div className="month_img">
                   <img src={history3} alt="ppspay 아이콘" />
@@ -1952,7 +1966,7 @@ function App() {
                       <div className="address_list">
                         <span className="title">주소</span>
                         <span className="info">
-                          경기도 고양시 일산동구 일산로67,명성프라자 502호
+                          경기도 고양시 일산동구 일산로67,명성프라자 5층
                         </span>
                       </div>
                       <div className="address_list">
@@ -2027,7 +2041,7 @@ function App() {
                 <div className="address_child">
                   <span className="title address_margin">주소</span>
                   <span className="sub_text">
-                    경기도 고양시 일산동구 일산로67, 명성프라자502호
+                    경기도 고양시 일산동구 일산로67, 명성프라자 5층
                   </span>
                 </div>
                 <div className="address_child">
@@ -2039,7 +2053,7 @@ function App() {
                   <span className="sub_text">10:00 ~ 20:00 (연중무휴)</span>
                 </div>
                 <Map
-                  className="map"
+                  className={expand === 1 ? "map_Expand map" : "map"}
                   center={{ lat: 37.6442802725939, lng: 126.789008621492 }}
                 >
                   <MapMarker
@@ -2054,91 +2068,111 @@ function App() {
                   </MapMarker>
                 </Map>               
               </div>
-              <div className="request_wrap">
+              <div
+                className={expand === 1 ? "request_wrap_Expand request_wrap" : "request_wrap"}
+              >
                 <div className="request_title">
                   <img src={emoji11} alt="업무제휴 아이콘" />
                   <div style={{ marginLeft: "12px" }}>업무제휴 신청하기</div>
                 </div>
-                {nextStep === 0 ? (   
-                  <>
-                    <div className="input_box_labtop">
-                      <span className="input_title">담당자 성함</span>
-                      <input
-                        type="text"
-                        className="input_text"
-                        placeholder="성함을 입력해주세요"
-                      ></input>
-                    </div>
-                    <div className="input_box_labtop">
-                      <span className="input_title">업체명</span>
-                      <input
-                        type="text"
-                        className="input_text"
-                        placeholder="업체명을 입력해주세요"
-                      ></input>
-                    </div>
-                    <div className="input_box_labtop">
-                      <span className="input_title">부서명</span>
-                      <input
-                        type="text"
-                        className="input_text"
-                        placeholder="부서를 입력해주세요"
-                      ></input>
-                    </div>                                
-                    <div className="input_box_labtop">
-                      <span className="input_title">연락처 입력</span>
-                      <input
-                        type="text"
-                        value={phoneNumbering}
-                        onChange={handlePhoneNumberChange}
-                        maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
-                        className="input_text"
-                        placeholder="연락처를 입력해주세요"
-                      />
-                    </div>
-                  </>  ) : null}
-                  {nextStep === 1 ?( 
-                    <>
-                      <div className="input_box_labtop">
-                        <span className="input_title">비고내용(추가전달 사항)</span>
-                        <textarea
-                          type="textarea"
-                          className="textarea input_text"
-                          placeholder="추가로 전달하고 싶은 내용을 입력해주세요"
-                        ></textarea>
-                      </div>                
-                      <div className="input_box_labtop">
-                        <span className="input_title">개인정보 수집 동의</span>
-                        <div class="radio-container">
-                          <input type="radio" id="option1" name="radio" />
-                          <label for="option1" style={{ marginRight: "8px" }}>
-                            동의
-                          </label>
-                          <input type="radio" id="option2" name="radio" />
-                          <label for="option2" style={{ marginLeft: "8px" }}>
-                            미동의
-                          </label>
-                        </div>
-                      </div>
-                  </> ): null}                   
+                <div className="input_box_labtop">
+                  <span className="input_title">업체명</span>
+                  <input
+                    type="text"
+                    className="input_text"
+                    placeholder="업체명을 입력해주세요"
+                  ></input>
+                </div>
+                <div className="input_box_labtop">
+                  <span className="input_title">담당자 성함</span>
+                  <input
+                    type="text"
+                    className="input_text"
+                    placeholder="성함을 입력해주세요"
+                  ></input>
+                </div>                    
+                <div className="input_box_labtop">
+                  <span className="input_title">연락처 입력</span>
+                  <input
+                    type="text"
+                    value={phoneNumbering}
+                    onChange={handlePhoneNumberChange}
+                    maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
+                    className="input_text"
+                    placeholder="연락처를 입력해주세요"
+                  />
+                </div>
+
                 <motion.div
-                  onClick={() => handleNextStepClick(0)}
+                  onClick={() => handleExpandClick(0)}
                   whileTap={{ scale: 0.9 }}
-                  className={nextStep === 0 ? "off" : ""}
+                  className={activeTab === 0 ? "active" : ""}
                 >
-                  <div className="input_list">
-                    <div className="request_btn">이전단계</div>
-                  </div>                  
+                  {expand === 1 ? (
+                  <div className="open_writing">
+                    <button className="opening_btn">-</button>                    
+                  </div>) : null}
                 </motion.div>
                 <motion.div
-                  onClick={() => handleNextStepClick(1)}
+                  onClick={() => handleExpandClick(1)}
                   whileTap={{ scale: 0.9 }}
-                  className={nextStep === 1 ? "off" : ""}
+                  className={activeTab === 1 ? "active" : ""}
                 >
-                  <div className="input_list">
-                    <div className="request_btn">다음단계</div>
-                  </div>                  
-                </motion.div>                
+                  {expand === 0 ? (
+                  <div className="open_writing">
+                    <button className="opening_btn">+</button>
+                  </div>) : null}
+                </motion.div>
+                { expand ? (       
+                <div className="input_box_labtop">
+                  <span className="input_title">비고내용(추가전달 사항)</span>
+                  <textarea
+                    type="textarea"
+                    className="textarea input_text"
+                    placeholder="추가로 전달하고 싶은 내용을 입력해주세요"
+                  ></textarea>
+                </div>): null }
+
+                <div
+                  className="input_title"
+                  style={{ marginTop: "28px" }}
+                  >
+                    파트너 유형을 선택해주세요</div>
+                <div class="checkbox-container">                  
+                  <input type="checkbox" id="checkbox1" />
+                  <label for="checkbox1">개인</label>
+                  <input type="checkbox" id="checkbox2" />
+                  <label for="checkbox2">기업</label>
+                  <input type="checkbox" id="checkbox3" />
+                  <label for="checkbox3">기술협력</label>
+                  <input type="checkbox" id="checkbox4" />
+                  <label for="checkbox4">투자자문</label>
+                  <input type="checkbox" id="checkbox5" />
+                  <label for="checkbox5">공급업체</label>
+                  <input type="checkbox" id="checkbox6" />
+                  <label for="checkbox6">봉사단체</label>
+                  <input type="checkbox" id="checkbox7" />
+                  <label for="checkbox7">기타</label>                                    
+                </div>
+                <div className="input_box_labtop">
+                  <div className="title_wrap">
+                    <span className="input_title">개인정보 수집 동의</span>
+                    <span className="detail_info input_title">자세한 내용</span>
+                  </div>
+                  <div class="radio-container">
+                    <input type="radio" id="option1" name="radio" />
+                    <label for="option1" style={{ marginRight: "8px" }}>
+                      동의
+                    </label>
+                    <input type="radio" id="option2" name="radio" />
+                    <label for="option2" style={{ marginLeft: "8px" }}>
+                      미동의
+                    </label>
+                  </div>
+                </div>    
+                <div className="input_list">
+                  <div className="request_btn">신청</div>
+                </div>                                           
               </div>
             </div>
           </LaptopAfter>
@@ -2227,11 +2261,11 @@ function App() {
             통신판매업신고번호: 2020-고양일산동-0390호
             <br />
             <br />
-            경기도 고양시 일산동구 일산로 67, 명성프라자 5층(백석동)
+            경기도 고양시 일산동구 일산로 67, 명성프라자 5층
             <br />
             대표전화 : 1566-0261
             <br />
-            e-mail : phoneissue@wellpps.com
+            e-mail : thanks@wellpps.com
             <br />
             <br />
             Copyright(C)2023 by wellnetworks.co.kr
