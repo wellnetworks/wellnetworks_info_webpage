@@ -50,7 +50,7 @@ ul.menu_wrap li {
 .navigation {
   display: flex;
   width: 100vw;
-  height: 58px;
+  height: 64px;
   filter: drop-shadow(0px 3px 20px rgba(0, 0, 0, 0.15));
   background: #fff;
   font-family: NotoSansKR-Bold;
@@ -93,10 +93,10 @@ ul.menu_wrap li {
 /* 플로팅 버튼 CSS ------------------------------------- */
 .scroll-to-top-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
+  bottom: 30px;
+  right: 22px;
+  width: 46px;
+  height: 46px;
   background-color: #4d6ded;
   border: none;
   border-radius: 50%;
@@ -106,16 +106,16 @@ ul.menu_wrap li {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 4px 4px 16px rgb(0, 0, 0, 0.35);
+  box-shadow: 4px 4px 16px rgb(0, 0, 0, 0.45);
   z-index: 9999999;
 }
 
 .scroll-to-top-button .arrow-up {
   width: 0;
   height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #fff;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #fff;
   margin-top: -2px;
 }
 
@@ -472,6 +472,7 @@ ul.menu_wrap li {
 
 .radio-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-top: 10px;
 }
@@ -486,7 +487,6 @@ ul.menu_wrap li {
   background-color: #fff;
   border-radius: 8px;
   cursor: pointer;
-  margin-right: 10px;
   border: 1px solid #d6d6d6;
   box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.1);
   color: #d6d6d6;
@@ -501,7 +501,7 @@ ul.menu_wrap li {
   color: #0077ed;
 }
 
-.request_btn {
+button.request_btn {
   height: 54px;
   box-shadow: 6px 3px 32px #00000024;
   border-radius: 8px;
@@ -515,6 +515,8 @@ ul.menu_wrap li {
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
   margin-top: 40px;
   cursor:pointer;
+  width: 100%;
+  border: none;
 }
 .request_btn:active {
   position: relative;
@@ -525,6 +527,23 @@ ul.menu_wrap li {
 .off {
   display: none;
 }
+
+.title_wrap{
+  display: flex;
+  justify-content: space-between;
+}
+.input_title {
+  font-family: NotoSansKR-Medium !important;
+  font-size: 14px;
+}
+.detail_info {
+  color: #0077ed;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #0077ed;
+  font-family: NotoSansKR-bold !important;
+  box-sizing: border-box;
+  cursor:pointer;
+}  
 
 /* footer --------------------------------------------------- */
 #footer {
@@ -543,8 +562,7 @@ ul.menu_wrap li {
   padding: 24px 0;
   background-color: #202020;
 }
-.family_site {
-}
+
 .family_wrap {
   box-sizing: border-box;
   padding: 0 8%;
@@ -638,6 +656,9 @@ ul.menu_wrap li {
   }
 
   /* wellpps 서비스소개 - 360px */
+  .wellpps_img img {
+    border-radius: 20px 20px 0 0;
+  }
   .serviceBox {
     padding: 0 16px;
   }
@@ -675,6 +696,37 @@ ul.menu_wrap li {
   }  
   .address_box {
     padding: 0 16px;
+  }  
+  
+  /* 커스텀 체크박스 ---=------=-------=-------=-------=-------=  */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 30px 0;
+    flex-wrap: wrap;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    display: none;
+  }
+  
+  .checkbox-container label {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 10px 10px 0;
+    border: 1px solid #d6d6d6;
+    box-shadow: 6px 4px 12px rgba(0, 0, 0, 0.1);
+    color: #d6d6d6;
+    font-family: NotoSansKR-Bold;
+    font-size: 16px;
+  }
+  
+  .checkbox-container input[type="checkbox"]:checked + label {
+    border: 1px solid #0077ed;
+    color: #0077ed;
   }  
 }
 /* wellpps 이미지 슬라이드 */
@@ -815,6 +867,10 @@ ul.menu_wrap li {
   }
 
   /* wellpps 서비스소개 - 452px */
+
+  .wellpps_img img {
+    border-radius: 24px 24px 0 0;
+  }  
   .serviceBox {
     padding: 0 24px;
   }
@@ -882,6 +938,9 @@ ul.menu_wrap li {
     font-size: 38px;
   }
   /* wellpps 서비스소개 - 641px */
+  .wellpps_img img {
+    border-radius: 30px 30px 0 0;
+  }  
   .serviceBox {
     padding: 0 40px;
   }
@@ -959,6 +1018,9 @@ ul.menu_wrap li {
     font-size: 46px;
   }
   /* wellpps 서비스소개 - 768px */
+  .wellpps_img img {
+    border-radius: 40px 40px 0 0;
+  }
   .serviceBox {
     padding: 0 40px;
   }
@@ -1411,9 +1473,9 @@ ul.menu_wrap li {
   }
   .request_wrap {
     box-sizing: border-box;
-    padding: 30px 30px;
+    padding: 34px;
     width: 100%;
-    height: 518px;
+    height: 890px;
     background: #fff;
     box-shadow: 0px 27px 66.42px 14.58px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
@@ -1453,10 +1515,7 @@ ul.menu_wrap li {
   input.input_text::placeholder {
     color: #d6d6d6;
   }
-  .radio-container {
-    display: flex;
-    justify-content: space-between;
-  }
+
   .radio-container label {
     padding: 8px 2px;
     margin: 0;
@@ -1467,37 +1526,14 @@ ul.menu_wrap li {
     font-size: 18px;
     margin-top: 30px;
   }
-  /* 커스텀 체크박스 ---=------=-------=  */
-  .checkbox-container {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .checkbox-container input[type="checkbox"] {
-    display: none;
-  }
-  
-  .checkbox-container label {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 0 10px 10px 0;
-    border: 1px solid #d6d6d6;
-    box-shadow: 6px 4px 12px rgba(0, 0, 0, 0.1);
-    color: #d6d6d6;
-    font-family: NotoSansKR-Bold;
-    font-size: 16px;
-  }
   
   .checkbox-container input[type="checkbox"]:checked + label {
     border: 1px solid #0077ed;
     color: #0077ed;
   }
-
+  .address_wrap .map {
+    height: 704px;
+  }
 
   .open_writing {
     width:100%;
@@ -1564,7 +1600,15 @@ ul.menu_wrap li {
   .lab_img img {
     box-shadow: rgba(0, 0, 0, 0.14) 6px 3px 16px;
     border-radius: 30px;
-  }     
+  }    
+
+  /* 커스텀 체크박스 =-------=-------=-------=-------=-------=  */
+  
+  .checkbox-container label {
+    padding: 6px 12px;
+    margin: 0 8px 8px 0;
+    font-size: 14px;
+  }   
 }
 
 
@@ -2009,14 +2053,11 @@ ul.menu_wrap li {
     box-shadow: 0px 27px 66.42px 14.58px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
   }
-  .request_wrap_Expand {
-    height: 1100px!important;
-  }
   .request_wrap {
     box-sizing: border-box;
     padding: 30px 50px 0px 50px;
     width: 100%;
-    height: 860px;
+    height: 890px;
     background: #fff;
     box-shadow: 0px 27px 66.42px 14.58px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
@@ -2036,22 +2077,6 @@ ul.menu_wrap li {
     margin-top: 28px;
     display: flex;
     flex-direction: column;
-  }
-  .title_wrap{
-    display: flex;
-    justify-content: space-between;
-  }
-  .input_title {
-    font-family: NotoSansKR-Medium !important;
-    font-size: 14px;
-  }
-  .detail_info {
-    color: #0077ed;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #0077ed;
-    font-family: NotoSansKR-bold !important;
-    box-sizing: border-box;
-    cursor:pointer;
   }
   .textarea {
     box-sizing: border-box;
@@ -2083,10 +2108,7 @@ ul.menu_wrap li {
   input.input_text::placeholder {
     color: #d6d6d6;
   }
-  .radio-container {
-    display: flex;
-    justify-content: space-between;
-  }
+
   .radio-container label {
     padding: 8px 2px;
     margin: 0;
@@ -2103,7 +2125,7 @@ ul.menu_wrap li {
   }
 
   .address_wrap .map {
-    height: 648px;
+    height: 678px;
   }
   
 

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +23,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link, Element, Events, animateScroll as scroll } from "react-scroll";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
+import PopupComponent from "./PopupComponent";
 
 /// 이미지 import ///
 import logoM from "./img/m/icon-logo-m.svg";
@@ -306,7 +308,51 @@ function App() {
     setPhoneNumbering(formattedInput);
   };
 
-  console.log(phoneNumbering);
+  // 개인정보 수집 동의 (자세한내용 팝업)
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // 입력 폼 필수값 검사
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [agreement, setAgreement] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (name === "") {
+      alert("담당자 성함을 입력해주세요.");
+      return;
+    }
+
+    if (email === "") {
+      alert("이메일 주소를 입력해주세요.");
+      return;
+    }
+
+    if (phoneNumbering === "") {
+      alert("연락처를 입력해주세요.");
+      return;
+    }
+
+    if (!agreement) {
+      alert("개인정보 수집에 동의해주세요.");
+      return;
+    }
+
+    alert("신청이 완료되었습니다.");
+
+    // 입력값 초기화 //
+    setName("");
+    setEmail("");
+    setPhoneNumbering("");
+    setAgreement(false);
+  };
 
   const ButtonWrap = styled.div`
     display: flex;
@@ -335,6 +381,12 @@ function App() {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <>
+      {isOpen && ( 
+          <PopupComponent
+            open={isOpen}
+            close={togglePopup}
+          /> 
+      )}
       {showButton && (
         <button className="scroll-to-top-button" onClick={scrollToTop}>
           <span className="arrow-up"></span>
@@ -389,7 +441,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>Signatures</li>
+                    <li>Service</li>
                   </Link>
                   <Link
                     to="section2"
@@ -417,7 +469,7 @@ function App() {
                     spy={true}
                     onSetActive={handleSetActive}
                   >
-                    <li>Crew</li>
+                    <li>Team</li>
                   </Link>
                   <Link
                     to="section4"
@@ -491,7 +543,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>Signatures</span>
+                <span>Service</span>
               </Link>
               <Link
                 to="section2"
@@ -511,7 +563,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                <span>Crew</span>
+                <span>Team</span>
               </Link>
               <Link
                 to="section4"
@@ -584,7 +636,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                Signatures
+                Service
               </Link>
             </span>
           </div>
@@ -614,7 +666,7 @@ function App() {
                 spy={true}
                 onSetActive={handleSetActive}
               >
-                Crew
+                Team
               </Link>
             </span>
           </div>
@@ -663,7 +715,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 1 ? "Active_menu" : ""}`}>
-                  Signatures
+                  Service
                 </span>
               </Link>
             </div>
@@ -691,7 +743,7 @@ function App() {
                 onSetActive={handleSetActive}
               >
                 <span className={`${activeSection === 3 ? "Active_menu" : ""}`}>
-                  Crew
+                  Team
                 </span>
               </Link>
             </div>
@@ -731,7 +783,7 @@ function App() {
 
       <Element name="section1">
         <section id="service">
-          <p className="service_subText">Signatures</p>
+          <p className="service_subText">Service</p>
           <p className="service_slogan">
             MVNO 서비스 유통,
             <br />
@@ -740,7 +792,7 @@ function App() {
           <LaptopBefore>
             <div className="serviceBox">
               <div
-                className="wellpps_background serviceBox_1"
+                className="wellpps_background serviceBox_1 wellpps_img"
                 onClick={handleTextPopOpen}
                 style={
                   textPop ? { background: "#1A1A1A", opacity: "0.88" } : null
@@ -1722,7 +1774,7 @@ function App() {
       </Element>
       <Element name="section3">
         <section id="service">
-          <p className="service_subText">Crew</p>
+          <p className="service_subText">Team</p>
           <p className="service_slogan">우리의 구성원들</p>
           <div className="team_card_bundle">
             <div className="team_card">
@@ -1939,7 +1991,7 @@ function App() {
                         : "active_margin"
                     }
                   >
-                    오시는길
+                    업무제휴
                   </span>
                 </motion.div>
                 <motion.div
@@ -1954,13 +2006,13 @@ function App() {
                         : "active_margin"
                     }
                   >
-                    업무제휴
+                    오시는길
                   </span>
                 </motion.div>
               </div>
               <div className="">
                 {/* 각 탭에 해당하는 컨텐츠 */}
-                {activeTab === 0 && (
+                {activeTab === 1 && (
                   <div className="address_box">
                     <div className="address_wrap">
                       <div className="address_list">
@@ -1995,16 +2047,30 @@ function App() {
                     </div>
                   </div>
                 )}
-                {activeTab === 1 && (
+                {activeTab === 0 && (
                   <div className="input_box">
                     <div className="input_wrap">
                       <div className="input_list">
-                        <div>이름 입력</div>
+                        <div>업체명</div>
+                        <input
+                          type="text"
+                          placeholder="업체명을 입력해주세요"
+                        ></input>
+                      </div>
+                      <div className="input_list">
+                        <div>담당자 성함</div>
                         <input
                           type="text"
                           placeholder="성함을 입력해주세요"
                         ></input>
-                      </div>
+                      </div>                      
+                      <div className="input_list">
+                        <div>이메일 주소</div>
+                        <input
+                          type="text"
+                          placeholder="ex) userId@example.com"
+                        ></input>
+                      </div>                            
                       <div className="input_list">
                         <div>연락처 입력</div>
                         <input
@@ -2016,18 +2082,53 @@ function App() {
                           placeholder="연락처를 입력해주세요"
                         />
                       </div>
+                      <div
+                        className="input_title"
+                        style={{ marginTop: "28px" }}
+                        >
+                          파트너 유형을 선택해주세요</div>
+                      <div class="checkbox-container">                  
+                        <input type="checkbox" id="checkbox1" />
+                        <label for="checkbox1">개인</label>
+                        <input type="checkbox" id="checkbox2" />
+                        <label for="checkbox2">기업</label>
+                        <input type="checkbox" id="checkbox3" />
+                        <label for="checkbox3">기술협력</label>
+                        <input type="checkbox" id="checkbox4" />
+                        <label for="checkbox4">투자자문</label>
+                        <input type="checkbox" id="checkbox5" />
+                        <label for="checkbox5">공급업체</label>
+                        <input type="checkbox" id="checkbox6" />
+                        <label for="checkbox6">봉사단체</label>
+                        <input type="checkbox" id="checkbox7" />
+                        <label for="checkbox7">기타</label>                                    
+                      </div>                      
                       <div className="input_list">
-                        <div>개인정보 수집 동의</div>
+                        <div className="title_wrap">
+                          <span className="input_title">개인정보 수집 동의</span>
+                          <span 
+                            className="detail_info input_title"
+                            onClick={togglePopup}
+                          >자세한 내용</span>
+                        </div>
                         <div class="radio-container">
                           <input type="radio" id="option1" name="radio" />
-                          <label for="option1">동의</label>
+                          <label
+                            for="option1"
+                            style={{ marginRight: "8px" }}
+                          >동의
+                          </label>
 
                           <input type="radio" id="option2" name="radio" />
-                          <label for="option2">미동의</label>
+                          <label
+                            for="option2"
+                            style={{ marginLeft: "8px" }}
+                          >미동의
+                          </label>
                         </div>
                       </div>
                       <div className="input_list">
-                        <div className="request_btn">요청</div>
+                        <div className="request_btn">신청</div>
                       </div>                     
                     </div>
                   </div>
@@ -2075,104 +2176,126 @@ function App() {
                   <img src={emoji11} alt="업무제휴 아이콘" />
                   <div style={{ marginLeft: "12px" }}>업무제휴 신청하기</div>
                 </div>
-                <div className="input_box_labtop">
-                  <span className="input_title">업체명</span>
-                  <input
-                    type="text"
-                    className="input_text"
-                    placeholder="업체명을 입력해주세요"
-                  ></input>
-                </div>
-                <div className="input_box_labtop">
-                  <span className="input_title">담당자 성함</span>
-                  <input
-                    type="text"
-                    className="input_text"
-                    placeholder="성함을 입력해주세요"
-                  ></input>
-                </div>                    
-                <div className="input_box_labtop">
-                  <span className="input_title">연락처 입력</span>
-                  <input
-                    type="text"
-                    value={phoneNumbering}
-                    onChange={handlePhoneNumberChange}
-                    maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
-                    className="input_text"
-                    placeholder="연락처를 입력해주세요"
-                  />
-                </div>
 
-                <motion.div
-                  onClick={() => handleExpandClick(0)}
-                  whileTap={{ scale: 0.9 }}
-                  className={activeTab === 0 ? "active" : ""}
+                <form
+                  method="POST"
+                  data-email="abcd@nate.com"
+                  action="https://script.google.com/macros/s/AKfycbwG1v7UrwpXR8yCtg35FmV0HBwRHnylcHWBpPykznt9VqzoHEGGCcR89RWsZg3FoNOA/exec"
+                  target="frAttachFiles"
+                  onSubmit={handleSubmit}
                 >
-                  {expand === 1 ? (
-                  <div className="open_writing">
-                    <button className="opening_btn">-</button>                    
-                  </div>) : null}
-                </motion.div>
-                <motion.div
-                  onClick={() => handleExpandClick(1)}
-                  whileTap={{ scale: 0.9 }}
-                  className={activeTab === 1 ? "active" : ""}
-                >
-                  {expand === 0 ? (
-                  <div className="open_writing">
-                    <button className="opening_btn">+</button>
-                  </div>) : null}
-                </motion.div>
-                { expand ? (       
-                <div className="input_box_labtop">
-                  <span className="input_title">비고내용(추가전달 사항)</span>
-                  <textarea
-                    type="textarea"
-                    className="textarea input_text"
-                    placeholder="추가로 전달하고 싶은 내용을 입력해주세요"
-                  ></textarea>
-                </div>): null }
+                  <div className="input_box_labtop">
+                    <span className="input_title">업체명</span>
+                    <input
+                      type="text"
+                      className="input_text"
+                      placeholder="업체명을 입력해주세요"
+                      name="업체명"
+                      id="cname"
+                    ></input>
+                  </div>
+                  <div className="input_box_labtop">
+                    <span className="input_title">담당자 성함</span>
+                    <input
+                      type="text"
+                      className="input_text"
+                      placeholder="성함을 입력해주세요"
+                      name="담당자 성함"
+                      id="uname"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    ></input>
+                  </div>
+                  <div className="input_box_labtop">
+                    <span className="input_title">이메일 주소</span>
+                    <input
+                      type="text"
+                      className="input_text"
+                      placeholder="ex) userId@example.com"
+                      name="이메일 주소"
+                      id="uemail"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    ></input>
+                  </div>                                    
+                  <div className="input_box_labtop">
+                    <span className="input_title">연락처 입력</span>
+                    <input
+                      type="text"
+                      value={phoneNumbering}
+                      onChange={handlePhoneNumberChange}
+                      maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
+                      className="input_text"
+                      placeholder="연락처를 입력해주세요"
+                      name="연락처"
+                      id="phoneNumber"
+                    />
+                  </div>
 
-                <div
-                  className="input_title"
-                  style={{ marginTop: "28px" }}
-                  >
-                    파트너 유형을 선택해주세요</div>
-                <div class="checkbox-container">                  
-                  <input type="checkbox" id="checkbox1" />
-                  <label for="checkbox1">개인</label>
-                  <input type="checkbox" id="checkbox2" />
-                  <label for="checkbox2">기업</label>
-                  <input type="checkbox" id="checkbox3" />
-                  <label for="checkbox3">기술협력</label>
-                  <input type="checkbox" id="checkbox4" />
-                  <label for="checkbox4">투자자문</label>
-                  <input type="checkbox" id="checkbox5" />
-                  <label for="checkbox5">공급업체</label>
-                  <input type="checkbox" id="checkbox6" />
-                  <label for="checkbox6">봉사단체</label>
-                  <input type="checkbox" id="checkbox7" />
-                  <label for="checkbox7">기타</label>                                    
-                </div>
-                <div className="input_box_labtop">
-                  <div className="title_wrap">
-                    <span className="input_title">개인정보 수집 동의</span>
-                    <span className="detail_info input_title">자세한 내용</span>
+                  <div
+                    className="input_title"
+                    style={{ marginTop: "28px" }}
+                    >
+                      파트너 유형을 선택해주세요</div>
+                  <div class="checkbox-container">                  
+                    <input type="checkbox" id="checkbox1" name="파트너 유형" value="개인"/>
+                    <label for="checkbox1">개인</label>
+
+                    <input type="checkbox" id="checkbox2" name="파트너 유형" value="기업"/>
+                    <label for="checkbox2">기업</label>
+
+                    <input type="checkbox" id="checkbox3" name="파트너 유형" value="기술협력"/>
+                    <label for="checkbox3">기술협력</label>
+
+                    <input type="checkbox" id="checkbox4" name="파트너 유형" value="투자자문"/>
+                    <label for="checkbox4">투자자문</label>
+
+                    <input type="checkbox" id="checkbox5" name="파트너 유형" value="공급업체"/>
+                    <label for="checkbox5">공급업체</label>
+
+                    <input type="checkbox" id="checkbox6" name="파트너 유형" value="봉사단체"/>
+                    <label for="checkbox6">봉사단체</label>
+
+                    <input type="checkbox" id="checkbox7" name="파트너 유형" value="기타"/>
+                    <label for="checkbox7">기타</label>                                    
                   </div>
-                  <div class="radio-container">
-                    <input type="radio" id="option1" name="radio" />
-                    <label for="option1" style={{ marginRight: "8px" }}>
-                      동의
-                    </label>
-                    <input type="radio" id="option2" name="radio" />
-                    <label for="option2" style={{ marginLeft: "8px" }}>
-                      미동의
-                    </label>
+                                
+                  <div className="input_box_labtop">
+                    <div className="title_wrap">
+                      <span className="input_title">개인정보 수집 동의</span>
+                      <span 
+                        className="detail_info input_title"
+                        onClick={togglePopup}
+                      >
+                        자세한 내용</span>
+                    </div>
+                    <div class="radio-container">
+                      <input
+                        type="radio"
+                        id="option1"
+                        name="radio"
+                        checked={agreement}
+                        onChange={() => setAgreement(true)}
+                      />
+                      <label for="option1" style={{ marginRight: "8px" }}>
+                        동의
+                      </label>
+                      <input type="radio" id="option2" name="radio" />
+                      <label for="option2" style={{ marginLeft: "8px" }}>
+                        미동의
+                      </label>
+                    </div>
+                  </div>    
+                  <div className="input_list">
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      className="request_btn"
+                    >신청
+                    </button>
                   </div>
-                </div>    
-                <div className="input_list">
-                  <div className="request_btn">신청</div>
-                </div>                                           
+                </form> 
+                <iframe name="frAttachFiles" style={{  }}></iframe>                                            
               </div>
             </div>
           </LaptopAfter>
