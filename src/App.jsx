@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import axios, { Axios } from 'axios';
 import "./index.css";
 import "./css/App.css";
 import styled, { css } from "styled-components";
@@ -317,12 +317,24 @@ function App() {
 
   // 입력 폼 필수값 검사
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [companyName, setCompanyName] = useState(""); // 업체명
+  const [name, setName] = useState(""); // 담당자 성함
+  const [email, setEmail] = useState(""); // 이메일 주소
+  // PhoneNumbering , setPhoneNumbering               // 연락처 
+  const [textarea, setTextarea] = useState("");     // 비고(추가문의사항
+  const [agreement, setAgreement] = useState(false); // 개인정보 수집 동의
 
-  const [agreement, setAgreement] = useState(false);
+  // 데이터 전송 로딩 처리
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+
+  // 동의, 미동의 라디오체크 함수
+  const handleAgreementChange = (e) => {
+    const value = e.target.value === "true";
+    setAgreement(value);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (name === "") {
@@ -340,19 +352,48 @@ function App() {
       return;
     }
 
-    if (!agreement) {
+    if (agreement === false) {
       alert("개인정보 수집에 동의해주세요.");
       return;
     }
 
-    alert("신청이 완료되었습니다.");
+  
+    try{
+      setIsLoading(true);
 
-    // 입력값 초기화 //
-    setName("");
-    setEmail("");
-    setPhoneNumbering("");
-    setAgreement(false);
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbztaZhWaCZQ-ds7lANirWffVDMRT_vMUwsXThEGZqC99sVoYULX7W0sUu7d_e7E6iOQ/exec";
+    const formData = new FormData();
+    formData.append("업체명", companyName);
+    formData.append("담당자 성함", name);
+    formData.append("이메일 주소", email);
+    formData.append("연락처", phoneNumbering);
+    formData.append("비고(추가문의사항)", textarea);
+    formData.append("개인정보 수집 동의", agreement ? "동의" : "미동의");
+
+    await axios
+      .post(scriptURL, formData)
+      .then((response) => {
+        console.log(response);
+        alert("신청이 완료되었습니다.");
+
+        // 입력값 초기화 //
+        setCompanyName("")
+        setName("");
+        setEmail("");
+        setPhoneNumbering("");
+        setTextarea("")
+        setAgreement(false);
+      })
+    } catch(error){
+        console.error(error);
+        alert("데이터 전송 중 오류가 발생했습니다.");
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+
 
   const ButtonWrap = styled.div`
     display: flex;
@@ -2010,7 +2051,7 @@ function App() {
                   </span>
                 </motion.div>
               </div>
-              <div className="">
+              <div>
                 {/* 각 탭에 해당하는 컨텐츠 */}
                 {activeTab === 1 && (
                   <div className="address_box">
@@ -2050,86 +2091,147 @@ function App() {
                 {activeTab === 0 && (
                   <div className="input_box">
                     <div className="input_wrap">
-                      <div className="input_list">
-                        <div>업체명</div>
-                        <input
-                          type="text"
-                          placeholder="업체명을 입력해주세요"
-                        ></input>
-                      </div>
-                      <div className="input_list">
-                        <div>담당자 성함</div>
-                        <input
-                          type="text"
-                          placeholder="성함을 입력해주세요"
-                        ></input>
-                      </div>                      
-                      <div className="input_list">
-                        <div>이메일 주소</div>
-                        <input
-                          type="text"
-                          placeholder="ex) userId@example.com"
-                        ></input>
-                      </div>                            
-                      <div className="input_list">
-                        <div>연락처 입력</div>
-                        <input
-                          type="text"
-                          value={phoneNumbering}
-                          onChange={handlePhoneNumberChange}
-                          maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
-                          className="input_text"
-                          placeholder="연락처를 입력해주세요"
-                        />
-                      </div>
-                      <div
-                        className="input_title"
-                        style={{ marginTop: "28px" }}
-                        >
-                          파트너 유형을 선택해주세요</div>
-                      <div class="checkbox-container">                  
-                        <input type="checkbox" id="checkbox1" />
-                        <label for="checkbox1">개인</label>
-                        <input type="checkbox" id="checkbox2" />
-                        <label for="checkbox2">기업</label>
-                        <input type="checkbox" id="checkbox3" />
-                        <label for="checkbox3">기술협력</label>
-                        <input type="checkbox" id="checkbox4" />
-                        <label for="checkbox4">투자자문</label>
-                        <input type="checkbox" id="checkbox5" />
-                        <label for="checkbox5">공급업체</label>
-                        <input type="checkbox" id="checkbox6" />
-                        <label for="checkbox6">봉사단체</label>
-                        <input type="checkbox" id="checkbox7" />
-                        <label for="checkbox7">기타</label>                                    
-                      </div>                      
-                      <div className="input_list">
-                        <div className="title_wrap">
-                          <span className="input_title">개인정보 수집 동의</span>
-                          <span 
-                            className="detail_info input_title"
-                            onClick={togglePopup}
-                          >자세한 내용</span>
+                      <form
+                        method="POST"
+                        data-email="abcd@nate.com"
+                        target="frAttachFiles"
+                        onSubmit={handleSubmit}
+                      >
+                        <div className="input_list">
+                          <div>업체명</div>
+                          <input
+                            type="text"
+                            placeholder="업체명을 입력해주세요"
+                            name="업체명"
+                            id="cname"
+                            value={companyName}
+                            onChange={(e) => setCompanyName(e.target.value)}
+                          ></input>
                         </div>
-                        <div class="radio-container">
-                          <input type="radio" id="option1" name="radio" />
-                          <label
-                            for="option1"
-                            style={{ marginRight: "8px" }}
-                          >동의
-                          </label>
-
-                          <input type="radio" id="option2" name="radio" />
-                          <label
-                            for="option2"
-                            style={{ marginLeft: "8px" }}
-                          >미동의
-                          </label>
+                        <div className="input_list">
+                          <div>
+                            담당자 성함
+                            <span className="require"> *</span>
+                          </div>
+                          <input
+                            type="text"
+                            placeholder="성함을 입력해주세요"
+                            name="담당자 성함"
+                            id="uname"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}                          
+                          ></input>
+                        </div>                      
+                        <div className="input_list">
+                          <div>
+                            이메일 주소
+                            <span className="require"> *</span>                          
+                          </div>
+                          <input
+                            type="text"
+                            placeholder="ex) userId@example.com"
+                            name="이메일 주소"
+                            id="uemail"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          ></input>
+                        </div>                            
+                        <div className="input_list">
+                          <div>
+                            연락처 입력
+                            <span className="require"> *</span>                          
+                          </div>
+                          <input
+                            type="text"
+                            value={phoneNumbering}
+                            onChange={handlePhoneNumberChange}
+                            maxLength={13}
+                            className="input_text"
+                            placeholder="연락처를 입력해주세요"
+                            name="연락처"
+                            id="phoneNumber"
+                          />
                         </div>
-                      </div>
-                      <div className="input_list">
-                        <div className="request_btn">신청</div>
-                      </div>                     
+                        <div className="input_list">
+                          <div>비고(추가문의사항)</div>
+                          <textarea
+                            type="text"
+                            className="textarea"
+                            placeholder="추가적인 내용이 있으시면 입력해주세요."
+                            name="비고(추가문의사항)"
+                            id="textarea"
+                            value={textarea}
+                            onChange={(e) => setTextarea(e.target.value)}
+                          ></textarea>
+                        </div>                      
+                        {/* <div
+                          className="input_title"
+                          style={{ marginTop: "28px" }}
+                          >
+                            파트너 유형을 선택해주세요</div>
+                        <div class="checkbox-container">              
+                          <input type="checkbox" id="checkbox1" />
+                          <label htmlfor="checkbox1">개인</label>
+                          <input type="checkbox" id="checkbox2" />
+                          <label htmlfor="checkbox2">기업</label>
+                          <input type="checkbox" id="checkbox3" />
+                          <label htmlfor="checkbox3">기술협력</label>
+                          <input type="checkbox" id="checkbox4" />
+                          <label htmlfor="checkbox4">투자자문</label>
+                          <input type="checkbox" id="checkbox5" />
+                          <label htmlfor="checkbox5">공급업체</label>
+                          <input type="checkbox" id="checkbox6" />
+                          <label htmlfor="checkbox6">봉사단체</label>
+                          <input type="checkbox" id="checkbox7" />
+                          <label htmlfor="checkbox7">기타</label>                                    
+                        </div>                       */}
+                        <div className="input_list">
+                          <div className="title_wrap">
+                            <span className="input_title">개인정보 수집 동의</span>
+                            <span 
+                              className="detail_info input_title"
+                              onClick={togglePopup}
+                            >자세한 내용</span>
+                          </div>
+                          <div class="radio-container">
+                            <input
+                              type="radio"
+                              id="option1"
+                              name="개인정보 수집 동의"
+                              value={true}
+                              checked={agreement}
+                              onChange={handleAgreementChange}
+                            />
+                            <label htmlFor="option1" style={{ marginRight: "8px" }}>
+                              동의
+                            </label>
+                            <input
+                              type="radio"
+                              id="option2"
+                              name="개인정보 수집 동의"
+                              value={false}
+                              checked={!agreement}
+                              onChange={handleAgreementChange}                       
+                            />
+                            <label htmlFor="option2" style={{ marginLeft: "8px" }}>
+                              미동의
+                            </label>
+                          </div>
+                        </div>
+                        <div className="input_list">
+                          <button
+                            type="submit"                      
+                            className={isLoading ? "disabled_btn request_btn" : "request_btn"}
+                            disabled={isLoading}
+                          >{isLoading ? "신청서 전송중..." : "신청" }
+                          </button>
+                        </div>  
+                      </form>
+                      <iframe
+                        name="frAttachFiles"
+                        style={{ display: "none" }}
+                      >
+                      </iframe>                                         
                     </div>
                   </div>
                 )}
@@ -2180,7 +2282,7 @@ function App() {
                 <form
                   method="POST"
                   data-email="abcd@nate.com"
-                  action="https://script.google.com/macros/s/AKfycbwG1v7UrwpXR8yCtg35FmV0HBwRHnylcHWBpPykznt9VqzoHEGGCcR89RWsZg3FoNOA/exec"
+                  action="https://script.google.com/macros/s/AKfycbypDVZ18FFMBA3TMusfEvRJokz8HArAPxjZLi3yy_4tZHo1o9jF_szrrmxXNNjImQXH/exec"
                   target="frAttachFiles"
                   onSubmit={handleSubmit}
                 >
@@ -2192,10 +2294,15 @@ function App() {
                       placeholder="업체명을 입력해주세요"
                       name="업체명"
                       id="cname"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
                     ></input>
                   </div>
                   <div className="input_box_labtop">
-                    <span className="input_title">담당자 성함</span>
+                    <span className="input_title">
+                      담당자 성함
+                      <span className="require"> *</span>
+                    </span>
                     <input
                       type="text"
                       className="input_text"
@@ -2207,7 +2314,10 @@ function App() {
                     ></input>
                   </div>
                   <div className="input_box_labtop">
-                    <span className="input_title">이메일 주소</span>
+                    <span className="input_title">
+                      이메일 주소
+                      <span className="require"> *</span>
+                    </span>
                     <input
                       type="text"
                       className="input_text"
@@ -2219,50 +2329,70 @@ function App() {
                     ></input>
                   </div>                                    
                   <div className="input_box_labtop">
-                    <span className="input_title">연락처 입력</span>
+                    <span className="input_title">
+                      연락처 입력
+                      <span className="require"> *</span>
+                    </span>
                     <input
                       type="text"
                       value={phoneNumbering}
                       onChange={handlePhoneNumberChange}
-                      maxLength={13} // 010-1234-5678 형식이므로 최대 길이는 13
+                      maxLength={13} 
                       className="input_text"
                       placeholder="연락처를 입력해주세요"
                       name="연락처"
                       id="phoneNumber"
                     />
                   </div>
-
-                  <div
+                  <div className="input_box_labtop">
+                    <span className="input_title">비고(추가문의사항)</span>
+                    <textarea
+                      type="text"
+                      className="textarea"
+                      placeholder="추가적인 내용이 있으시면 입력해주세요."
+                      name="비고(추가문의사항)"
+                      id="textarea"
+                      value={textarea}
+                      onChange={(e) => setTextarea(e.target.value)}
+                    ></textarea>
+                  </div> 
+                  {/* <div
                     className="input_title"
                     style={{ marginTop: "28px" }}
                     >
                       파트너 유형을 선택해주세요</div>
                   <div class="checkbox-container">                  
                     <input type="checkbox" id="checkbox1" name="파트너 유형" value="개인"/>
-                    <label for="checkbox1">개인</label>
+                    <label htmlFor="checkbox1">개인</label>
 
                     <input type="checkbox" id="checkbox2" name="파트너 유형" value="기업"/>
-                    <label for="checkbox2">기업</label>
+                    <label htmlFor="checkbox2">기업</label>
 
                     <input type="checkbox" id="checkbox3" name="파트너 유형" value="기술협력"/>
-                    <label for="checkbox3">기술협력</label>
+                    <label htmlFor="checkbox3">기술협력</label>
 
                     <input type="checkbox" id="checkbox4" name="파트너 유형" value="투자자문"/>
-                    <label for="checkbox4">투자자문</label>
+                    <label htmlFor="checkbox4">투자자문</label>
 
                     <input type="checkbox" id="checkbox5" name="파트너 유형" value="공급업체"/>
-                    <label for="checkbox5">공급업체</label>
+                    <label htmlFor="checkbox5">공급업체</label>
 
                     <input type="checkbox" id="checkbox6" name="파트너 유형" value="봉사단체"/>
-                    <label for="checkbox6">봉사단체</label>
+                    <label htmlFor="checkbox6">봉사단체</label>
 
                     <input type="checkbox" id="checkbox7" name="파트너 유형" value="기타"/>
-                    <label for="checkbox7">기타</label>                                    
-                  </div>
+                    <label htmlFor="checkbox7">기타</label>                                    
+                  </div> */}
                                 
-                  <div className="input_box_labtop">
+                  <div
+                    className="input_box_labtop"
+                    style={{ marginTop: "42px"}}
+                  >
                     <div className="title_wrap">
-                      <span className="input_title">개인정보 수집 동의</span>
+                      <span className="input_title">
+                        개인정보 수집 동의
+                        <span className="require"> *</span>
+                      </span>
                       <span 
                         className="detail_info input_title"
                         onClick={togglePopup}
@@ -2273,29 +2403,41 @@ function App() {
                       <input
                         type="radio"
                         id="option1"
-                        name="radio"
+                        name="개인정보 수집 동의"
+                        value={true}
                         checked={agreement}
-                        onChange={() => setAgreement(true)}
+                        onChange={handleAgreementChange}
                       />
-                      <label for="option1" style={{ marginRight: "8px" }}>
+                      <label htmlFor="option1" style={{ marginRight: "8px" }}>
                         동의
                       </label>
-                      <input type="radio" id="option2" name="radio" />
-                      <label for="option2" style={{ marginLeft: "8px" }}>
+                      <input
+                        type="radio"
+                        id="option2"
+                        name="개인정보 수집 동의"
+                        value={false}
+                        checked={!agreement}
+                        onChange={handleAgreementChange}                        
+                      />
+                      <label htmlFor="option2" style={{ marginLeft: "8px" }}>
                         미동의
                       </label>
                     </div>
                   </div>    
                   <div className="input_list">
                     <button
-                      type="button"
-                      onClick={handleSubmit}
-                      className="request_btn"
-                    >신청
+                      type="submit"                      
+                      className={isLoading ? "disabled_btn request_btn" : "request_btn"}
+                      disabled={isLoading}
+                    >{isLoading ? "신청서 전송중..." : "신청" }
                     </button>
                   </div>
                 </form> 
-                <iframe name="frAttachFiles" style={{  }}></iframe>                                            
+                <iframe
+                  name="frAttachFiles"
+                  style={{ display: "none" }}
+                >
+                </iframe>                                            
               </div>
             </div>
           </LaptopAfter>

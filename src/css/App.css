@@ -518,6 +518,10 @@ button.request_btn {
   width: 100%;
   border: none;
 }
+button.disabled_btn {
+  background-color: rgba(0,119,237, 0.65)!important;
+}
+
 .request_btn:active {
   position: relative;
   top: 1px;
@@ -544,6 +548,10 @@ button.request_btn {
   box-sizing: border-box;
   cursor:pointer;
 }  
+
+.require {
+  color: red;
+}
 
 /* footer --------------------------------------------------- */
 #footer {
@@ -728,6 +736,26 @@ button.request_btn {
     border: 1px solid #0077ed;
     color: #0077ed;
   }  
+
+  /* 업무 제휴 비고 ---=------=-------=-------=-------=-------= */
+  .textarea {
+    box-sizing: border-box;
+    padding: 12px;
+    font-family: NotoSansKR-bold !important;
+    font-size: 14px;
+    border-radius: 8px;
+    height: 104px;
+    border: 1px solid #0077ed;
+    box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.1);
+    margin-top: 10px;
+    color: #0077ed;
+    resize: none;
+    width: 100%;
+  }
+  .textarea::placeholder {
+    color: #d6d6d6;
+  }   
+
 }
 /* wellpps 이미지 슬라이드 */
 .slider_box {
@@ -1560,6 +1588,22 @@ button.request_btn {
     cursor: pointer;
     box-shadow: 4px 4px 16px rgb(0, 0, 0, 0.35);
   }
+  .textarea {
+    box-sizing: border-box;
+    padding: 12px;
+    font-family: NotoSansKR-bold !important;
+    font-size: 14px;
+    border-radius: 8px;
+    height: 104px;
+    border: 1px solid #0077ed;
+    box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.1);
+    margin-top: 10px;
+    color: #0077ed;
+    resize: none;
+  }
+  .textarea::placeholder {
+    color: #d6d6d6;
+  }    
 
 }
 
@@ -2074,21 +2118,22 @@ button.request_btn {
     top: 3px;
   }
   .input_box_labtop {
-    margin-top: 28px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
   }
   .textarea {
     box-sizing: border-box;
     padding: 12px;
-    font-family: NotoSansKR-Bold !important;
-    font-size: 16px;
+    font-family: NotoSansKR-bold !important;
+    font-size: 14px;
     border-radius: 8px;
-    height: 200px;
+    height: 104px;
     border: 1px solid #0077ed;
     box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.1);
     margin-top: 10px;
     color: #0077ed;
+    resize: none;
   }
   .textarea::placeholder {
     color: #d6d6d6;
