@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wellnetworks_info_webpage/static/css/main.e6f144f3.css",
-    "main.js": "/wellnetworks_info_webpage/static/js/main.864e835d.js",
+    "main.js": "/wellnetworks_info_webpage/static/js/main.cfdaad90.js",
     "static/js/787.e9cdb8d6.chunk.js": "/wellnetworks_info_webpage/static/js/787.e9cdb8d6.chunk.js",
     "static/media/NotoSansKR-Black.otf": "/wellnetworks_info_webpage/static/media/NotoSansKR-Black.dba005b6b1bed712b472.otf",
     "static/media/NotoSansKR-Bold.otf": "/wellnetworks_info_webpage/static/media/NotoSansKR-Bold.c252383c4f70753be0e7.otf",
@@ -81,11 +81,11 @@
     "static/media/icon-ham-m.svg": "/wellnetworks_info_webpage/static/media/icon-ham-m.d20522e2cede8188f77fe31f53957119.svg",
     "static/media/icon-footer_arrow-m.svg": "/wellnetworks_info_webpage/static/media/icon-footer_arrow-m.66062ecd4c3df81446367d038a109cba.svg",
     "main.e6f144f3.css.map": "/wellnetworks_info_webpage/static/css/main.e6f144f3.css.map",
-    "main.864e835d.js.map": "/wellnetworks_info_webpage/static/js/main.864e835d.js.map",
+    "main.cfdaad90.js.map": "/wellnetworks_info_webpage/static/js/main.cfdaad90.js.map",
     "787.e9cdb8d6.chunk.js.map": "/wellnetworks_info_webpage/static/js/787.e9cdb8d6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6f144f3.css",
-    "static/js/main.864e835d.js"
+    "static/js/main.cfdaad90.js"
   ]
 }
