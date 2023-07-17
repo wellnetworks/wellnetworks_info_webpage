@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import axios, { Axios } from "axios";
+// import { BrowserRouter as Router, Route, Link, Switch, useLocation } from "react-router-dom";
+import axios, { Axios } from 'axios';
 import "./index.css";
 import "./css/App.css";
 import styled, { css } from "styled-components";
@@ -107,8 +108,6 @@ import history5 from "./img/m/icon-history5-m.svg";
 import footerLogo from "./img/common/icon-footer-logo.svg";
 import footerArrow from "./img/m/icon-footer_arrow-m.svg";
 
-// package.json homepage setting
-
 // Desktop = minWidth: 1400
 // Laptop = minWidth: 1024, maxWidth: 1399
 // Tablet = minWidth: 768, maxWidth: 1023
@@ -121,6 +120,7 @@ import footerArrow from "./img/m/icon-footer_arrow-m.svg";
     그래서 useEffect 함수를 사용하여 해결합니다. 2023.07.04 윤지석 */
 
 function App() {
+  
   //// 스크롤 시 탭메뉴 고정 ////
   const [isSticky, setIsSticky] = useState(false);
 
@@ -286,29 +286,25 @@ function App() {
 
   const handleExpandClick = (index) => {
     setExpand(index);
-  };
+  };  
 
   console.log(expand);
 
+
   // 전화번호 하이픈 추가 기능 +(문자 /전화번호10자리 이상 X )
-  const [phoneNumbering, setPhoneNumbering] = useState("");
+  const [phoneNumbering, setPhoneNumbering] = useState('');
 
   const handlePhoneNumberChange = (e) => {
     const input = e.target.value;
-    const sanitizedInput = input.replace(/[^0-9]/g, ""); // 숫자 이외의 문자 제거
-    let formattedInput = "";
+    const sanitizedInput = input.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+    let formattedInput = '';
 
     if (sanitizedInput.length <= 3) {
       formattedInput = sanitizedInput;
     } else if (sanitizedInput.length <= 7) {
-      formattedInput = `${sanitizedInput.slice(0, 3)}-${sanitizedInput.slice(
-        3
-      )}`;
+      formattedInput = `${sanitizedInput.slice(0, 3)}-${sanitizedInput.slice(3)}`;
     } else {
-      formattedInput = `${sanitizedInput.slice(0, 3)}-${sanitizedInput.slice(
-        3,
-        7
-      )}-${sanitizedInput.slice(7, 11)}`;
+      formattedInput = `${sanitizedInput.slice(0, 3)}-${sanitizedInput.slice(3, 7)}-${sanitizedInput.slice(7, 11)}`;
     }
 
     setPhoneNumbering(formattedInput);
@@ -326,12 +322,13 @@ function App() {
   const [companyName, setCompanyName] = useState(""); // 업체명
   const [name, setName] = useState(""); // 담당자 성함
   const [email, setEmail] = useState(""); // 이메일 주소
-  // PhoneNumbering , setPhoneNumbering               // 연락처
-  const [textarea, setTextarea] = useState(""); // 비고(추가문의사항
+  // PhoneNumbering , setPhoneNumbering               // 연락처 
+  const [textarea, setTextarea] = useState("");     // 비고(추가문의사항
   const [agreement, setAgreement] = useState(false); // 개인정보 수집 동의
 
   // 데이터 전송 로딩 처리
   const [isLoading, setIsLoading] = useState(false);
+
 
   // 동의, 미동의 라디오체크 함수
   const handleAgreementChange = (e) => {
@@ -362,38 +359,43 @@ function App() {
       return;
     }
 
-    try {
+  
+    try{
       setIsLoading(true);
 
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbztaZhWaCZQ-ds7lANirWffVDMRT_vMUwsXThEGZqC99sVoYULX7W0sUu7d_e7E6iOQ/exec";
-      const formData = new FormData();
-      formData.append("업체명", companyName);
-      formData.append("담당자 성함", name);
-      formData.append("이메일 주소", email);
-      formData.append("연락처", phoneNumbering);
-      formData.append("비고(추가문의사항)", textarea);
-      formData.append("개인정보 수집 동의", agreement ? "동의" : "미동의");
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbztaZhWaCZQ-ds7lANirWffVDMRT_vMUwsXThEGZqC99sVoYULX7W0sUu7d_e7E6iOQ/exec";
+    const formData = new FormData();
+    formData.append("업체명", companyName);
+    formData.append("담당자 성함", name);
+    formData.append("이메일 주소", email);
+    formData.append("연락처", phoneNumbering);
+    formData.append("비고(추가문의사항)", textarea);
+    formData.append("개인정보 수집 동의", agreement ? "동의" : "미동의");
 
-      await axios.post(scriptURL, formData).then((response) => {
+    await axios
+      .post(scriptURL, formData)
+      .then((response) => {
         console.log(response);
         alert("신청이 완료되었습니다.");
 
         // 입력값 초기화 //
-        setCompanyName("");
+        setCompanyName("")
         setName("");
         setEmail("");
         setPhoneNumbering("");
-        setTextarea("");
+        setTextarea("")
         setAgreement(false);
-      });
-    } catch (error) {
-      console.error(error);
-      alert("데이터 전송 중 오류가 발생했습니다.");
+      })
+    } catch(error){
+        console.error(error);
+        alert("데이터 전송 중 오류가 발생했습니다.");
     } finally {
       setIsLoading(false);
     }
   };
+
+
 
   const ButtonWrap = styled.div`
     display: flex;
@@ -422,7 +424,12 @@ function App() {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <>
-      {isOpen && <PopupComponent open={isOpen} close={togglePopup} />}
+      {isOpen && ( 
+          <PopupComponent
+            open={isOpen}
+            close={togglePopup}
+          /> 
+      )}
       {showButton && (
         <button className="scroll-to-top-button" onClick={scrollToTop}>
           <span className="arrow-up"></span>
@@ -836,12 +843,12 @@ function App() {
               >
                 {textPop ? (
                   <span className="pop_text">
-                    WELLPPS 솔루션을 파트너점에게 제공하여 고객의 MVNO 휴대전화
-                    서비스를 더욱 쉽고 빠르게 처리 할 수 있게 합니다. 이와 같은
-                    서비스는 사후 관리 측면에서도 비용 및 시간을 크게 절약 할 수
-                    있는 장점을 가집니다.웰네트웍스는 MVNO 사업 뿐아니라,
-                    Top-up서비스(해외선불폰충전), MANGO(국제 전화카드충전)등
-                    사업 확장의 연구와 개발에 몰두하고있습니다.
+                    WELLPPS 솔루션을 파트너점에게 제공하여 고객의 MVNO
+                    휴대전화 서비스를 더욱 쉽고 빠르게 처리 할 수 있게 합니다.
+                    이와 같은 서비스는 사후 관리 측면에서도 비용 및 시간을 크게
+                    절약 할 수 있는 장점을 가집니다.웰네트웍스는 MVNO 사업
+                    뿐아니라, Top-up서비스(해외선불폰충전), MANGO(국제
+                    전화카드충전)등 사업 확장의 연구와 개발에 몰두하고있습니다.
                   </span>
                 ) : null}
                 <div
@@ -910,12 +917,11 @@ function App() {
                       <div
                         className="main_text"
                         style={{ marginBottom: "12px" }}
-                      >
-                        고객센터 운영
+                        >고객센터 운영
                       </div>
                       <div className="sub_text">
                         개통서비스
-                        <br />
+                        <br/>
                         MVNO 가입자 유치 전산 운영
                       </div>
                     </div>
@@ -933,17 +939,10 @@ function App() {
                           alt="충전서비스"
                         />
                       </div>
-                      <div
-                        className="main_text"
-                        style={{ marginBottom: "4px" }}
-                      >
-                        24시간 충전서비스
-                      </div>
+                      <div className="main_text"style={{ marginBottom: "4px" }}>24시간 충전서비스</div>
                       <div className="sub_text">
-                        예치금 활용 자동 충전서비스 제공
-                        <br />
-                        모든 통신사 선불폰 충전 / 국제전화카드 충전 /<br />
-                        해외선불폰 충전(Top-up Service)
+                        예치금 활용 자동 충전서비스 제공<br/>모든 통신사 선불폰 충전 /
+                        국제전화카드 충전 /<br/>해외선불폰 충전(Top-up Service)
                       </div>
                     </div>
                   </div>
@@ -960,16 +959,10 @@ function App() {
                           alt="대리점 업무지원"
                         />
                       </div>
-                      <div
-                        className="main_text"
-                        style={{ marginBottom: "12px" }}
-                      >
-                        파트너점 업무지원
-                      </div>
+                      <div className="main_text"style={{ marginBottom: "12px" }}>파트너점 업무지원</div>
                       <div className="sub_text">
-                        개통 실적 조회 및 정산내역서 제공
-                        <br />
-                        각종 서식지 및 홍보물, 유심 지원
+                        개통 실적 조회 및 정산내역서 제공<br/>각종 서식지 및 홍보물,
+                        유심 지원
                       </div>
                     </div>
                   </div>
@@ -983,7 +976,8 @@ function App() {
                 <p className="main_text">WELLPPS 솔루션</p>
                 <p className="sub_text">MVNO 서비스 유통 통합 관리 시스템</p>
                 <p className="paragraph">
-                  WELLPPS 솔루션을 파트너점에게 제공하여 고객의 MVNO 서비스를
+                  WELLPPS 솔루션을 파트너점에게 제공하여 고객의 MVNO
+                  서비스를
                   <br /> 더욱 쉽고 빠르게 처리 할 수 있게 합니다.
                   <br />
                   <br />
@@ -1000,32 +994,22 @@ function App() {
                 </p>
                 <Laptop>
                   <div className="wellpps_img">
-                    <a
-                      href="https://www.wellpps.com"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img
-                        className="box_shadow"
-                        src={wellppsL}
-                        alt="well_laptop"
-                      />
-                    </a>
+                  <a href="https://www.wellpps.com" rel="noreferrer" target="_blank">
+                    <img
+                      className="box_shadow"
+                      src={wellppsL}
+                      alt="well_laptop"
+                    /></a>
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="wellpps_img">
-                    <a
-                      href="https://www.wellpps.com"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img
-                        className="box_shadow"
-                        src={wellppsPC}
-                        alt="well_laptop"
-                      />
-                    </a>
+                    <a href="https://www.wellpps.com" rel="noreferrer" target="_blank">
+                    <img
+                      className="box_shadow"
+                      src={wellppsPC}
+                      alt="well_laptop"
+                    /></a>
                   </div>
                 </Desktop>
               </div>
@@ -1053,7 +1037,7 @@ function App() {
                       <p className="sub_text_1">
                         예치금 활용 자동 충전서비스 제공
                         <br />
-                        모든 통신사 선불폰 충전 /국제전화
+                        모든 통신사 선불폰 충전 /국제전화 
                         <br />
                         카드 충전/해외선불폰 충전
                         <br />
@@ -1109,51 +1093,23 @@ function App() {
               <div className="right_explainBox2">
                 <Laptop>
                   <div className="phoneissue_img wellpps_img">
-                    <a
-                      href="https://www.phoneissue.com"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={phoneissueL1} alt="phoneissue_pc" />
-                    </a>
-                    <a
-                      className="pi_2"
-                      href="https://www.phoneissue.com"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={phoneissueL2} alt="phoneissue_pc" />
-                    </a>
+                    <a href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissueL1} alt="phoneissue_pc" /></a>
+                    <a className="pi_2" href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissueL2} alt="phoneissue_pc" /></a>
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="phoneissue_img wellpps_img">
-                    <a
-                      href="https://www.phoneissue.com"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={phoneissuePC1} alt="phoneissue_pc" />
-                    </a>
-                    <a
-                      className="pi_2"
-                      href="https://www.phoneissue.com"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={phoneissuePC2} alt="phoneissue_pc" />
-                    </a>
+                    <a href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissuePC1} alt="phoneissue_pc" /></a>
+                    <a className="pi_2" href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                      <img src={phoneissuePC2} alt="phoneissue_pc" /></a>
                   </div>
                 </Desktop>
                 <div className="img_url">
-                  <a
-                    className="img_url_child"
-                    href="https://www.phoneissue.com"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <span>phoneissue.com</span>
-                  </a>
+                  <a  className="img_url_child" href="https://www.phoneissue.com" rel="noreferrer" target="_blank">
+                  <span>phoneissue.com</span></a>
                 </div>
               </div>
             </div>
@@ -1161,52 +1117,24 @@ function App() {
               <div className="right_explainBox3">
                 <Laptop>
                   <div className="wellpps_img ppspay_img">
-                    <a
-                      href="https://www.ppspay.co.kr"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={ppspayL1} alt="well_laptop" />
-                    </a>
-                    <a
-                      className="py_2"
-                      href="https://www.ppspay.co.kr"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={ppspayL2} alt="well_laptop" />
-                    </a>
+                    <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                      <img src={ppspayL1} alt="well_laptop" /></a>
+                    <a className="py_2" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                    <img src={ppspayL2} alt="well_laptop" /></a>                      
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="wellpps_img ppspay_img">
-                    <a
-                      href="https://www.ppspay.co.kr"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={ppspayPC1} alt="well_laptop" />
-                    </a>
-                    <a
-                      className="py_2"
-                      href="https://www.ppspay.co.kr"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={ppspayPC2} alt="well_laptop" />
-                    </a>
+                    <a href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                      <img src={ppspayPC1} alt="well_laptop" /></a>
+                    <a className="py_2" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                    <img src={ppspayPC2} alt="well_laptop" /></a>                      
                   </div>
                 </Desktop>
                 <div className="img_url" style={{ marginTop: "40px" }}>
-                  <a
-                    className="img_url_colorRed img_url_child"
-                    href="https://www.ppspay.co.kr"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <span>ppspay.co.kr</span>
-                  </a>
-                </div>
+                  <a  className="img_url_colorRed img_url_child" href="https://www.ppspay.co.kr" rel="noreferrer" target="_blank">
+                  <span>ppspay.co.kr</span></a>
+                </div>                
               </div>
               <div className="left_explainBox3">
                 <p className="main_text">PPSPAY</p>
@@ -1237,8 +1165,7 @@ function App() {
                   우리의 생각보다 통신을 이용하기 어려운 사람들이 많습니다.
                   <br />
                   <br />
-                  <span className="blue">웰네트웍스</span>는 이러한 사람들에게
-                  통신의 혜택을 나누고자 합니다.
+                  <span className="blue">웰네트웍스</span>는 이러한 사람들에게 통신의 혜택을 나누고자 합니다.
                   <br />
                   통신나눔을 통해 기업의 사회적 책임을 이행하고
                   <br />
@@ -1253,36 +1180,20 @@ function App() {
               <div className="right_explainBox4">
                 <Laptop>
                   <div className="wellnanum_img wellpps_img">
-                    <a
-                      href="https://wellnanum.com/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={wellnanumL} alt="well_laptop" />
-                    </a>
+                    <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
+                    <img src={wellnanumL} alt="well_laptop" /></a>
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="wellnanum_img wellpps_img">
-                    <a
-                      href="https://wellnanum.com/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <img src={wellnanumPC} alt="well_laptop" />
-                    </a>
+                    <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
+                      <img src={wellnanumPC} alt="well_laptop" /></a>
                   </div>
                 </Desktop>
                 <div className="img_url">
-                  <a
-                    className="img_url_colorskyblue img_url_child"
-                    href="https://wellnanum.com/"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <span>wellnanum.com</span>
-                  </a>
-                </div>
+                  <a  className="img_url_colorskyblue img_url_child" href="https://wellnanum.com/" rel="noreferrer" target="_blank">
+                  <span>wellnanum.com</span></a>
+                </div>                
               </div>
             </div>
             <div id="service_laptop">
@@ -1337,31 +1248,23 @@ function App() {
                   <Laptop>
                     <div>
                       <p className="main_text" style={{ fontSize: "20px" }}>
-                        MVNO 유통서비스
-                        <br />
-                        전산시스템 개발
+                        MVNO 유통서비스<br/>전산시스템 개발
                       </p>
                       <p className="sub_text" style={{ fontSize: "14px" }}>
-                        유통 및 판매관리를 위한
-                        <br />
-                        주문통합 전산 시스템 개발
+                        유통 및 판매관리를 위한<br />주문통합 전산 시스템 개발
                       </p>
                     </div>
                   </Laptop>
                   <Desktop>
                     <div>
                       <p className="main_text">
-                        MVNO 유통서비스
-                        <br />
-                        전산시스템 개발
+                        MVNO 유통서비스<br/>전산시스템 개발
                       </p>
                       <p className="sub_text">
-                        유통 및 판매관리를 위한
-                        <br />
-                        주문통합 전산 시스템 개발
+                        유통 및 판매관리를 위한<br />주문통합 전산 시스템 개발
                       </p>
                     </div>
-                  </Desktop>
+                  </Desktop>                  
                 </div>
                 <div className="service_card green">
                   <div className="icon_box deep_green">
@@ -1370,9 +1273,7 @@ function App() {
                   <div>
                     <p className="main_text">선불요금충전 API 개발</p>
                     <p className="sub_text_1">
-                      MVNO 통신사 선불요금충전
-                      <br />
-                      API 서버 개발
+                    MVNO 통신사 선불요금충전<br/>API 서버 개발
                     </p>
                   </div>
                 </div>
@@ -1687,9 +1588,7 @@ function App() {
                         />
                       </div>
                       <div className="main_text">
-                        MVNO 유통서비스
-                        <br />
-                        전산시스템 개발
+                        MVNO 유통서비스<br/>전산시스템 개발
                       </div>
                       <div className="sub_text">
                         유통 및 판매관리를 위한
@@ -1713,9 +1612,7 @@ function App() {
                       </div>
                       <div className="main_text">선불요금충전 API 개발</div>
                       <div className="sub_text">
-                        MVNO 통신사 선불요금충전
-                        <br />
-                        API 서버 개발
+                      MVNO 통신사 선불요금충전<br/>API 서버 개발
                       </div>
                     </div>
                   </div>
@@ -1968,9 +1865,7 @@ function App() {
                     className="team_main"
                     style={{ position: "relative", right: "22px" }}
                   >
-                    CMS팀
-                    <br />
-                    (개통실&고객센터)
+                    CMS팀<br/>(개통실&고객센터)
                   </p>
                   <p
                     className="team_sub"
@@ -2103,8 +1998,7 @@ function App() {
               <div className="month_wrap">
                 <span className="month">· 03</span>
                 <span className="sub_text">
-                  일반 고객용 (B to C) 선불 전화 통합 요금 충전 서비스 특허 등록
-                  완료
+                  일반 고객용 (B to C) 선불 전화 통합 요금 충전 서비스 특허 등록 완료
                 </span>
                 <div className="month_img">
                   <img src={history3} alt="ppspay 아이콘" />
@@ -2180,29 +2074,19 @@ function App() {
                       </div>
                       <Map
                         className="map"
-                        center={{
-                          lat: 37.6442802725939,
-                          lng: 126.789008621492,
-                        }}
+                        center={{ lat: 37.6442802725939, lng: 126.789008621492 }}
                       >
                         <MapMarker
-                          position={{
-                            lat: 37.6442802725939,
-                            lng: 126.789008621492,
-                          }}
+                          position={{ lat: 37.6442802725939, lng: 126.789008621492 }}
                         >
-                          <div
-                            style={{
-                              width: "130px",
-                              textAlign: "center",
+                          <div style={{
+                              width:"130px",
+                              textAlign:"center",
                               fontFamily: "NotoSansKR-Bold",
                               color: "#0077ed",
-                            }}
-                          >
-                            (주)웰네트웍스
-                          </div>
+                          }}>(주)웰네트웍스</div>
                         </MapMarker>
-                      </Map>
+                      </Map>                      
                     </div>
                   </div>
                 )}
@@ -2237,13 +2121,13 @@ function App() {
                             name="담당자 성함"
                             id="uname"
                             value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}                          
                           ></input>
-                        </div>
+                        </div>                      
                         <div className="input_list">
                           <div>
                             이메일 주소
-                            <span className="require"> *</span>
+                            <span className="require"> *</span>                          
                           </div>
                           <input
                             type="text"
@@ -2253,11 +2137,11 @@ function App() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                           ></input>
-                        </div>
+                        </div>                            
                         <div className="input_list">
                           <div>
                             연락처 입력
-                            <span className="require"> *</span>
+                            <span className="require"> *</span>                          
                           </div>
                           <input
                             type="text"
@@ -2281,7 +2165,7 @@ function App() {
                             value={textarea}
                             onChange={(e) => setTextarea(e.target.value)}
                           ></textarea>
-                        </div>
+                        </div>                      
                         {/* <div
                           className="input_title"
                           style={{ marginTop: "28px" }}
@@ -2305,15 +2189,11 @@ function App() {
                         </div>                       */}
                         <div className="input_list">
                           <div className="title_wrap">
-                            <span className="input_title">
-                              개인정보 수집 동의
-                            </span>
-                            <span
+                            <span className="input_title">개인정보 수집 동의</span>
+                            <span 
                               className="detail_info input_title"
                               onClick={togglePopup}
-                            >
-                              자세한 내용
-                            </span>
+                            >자세한 내용</span>
                           </div>
                           <div class="radio-container">
                             <input
@@ -2324,10 +2204,7 @@ function App() {
                               checked={agreement}
                               onChange={handleAgreementChange}
                             />
-                            <label
-                              htmlFor="option1"
-                              style={{ marginRight: "8px" }}
-                            >
+                            <label htmlFor="option1" style={{ marginRight: "8px" }}>
                               동의
                             </label>
                             <input
@@ -2336,34 +2213,27 @@ function App() {
                               name="개인정보 수집 동의"
                               value={false}
                               checked={!agreement}
-                              onChange={handleAgreementChange}
+                              onChange={handleAgreementChange}                       
                             />
-                            <label
-                              htmlFor="option2"
-                              style={{ marginLeft: "8px" }}
-                            >
+                            <label htmlFor="option2" style={{ marginLeft: "8px" }}>
                               미동의
                             </label>
                           </div>
                         </div>
                         <div className="input_list">
                           <button
-                            type="submit"
-                            className={
-                              isLoading
-                                ? "disabled_btn request_btn"
-                                : "request_btn"
-                            }
+                            type="submit"                      
+                            className={isLoading ? "disabled_btn request_btn" : "request_btn"}
                             disabled={isLoading}
-                          >
-                            {isLoading ? "신청서 전송중..." : "신청"}
+                          >{isLoading ? "신청서 전송중..." : "신청" }
                           </button>
-                        </div>
+                        </div>  
                       </form>
                       <iframe
                         name="frAttachFiles"
                         style={{ display: "none" }}
-                      ></iframe>
+                      >
+                      </iframe>                                         
                     </div>
                   </div>
                 )}
@@ -2394,25 +2264,17 @@ function App() {
                   <MapMarker
                     position={{ lat: 37.6442802725939, lng: 126.789008621492 }}
                   >
-                    <div
-                      style={{
-                        width: "130px",
-                        textAlign: "center",
+                    <div style={{
+                        width:"130px",
+                        textAlign:"center",
                         fontFamily: "NotoSansKR-Bold",
                         color: "#0077ed",
-                      }}
-                    >
-                      (주)웰네트웍스
-                    </div>
+                    }}>(주)웰네트웍스</div>
                   </MapMarker>
-                </Map>
+                </Map>               
               </div>
               <div
-                className={
-                  expand === 1
-                    ? "request_wrap_Expand request_wrap"
-                    : "request_wrap"
-                }
+                className={expand === 1 ? "request_wrap_Expand request_wrap" : "request_wrap"}
               >
                 <div className="request_title">
                   <img src={emoji11} alt="업무제휴 아이콘" />
@@ -2467,7 +2329,7 @@ function App() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     ></input>
-                  </div>
+                  </div>                                    
                   <div className="input_box_labtop">
                     <span className="input_title">
                       연락처 입력
@@ -2477,7 +2339,7 @@ function App() {
                       type="text"
                       value={phoneNumbering}
                       onChange={handlePhoneNumberChange}
-                      maxLength={13}
+                      maxLength={13} 
                       className="input_text"
                       placeholder="연락처를 입력해주세요"
                       name="연락처"
@@ -2495,7 +2357,7 @@ function App() {
                       value={textarea}
                       onChange={(e) => setTextarea(e.target.value)}
                     ></textarea>
-                  </div>
+                  </div> 
                   {/* <div
                     className="input_title"
                     style={{ marginTop: "28px" }}
@@ -2523,22 +2385,21 @@ function App() {
                     <input type="checkbox" id="checkbox7" name="파트너 유형" value="기타"/>
                     <label htmlFor="checkbox7">기타</label>                                    
                   </div> */}
-
+                                
                   <div
                     className="input_box_labtop"
-                    style={{ marginTop: "42px" }}
+                    style={{ marginTop: "42px"}}
                   >
                     <div className="title_wrap">
                       <span className="input_title">
                         개인정보 수집 동의
                         <span className="require"> *</span>
                       </span>
-                      <span
+                      <span 
                         className="detail_info input_title"
                         onClick={togglePopup}
                       >
-                        자세한 내용
-                      </span>
+                        자세한 내용</span>
                     </div>
                     <div class="radio-container">
                       <input
@@ -2558,29 +2419,27 @@ function App() {
                         name="개인정보 수집 동의"
                         value={false}
                         checked={!agreement}
-                        onChange={handleAgreementChange}
+                        onChange={handleAgreementChange}                        
                       />
                       <label htmlFor="option2" style={{ marginLeft: "8px" }}>
                         미동의
                       </label>
                     </div>
-                  </div>
+                  </div>    
                   <div className="input_list">
                     <button
-                      type="submit"
-                      className={
-                        isLoading ? "disabled_btn request_btn" : "request_btn"
-                      }
+                      type="submit"                      
+                      className={isLoading ? "disabled_btn request_btn" : "request_btn"}
                       disabled={isLoading}
-                    >
-                      {isLoading ? "신청서 전송중..." : "신청"}
+                    >{isLoading ? "신청서 전송중..." : "신청" }
                     </button>
                   </div>
-                </form>
+                </form> 
                 <iframe
                   name="frAttachFiles"
                   style={{ display: "none" }}
-                ></iframe>
+                >
+                </iframe>                                            
               </div>
             </div>
           </LaptopAfter>
