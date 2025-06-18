@@ -1169,31 +1169,34 @@ function App() {
                   <br />
                   통신나눔을 통해 기업의 사회적 책임을 이행하고
                   <br />
-                  보다 많은 이들이 통신의 사각지대에서 벗어날 수 있도록 도울
-                  것입니다.
+                  보다 많은 이들이 통신의 사각지대에서 벗어날 수 있도록 도왔습니다.
                   <br />
                   <br />
-                  복지 단체 및 시설과 협약하여 선불휴대전화 개통서비스를
-                  제공합니다.
+                  복지 단체 및 시설과 협약하여 선불 휴대 전화 개통서비스를 제공해오며
+                  <br/>
+                  그 일환으로 총 <span className="blue">5,000명</span> 이상의 통신 취약계층에게 휴대폰과<br/>초기 충전금을 지원한 성과를 올렸습니다.
                 </p>
               </div>
               <div className="right_explainBox4">
                 <Laptop>
                   <div className="wellnanum_img wellpps_img">
-                    <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
-                    <img src={wellnanumL} alt="well_laptop" /></a>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a>
+                      <img src={wellnanumL} alt="well_laptop" />
+                    </a>
                   </div>
                 </Laptop>
                 <Desktop>
                   <div className="wellnanum_img wellpps_img">
-                    <a href="https://wellnanum.com/" rel="noreferrer" target="_blank">
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a>
                       <img src={wellnanumPC} alt="well_laptop" /></a>
                   </div>
                 </Desktop>
-                <div className="img_url">
+                {/* <div className="img_url">
                   <a  className="img_url_colorskyblue img_url_child" href="https://wellnanum.com/" rel="noreferrer" target="_blank">
                   <span>wellnanum.com</span></a>
-                </div>                
+                </div>                 */}
               </div>
             </div>
             <div id="service_laptop">
@@ -1449,11 +1452,12 @@ function App() {
                   <span className="pop_text">
                     현대사회는 바야흐로 스마트 통신의 시대입니다. 하지만 모든
                     사람들이 그 혜택을 누리진 않습니다. 우리의 생각보다 통신을
-                    이용하기 어려운 사람들이 많습니다.웰네트웍스는 이러한
+                    이용하기 어려운 사람들이 많습니다. 웰네트웍스는 이러한
                     사람들에게 통신의 혜택을 나누고자 합니다. 통신나눔을 통해
                     기업의 사회적 책임을 이행하고 보다 많은 이들이 통신의
-                    사각지대에서 벗어날 수 있도록 도울 것입니다.복지 단체 및
-                    시설과 협약하여 선불휴대 전화 개통서비스를 제공합니다.
+                    사각지대에서 벗어날 수 있도록 도왔습니다.
+                    <br/>
+                    복지 단체 및 시설과 협약하여 선불 휴대 전화 개통서비스를 제공해오며 그 일환으로 총 5,000명 이상의 통신 취약계층에게 휴대폰과 초기 충전금을 지원한 성과를 올렸습니다.
                   </span>
                 ) : null}
                 <div
@@ -2004,14 +2008,41 @@ function App() {
                   <img src={history3} alt="ppspay 아이콘" />
                 </div>
               </div>
+            </div>
+            <div className="year">
+              <div className="year_text">2024</div>
+              {/* <div className="month_wrap">
+                <span className="month">· 02</span>
+                <span className="sub_text">(주)PTSK 업무 제휴 계약</span>
+                <div className="month_img">
+                  <img
+                    style={{ padding: "0 10px" }}
+                    src={history5}
+                    alt="ptsk 아이콘"
+                  />
+                </div>
+              </div> */}
               <div className="month_wrap">
-                <span className="month">· 현재</span>
+                <span className="month">· 12</span>
                 <span className="sub_text">
-                  국내 주요 MVNO 사업자와 계약 체결, 강력한 파트너십으로 탁월한
-                  성과를 보여주고 있습니다.
+                  외국인 전담 개통 센터 인천공항 IBC점 오픈<br/>
+                  <span 
+                    className="sub_text_small"
+                    style={{ color: "#7b8aa8" }}>
+                      *비고 : 대면 개통센터 구축
+                  </span>
                 </span>
               </div>
             </div>
+            <div className="year">
+              <div className="year_text">2025</div>
+              <div className="month_wrap">
+                <span className="month">· 현재</span>
+                <span className="sub_text">국내 주요 MVNO 사업자와 계약 체결, 강력한 파트너십으로 탁월한
+                  성과를 보여주고 있습니다.
+                </span>
+              </div>
+            </div>                          
           </div>
         </section>
       </Element>
@@ -2500,7 +2531,7 @@ function App() {
                 <img src={footerArrow} alt="패밀리사이트 화살표" />
               </span>
             </div>
-            <div className="site_list" style={{ borderBottom: "none" }}>
+            {/* <div className="site_list" style={{ borderBottom: "none" }}>
               <span>
                 <a
                   href="https://www.wellnanum.com/"
@@ -2513,7 +2544,7 @@ function App() {
               <span>
                 <img src={footerArrow} alt="패밀리사이트 화살표" />
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="infomation_footer">
@@ -2535,7 +2566,7 @@ function App() {
             e-mail : thanks@wellpps.com
             <br />
             <br />
-            Copyright(C)2023 by wellnetworks.co.kr
+            Copyright(C)2025 by wellnetworks.co.kr
             <br />
             All rights reserved.
             <br />

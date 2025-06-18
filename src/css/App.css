@@ -756,6 +756,12 @@ button.disabled_btn {
     color: #d6d6d6;
   }   
 
+  .month_wrap .sub_text .sub_text_small {
+    position: relative;
+    top: 6px;
+    font-size: 13px!important;
+  }
+
 }
 /* wellpps 이미지 슬라이드 */
 .slider_box {
@@ -1113,6 +1119,11 @@ button.disabled_btn {
 
   .month_wrap .month {
     font-size: 26px;
+  }
+  .month_wrap .sub_text .sub_text_small {
+    position: relative;
+    top: 3px;
+    font-size: 15px!important;
   }
 
   /* CONTACT - 오시는길 -------------------------------------*/
