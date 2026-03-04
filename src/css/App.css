@@ -371,6 +371,36 @@ ul.menu_wrap li {
   position: relative;
   top: 4px;
 }
+
+/* 모바일: sub_text 비율 + 벤처 문서 이미지 하단 배치 및 세로 길게 표시 */
+@media (max-width: 640px) {
+  .month_wrap .sub_text {
+    flex-basis: 75%;
+  }
+  /* 벤처 기업 확인 문서가 있는 month_wrap: 이미지를 텍스트 아래로 */
+  .month_wrap--with-doc {
+    flex-wrap: wrap;
+  }
+  .month_wrap--with-doc .history_doc_img {
+    flex-basis: 100%;
+    width: 100%;
+    order: 3;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+  .month_wrap--with-doc .history_doc_img img {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 .month_wrap .month_img {
   padding: 8px;
   flex-basis: 25%;
@@ -384,6 +414,83 @@ ul.menu_wrap li {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+/* 히스토리 문서 이미지 (벤처 등록 문서) - 클릭 시 레이어 팝업 */
+.month_wrap .history_doc_img {
+  padding: 8px;
+  flex-basis: 25%;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 160px;
+}
+.month_wrap .history_doc_img img {
+  padding: 10px;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  box-shadow: 6px 4px 12px rgb(0, 0, 0, 0.05);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* 히스토리 이미지 레이어 팝업 */
+.history_img_popup_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.history_img_popup_content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.history_img_popup_content img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.history_img_popup_close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s;
+}
+.history_img_popup_close:hover {
+  background: #f0f0f0;
 }
 
 /* CONTACT - 오시는길 -------------------------------------*/
@@ -1014,6 +1121,9 @@ button.disabled_btn {
   #history_wrap .year {
     padding: 0 40px;
   }
+  .month_wrap .history_doc_img {
+    margin-bottom: 250px;
+  }
 }
 
 /* Tablet --------------------------------------------------*/
@@ -1124,6 +1234,11 @@ button.disabled_btn {
     position: relative;
     top: 3px;
     font-size: 15px!important;
+  }
+  .month_wrap .history_doc_img img {
+    width: 260px;
+    height: 365px;
+    object-fit: contain;
   }
 
   /* CONTACT - 오시는길 -------------------------------------*/
@@ -2069,6 +2184,11 @@ button.disabled_btn {
   }
   .month_wrap {
     margin-top: 30px;
+  }
+  .month_wrap .history_doc_img img {
+    width: 260px;
+    height: 365px;
+    object-fit: contain;
   }
 
   /* CONTACT 우리와 함께 하는 방법 ---------------------------------------------------*/

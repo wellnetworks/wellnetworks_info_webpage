@@ -103,7 +103,7 @@ import history1 from "./img/m/icon-history1-m.svg";
 import history2 from "./img/m/icon-history2-m.svg";
 import history3 from "./img/m/icon-history3-m.svg";
 import history4 from "./img/m/icon-history4-m.svg";
-import history5 from "./img/m/icon-history5-m.svg";
+import history5 from "./img/pc/icon-history5-pc.png";
 
 import footerLogo from "./img/common/icon-footer-logo.svg";
 import footerArrow from "./img/m/icon-footer_arrow-m.svg";
@@ -422,6 +422,7 @@ function App() {
   `;
 
   const [isVisible, setIsVisible] = useState(false);
+  const [showHistory5Popup, setShowHistory5Popup] = useState(false);
   return (
     <>
       {isOpen && ( 
@@ -429,6 +430,28 @@ function App() {
             open={isOpen}
             close={togglePopup}
           /> 
+      )}
+      {showHistory5Popup && (
+        <div
+          className="history_img_popup_overlay"
+          onClick={() => setShowHistory5Popup(false)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === "Escape" && setShowHistory5Popup(false)}
+          aria-label="이미지 팝업 닫기"
+        >
+          <div className="history_img_popup_content" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="history_img_popup_close"
+              onClick={() => setShowHistory5Popup(false)}
+              aria-label="닫기"
+            >
+              ×
+            </button>
+            <img src={history5} alt="벤처 기업 등록 문서 (확대)" />
+          </div>
+        </div>
       )}
       {showButton && (
         <button className="scroll-to-top-button" onClick={scrollToTop}>
@@ -2011,17 +2034,6 @@ function App() {
             </div>
             <div className="year">
               <div className="year_text">2024</div>
-              {/* <div className="month_wrap">
-                <span className="month">· 02</span>
-                <span className="sub_text">(주)PTSK 업무 제휴 계약</span>
-                <div className="month_img">
-                  <img
-                    style={{ padding: "0 10px" }}
-                    src={history5}
-                    alt="ptsk 아이콘"
-                  />
-                </div>
-              </div> */}
               <div className="month_wrap">
                 <span className="month">· 12</span>
                 <span className="sub_text">
@@ -2037,12 +2049,33 @@ function App() {
             <div className="year">
               <div className="year_text">2025</div>
               <div className="month_wrap">
+                <span className="month">· 07</span>
+                <span className="sub_text">GEF (재)글로벌 청년 창업가재단 MOU 체결</span>
+              </div>
+              <div className="month_wrap">
+                <span className="month">· 12</span>
+                <span className="sub_text">송곡대학교 SGAE 글로컬대학 업무협약</span>
+              </div>              
+            </div>  
+            <div className="year">
+              <div className="year_text">2026</div>             
+              <div className="month_wrap month_wrap--with-doc">
                 <span className="month">· 현재</span>
-                <span className="sub_text">국내 주요 MVNO 사업자와 계약 체결, 강력한 파트너십으로 탁월한
+                <span className="sub_text">혁신 성장 유형 벤처기업으로서 국내 주요 MVNO 사업자와 계약 체결,<br/>강력한 파트너십으로 탁월한
                   성과를 보여주고 있습니다.
                 </span>
-              </div>
-            </div>                          
+                <div
+                  className="history_doc_img"
+                  onClick={() => setShowHistory5Popup(true)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && setShowHistory5Popup(true)}
+                  aria-label="벤처 기업 등록 문서 크게 보기"
+                >
+                  <img src={history5} alt="벤처 기업 등록 문서" />
+                </div> 
+              </div>             
+            </div>                                      
           </div>
         </section>
       </Element>
@@ -2566,7 +2599,7 @@ function App() {
             e-mail : thanks@wellpps.com
             <br />
             <br />
-            Copyright(C)2025 by wellnetworks.co.kr
+            Copyright(C)2026 by wellnetworks.co.kr
             <br />
             All rights reserved.
             <br />
