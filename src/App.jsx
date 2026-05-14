@@ -89,15 +89,12 @@ import emoji9 from "./img/common/icon-emoji-9.png";
 import emoji10 from "./img/common/icon-emoji-10.png";
 import emoji11 from "./img/common/icon-emoji-11.png";
 
-import workMethod1 from "./img/common/icon-workMethod-1.svg";
-import workMethod2 from "./img/common/icon-workMethod-2.png";
-import workMethod3 from "./img/common/icon-workMethod-3.svg";
-import workMethod4 from "./img/common/icon-workMethod-4.svg";
-import workMethod5 from "./img/common/icon-workMethod-5.svg";
-import workMethod6 from "./img/common/icon-workMethod-6.svg";
-import workMethod7 from "./img/common/icon-workMethod-7.svg";
-import workMethod8 from "./img/common/icon-workMethod-8.svg";
-import workMethod9 from "./img/common/icon-workMethod-9.png";
+import howToWork1Pc from "./img/pc/howToWork_1_pc.png";
+import howToWork2Pc from "./img/pc/howToWork_2_pc.png";
+import howToWork3Pc from "./img/pc/howToWork_3_pc.png";
+import howToWork4Pc from "./img/pc/howToWork_4_pc.png";
+import howToWork5Pc from "./img/pc/howToWork_5_pc.png";
+import howToWork6Pc from "./img/pc/howToWork_6_pc.png";
 
 import history1 from "./img/m/icon-history1-m.svg";
 import history2 from "./img/m/icon-history2-m.svg";
@@ -115,6 +112,170 @@ import footerArrow from "./img/m/icon-footer_arrow-m.svg";
 // Mobile2 minWidth: 452,  maxWidth: 640
 // Mobile1 minWidth: 360,  maxWidth: 451
 // MobileGlobal minWidth: 360,  maxWidth: 1399
+
+const HOW_TO_WORK_CARDS = [
+  {
+    num: "01",
+    badgeTheme: 1,
+    category: "AGILE WORKFLOW",
+    title: "민첩한 실행 중심 협업",
+    description:
+      "짧은 스프린트와 반복적인 피드백을 통해 빠르게 실행하고 지속적으로 개선합니다.",
+    img: howToWork1Pc,
+    tags: ["Agile", "Sprint", "Kanban", "Issue Tracking"],
+  },
+  {
+    num: "02",
+    badgeTheme: 2,
+    category: "PROJECT MANAGEMENT",
+    title: "체계적인 프로젝트 운영",
+    description:
+      "모든 업무는 이슈 기반으로 관리되며 문서화와 협업 히스토리를 체계적으로 축적합니다.",
+    img: howToWork2Pc,
+    tags: ["Jira", "Confluence", "Atlassian"],
+  },
+  {
+    num: "03",
+    badgeTheme: 3,
+    category: "DEVELOPMENT CULTURE",
+    title: "Git 기반 협업 개발 문화",
+    description:
+      "브랜치 전략과 코드 리뷰 프로세스를 통해 안정적인 협업 개발 환경을 운영합니다.",
+    img: howToWork3Pc,
+    tags: ["GitHub", "Pull Request", "Code Review", "Branch Strategy"],
+  },
+  {
+    num: "04",
+    badgeTheme: 4,
+    category: "DEVOPS & CI/CD",
+    title: "자동화된 배포 시스템",
+    description:
+      "빌드·테스트·배포 과정을 자동화하여 빠르고 안정적인 서비스 운영 환경을 구축합니다.",
+    img: howToWork4Pc,
+    tags: ["GitHub Actions", "CI/CD", "Docker", "AWS EC2", "Cloud Infrastructure"],
+  },
+  {
+    num: "05",
+    badgeTheme: 5,
+    category: "COMMUNICATION",
+    title: "빠른 커뮤니케이션 문화",
+    description:
+      "실시간 커뮤니케이션과 업무 공유를 통해 팀 간 협업 속도를 높이고 있습니다.",
+    img: howToWork5Pc,
+    tags: ["Slack", "Hiworks"],
+  },
+  {
+    num: "06",
+    badgeTheme: 6,
+    category: "OUR CULTURE",
+    title: "데이터 기반 개선 문화",
+    description:
+      "데이터와 피드백을 기반으로 의사결정하고, 지속적인 개선을 통해 더 나은 서비스를 만들어갑니다.",
+    img: howToWork6Pc,
+    tags: ["Data Driven", "Continuous Improvement", "Feedback", "Transparency"],
+  },
+];
+
+function HowToWorkCard({ card }) {
+  const headingId = `how-to-work-title-${card.num}`;
+  return (
+    <article
+      className="how_to_work_card"
+      aria-labelledby={headingId}
+    >
+      <div className="how_to_work_card__top">
+        <div className="how_to_work_card__left">
+          <p className="how_to_work_card__num">{card.num}</p>
+          <p className="how_to_work_card__cat">{card.category}</p>
+          <h3 id={headingId} className="how_to_work_card__title">
+            {card.title}
+          </h3>
+          <p className="how_to_work_card__desc">{card.description}</p>
+        </div>
+        <div className="how_to_work_card__graphic">
+          <img src={card.img} alt="" loading="lazy" />
+        </div>
+      </div>
+      <ul
+        className={`how_to_work_card__tags how_to_work_card__tags--theme-${card.badgeTheme}`}
+        aria-label={`${card.category} 관련`}
+      >
+        {card.tags.map((t) => (
+          <li key={t} className="how_to_work_tag">
+            {t}
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+function HowToWorkSummaryBar() {
+  return (
+    <div className="how_to_work_summary" role="region" aria-label="업무 운영 요약">
+      <div className="how_to_work_summary__item">
+        <div className="how_to_work_summary__icon" aria-hidden>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="18" height="18" rx="2" stroke="#0077ed" strokeWidth="1.8" />
+            <path d="M3 10h18M8 2v4M16 2v4" stroke="#0077ed" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        </div>
+        <div className="how_to_work_summary__title">1 Week</div>
+        <div className="how_to_work_summary__sub">평균 스프린트 주기</div>
+      </div>
+      <div className="how_to_work_summary__item">
+        <div className="how_to_work_summary__icon" aria-hidden>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#0077ed" strokeWidth="1.8" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <div className="how_to_work_summary__title">Daily</div>
+        <div className="how_to_work_summary__sub">데일리 커뮤니케이션</div>
+      </div>
+      <div className="how_to_work_summary__item">
+        <div className="how_to_work_summary__icon" aria-hidden>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 4l7 3.5v1L12 12 5 8.5v-1L12 4z"
+              stroke="#0077ed"
+              strokeWidth="1.7"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            <path
+              d="M5 11.5L12 15l7-3.5"
+              stroke="#0077ed"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            <path
+              d="M5 15.5L12 19l7-3.5"
+              stroke="#0077ed"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
+        <div className="how_to_work_summary__title">Automated</div>
+        <div className="how_to_work_summary__sub">자동화된 배포 프로세스</div>
+      </div>
+      <div className="how_to_work_summary__item">
+        <div className="how_to_work_summary__icon" aria-hidden>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#0077ed" strokeWidth="1.8" strokeLinejoin="round" />
+            <path d="M9 12l2 2 4-4" stroke="#0077ed" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <div className="how_to_work_summary__title">99.9%</div>
+        <div className="how_to_work_summary__sub">안정적인 서비스 운영</div>
+      </div>
+    </div>
+  );
+}
 
 /* 모바일 좌우 스크롤 금지하는 overflow가 있어서 sticky가 동작하지않습니다
     그래서 useEffect 함수를 사용하여 해결합니다. 2023.07.04 윤지석 */
@@ -179,23 +340,23 @@ function App() {
     ),
   };
 
-  // 이미지 슬라이더2 - 우리가 일하는 방식 //
-  const settings2 = {
+  // 이미지 슬라이더 — How to work? 카드 (태블릿·모바일) //
+  const settingsHowToWork = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    //autoplay:true,
     appendDots: (dots) => (
       <div
+        className="how_to_work_dots_wrap"
         style={{
           position: "absolute",
-          bottom: "26px",
+          bottom: "12px",
           right: "20px",
         }}
       >
-        <ul>{dots}</ul>
+        <ul className="how_to_work_slick_dots">{dots}</ul>
       </div>
     ),
   };
@@ -1672,7 +1833,7 @@ function App() {
       {/* 주요 서비스 내용 끝  ----------------------------------------------------------------*/}
 
       <Element name="section2">
-        <section id="service">
+        <section id="service" className="how_to_work_service">
           <p className="service_subText">How to work?</p>
           <p className="service_slogan">우리가 일하는 방식</p>
           <LaptopAfter>
@@ -1687,152 +1848,28 @@ function App() {
                 계획, 실행, 피드백이 이루어지는 에자일 조직으로 성장중입니다.
               </p>
             </div>
-            <div className="workflow_box">
-              <div className="workflow_box_child">
-                <img src={workMethod1} alt="1번슬라이드" />
-                <div className="main_text">Agile</div>
+            <div className="how_to_work_wrap how_to_work_wrap--desktop">
+              <div className="how_to_work_grid">
+                {HOW_TO_WORK_CARDS.map((card) => (
+                  <HowToWorkCard key={card.num} card={card} />
+                ))}
               </div>
-              <div className="workflow_box_child">
-                <img src={workMethod2} alt="2번슬라이드" />
-                <div className="main_text" style={{ marginTop: "20px" }}>
-                  Kanban
-                </div>
-              </div>
-              <div
-                className="workflow_box_child"
-                style={{ backgroundColor: "#0382FA" }}
-              >
-                <img src={workMethod3} alt="3번슬라이드" />
-              </div>
-              <div className="workflow_box_child">
-                <img src={workMethod4} alt="4번슬라이드" />
-              </div>
-              <div className="workflow_box_child">
-                <img src={workMethod5} alt="5번슬라이드" />
-              </div>
-              <div className="workflow_box_child">
-                <img src={workMethod6} alt="6번슬라이드" />
-              </div>
-              <div
-                className="workflow_box_child"
-                style={{ backgroundColor: "#441949" }}
-              >
-                <img src={workMethod7} alt="7번슬라이드" />
-              </div>
-              <div className="workflow_box_child">
-                <img src={workMethod8} alt="8번슬라이드" />
-              </div>
-              <div className="workflow_box_child">
-                <img src={workMethod9} alt="9번슬라이드" />
-              </div>
+              <HowToWorkSummaryBar />
             </div>
           </LaptopAfter>
           <LaptopBefore>
-            <Slider {...settings2}>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child">
-                    <img
-                      className="workflow_img"
-                      src={workMethod1}
-                      alt="1번슬라이드"
-                    />
-                    <div className="main_text">Agile</div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child">
-                    <img
-                      className="workflow_img"
-                      src={workMethod2}
-                      alt="2번슬리이드"
-                    />
-                    <div className="main_text" style={{ marginTop: "30px" }}>
-                      Kanban
+            <div className="how_to_work_slider_wrap">
+              <Slider {...settingsHowToWork}>
+                {HOW_TO_WORK_CARDS.map((card) => (
+                  <div key={card.num}>
+                    <div className="how_to_work_slide_inner">
+                      <HowToWorkCard card={card} />
                     </div>
                   </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child slider_blueBack">
-                    <img
-                      className="workflow_img"
-                      src={workMethod3}
-                      alt="3번슬리이드"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child">
-                    <img
-                      className="workflow_img"
-                      src={workMethod4}
-                      alt="4번슬리이드"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child">
-                    <img
-                      className="workflow_img"
-                      src={workMethod5}
-                      alt="5번슬리이드"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child">
-                    <img
-                      className="workflow_img"
-                      src={workMethod6}
-                      alt="6번슬리이드"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child slider_purpleBack">
-                    <img
-                      className="workflow_img"
-                      src={workMethod7}
-                      alt="7번슬리이드"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child">
-                    <img
-                      className="workflow_img"
-                      src={workMethod8}
-                      alt="8번슬리이드"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="slider_box2">
-                  <div className="slider_child">
-                    <img
-                      className="workflow_img"
-                      src={workMethod9}
-                      alt="9번슬리이드"
-                    />
-                  </div>
-                </div>
-              </div>
-            </Slider>
+                ))}
+              </Slider>
+            </div>
+            <HowToWorkSummaryBar />
             <div className="workflow_para">
               웰네트웍스는 모든것에 우연은 없다는 일념으로 데이터 분석 기반
               업무에 초점을 두고 있습니다. 또한, 다양한 협업툴을 적극 활용하여
@@ -2058,7 +2095,16 @@ function App() {
               </div>              
             </div>  
             <div className="year">
-              <div className="year_text">2026</div>             
+              <div className="year_text">2026</div>
+              <div className="month_wrap">
+                <span className="month">· 04</span>
+                <span className="sub_text">
+                  <span style={{ color: "#0077ed" }}>
+                  MVNO 선불 유통 특화 전산 wellpps.com을 2026년 4월 28일 전면 리뉴얼 오픈,&nbsp;&nbsp; 
+                  </span>
+                   파트너사 업무 지원과 고객 접점 품질을 한층 높이는 디지털 허브로 재정비했습니다.
+                </span>
+              </div>                           
               <div className="month_wrap month_wrap--with-doc">
                 <span className="month">· 현재</span>
                 <span className="sub_text">혁신 성장 유형 벤처기업으로서 국내 주요 MVNO 사업자와 계약 체결,<br/>강력한 파트너십으로 탁월한

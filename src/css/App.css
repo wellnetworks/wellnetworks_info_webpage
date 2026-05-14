@@ -290,6 +290,306 @@ ul.menu_wrap li {
   line-height: 24px;
 }
 
+/* How to work? — 카드 그리드(PC) · 슬라이더(태블릿·모바일) · 요약바 */
+.how_to_work_wrap--desktop {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+.how_to_work_wrap--desktop .how_to_work_grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.how_to_work_wrap--desktop .how_to_work_card__graphic {
+  flex: 0 0 38%;
+  max-width: 38%;
+}
+.how_to_work_wrap--desktop .how_to_work_card__graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.how_to_work_slider_wrap {
+  position: relative;
+  margin-top: 28px;
+  padding: 0 12px 52px;
+  box-sizing: border-box;
+}
+.how_to_work_slider_wrap .how_to_work_slide_inner {
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.how_to_work_slider_wrap .how_to_work_card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.how_to_work_slider_wrap .how_to_work_card__top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+.how_to_work_slider_wrap .how_to_work_card__left {
+  flex: 1;
+  min-width: 0;
+}
+.how_to_work_slider_wrap .how_to_work_card__graphic {
+  flex: 0 0 34%;
+  max-width: 120px;
+  margin: 0;
+}
+.how_to_work_slider_wrap .how_to_work_card__graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.how_to_work_slider_wrap .how_to_work_card__tags {
+  width: 100%;
+  margin-top: 0;
+}
+
+.how_to_work_card {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: left;
+}
+.how_to_work_card__top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+.how_to_work_card__left {
+  flex: 1;
+  min-width: 0;
+}
+.how_to_work_card__num {
+  margin: 0 0 4px;
+  font-family: GothamBlack, "NotoSansKR-Bold", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: #0077ed;
+  font-weight: 700;
+}
+.how_to_work_card__cat {
+  margin: 0 0 8px;
+  font-family: "NotoSansKR-Bold", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  color: #0077ed;
+  text-transform: uppercase;
+}
+.how_to_work_card__title {
+  margin: 8px 0 16px;
+  font-family: NotoSansKR-Bold, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #252525;
+  line-height: 1.45;
+}
+.how_to_work_card__desc {
+  margin: 0;
+  font-family: "NotoSansKR-Light", sans-serif;
+  font-size: 11px;
+  color: #656565;
+  line-height: 1.55;
+}
+.how_to_work_card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.how_to_work_tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-family: "NotoSansKR-Medium", sans-serif;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  line-height: 1.2;
+}
+.how_to_work_card__tags--theme-1 .how_to_work_tag {
+  color: #2f5bc5;
+  background: #eff2fb;
+}
+.how_to_work_card__tags--theme-2 .how_to_work_tag {
+  color: #3a6cbe;
+  background: #eff2fb;
+}
+.how_to_work_card__tags--theme-3 .how_to_work_tag {
+  color: #4c258e;
+  background: #f2effa;
+}
+.how_to_work_card__tags--theme-4 .how_to_work_tag {
+  color: #28ac5e;
+  background: #ebf5ef;
+}
+.how_to_work_card__tags--theme-5 .how_to_work_tag {
+  color: #6e60d9;
+  background: #f4f2f9;
+}
+.how_to_work_card__tags--theme-6 .how_to_work_tag {
+  color: #d68911;
+  background: #fdf4e6;
+}
+.how_to_work_card__graphic {
+  flex-shrink: 0;
+}
+
+.how_to_work_summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 28px;
+  padding: 20px 16px;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  background: #fff;
+  box-sizing: border-box;
+}
+.how_to_work_summary__item {
+  flex: 1 1 120px;
+  text-align: center;
+  min-width: 100px;
+}
+.how_to_work_summary__icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.how_to_work_summary__title {
+  font-family: GothamBlack, "NotoSansKR-Bold", sans-serif;
+  font-size: 20px;
+  color: #0077ed;
+  line-height: 1.2;
+}
+.how_to_work_summary__sub {
+  margin-top: 4px;
+  font-family: "NotoSansKR-Light", sans-serif;
+  font-size: 12px;
+  color: #656565;
+  line-height: 1.4;
+}
+.how_to_work_slider_wrap .how_to_work_summary {
+  margin-top: 24px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.how_to_work_slick_dots {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.how_to_work_slick_dots li {
+  display: inline-block;
+  margin-left: 6px;
+}
+.how_to_work_slick_dots li button:before {
+  color: #0077ed !important;
+  opacity: 0.35 !important;
+}
+.how_to_work_slick_dots li.slick-active button:before {
+  opacity: 1 !important;
+}
+
+/* How to work? — 모바일·태블릿: 세로 여백, 도트 하단 간격 (태블릿은 카드 좌우 풀블리드) */
+@media (max-width: 1023px) {
+  section.how_to_work_service .service_subText,
+  section.how_to_work_service .service_slogan {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+  }
+  section.how_to_work_service .workflow_para {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .how_to_work_slider_wrap {
+    padding: 12px 0 88px;
+    box-sizing: border-box;
+  }
+  .how_to_work_slider_wrap .how_to_work_slide_inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .how_to_work_slider_wrap .how_to_work_card {
+    padding: 28px 0 32px;
+    gap: 22px;
+  }
+  .how_to_work_slider_wrap .how_to_work_card__top {
+    gap: 14px;
+  }
+  .how_to_work_slider_wrap .slick-slide > div {
+    margin-bottom: 28px;
+  }
+  .how_to_work_slider_wrap .how_to_work_summary {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* How to work? — 모바일(640px 이하): 카드·타이틀·요약 양옆 여백 */
+@media (max-width: 640px) {
+  .how_to_work_card {
+    box-shadow: none !important;
+    border: 1px solid #c6c6c6 !important;
+  }
+  .how_to_work_slick_dots {
+    position: relative;
+    top: 8px;
+  }
+  .how_to_work_slider_wrap .how_to_work_card {
+    padding: none;
+  }
+  section.how_to_work_service .service_subText,
+  section.how_to_work_service .service_slogan {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  section.how_to_work_service .workflow_para {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .how_to_work_slider_wrap {
+    padding: 12px 16px 40px 16px;
+
+  }
+  .how_to_work_slider_wrap .how_to_work_summary {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 /* 조직구성 >> 우리의 구성원들 -------------------------------------*/
 .team_card_bundle {
   margin-top: 28px;
@@ -752,6 +1052,19 @@ button.disabled_btn {
     font-size: 16px;
   }
 
+  section.how_to_work_service .workflow_para {
+    padding: 24px 0px;
+  }
+
+  .how_to_work_card__title {
+    padding: 0 16px;
+  }
+  .how_to_work_card__tags {
+    padding: 0 16px;
+  }
+  .how_to_work_summary {
+    margin-top: 0px;
+  }
   #service {
     margin-top: 80px;
   }
@@ -997,7 +1310,13 @@ button.disabled_btn {
   }
 
   #service p {
-    padding: 0 24px;
+    padding: 0 12px;
+  }
+  .how_to_work_service .how_to_work_card__title {
+    padding: 0 28px;
+  }
+  .how_to_work_slider_wrap .how_to_work_card__tags {
+    padding: 0 28px;
   }
   #service .service_subText {
     font-size: 22px;
@@ -1069,6 +1388,10 @@ button.disabled_btn {
     font-size: 72px;
     line-height: 86px;
   }
+/* 
+  .how_to_work_summary {
+    margin-top: 0px;
+  } */
 
   #service .service_subText {
     font-size: 26px;
@@ -1535,6 +1858,25 @@ button.disabled_btn {
     font-size: 18px;
     font-family: NotoSansKR-Light !important;
     text-align: center;
+  }
+  .how_to_work_wrap--desktop {
+    max-width: 900px;
+    padding: 0 40px;
+  }
+  .how_to_work_wrap--desktop .how_to_work_grid {
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .how_to_work_wrap--desktop .how_to_work_card {
+    padding: 28px;
+  }
+  .how_to_work_wrap--desktop .how_to_work_card__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #5c5c5c;
+  }
+  .how_to_work_wrap--desktop .how_to_work_card__desc {
+    font-size: 10px;
   }
   .workflow_box {
     width: 900px;
@@ -2113,8 +2455,39 @@ button.disabled_btn {
     font-family: NotoSansKR-Light !important;
     text-align: center;
   }
+  .how_to_work_wrap--desktop {
+    max-width: 1400px;
+    padding: 0 24px;
+  }
+  .how_to_work_wrap--desktop .how_to_work_grid {
+    gap: 28px;
+    margin-top: 56px;
+  }
+  .how_to_work_wrap--desktop .how_to_work_card {
+    padding: 24px;
+  }
+  .how_to_work_wrap--desktop .how_to_work_card__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1d1d1f;
+    padding: 0;
+  }
+  .how_to_work_wrap--desktop .how_to_work_card__desc {
+    font-family: "NotoSansKR-Light" !important;  
+    font-size: 12px;
+    color: #3e3e3e;
+  }
+  .how_to_work_summary {
+    margin-top: 40px;
+    padding: 28px 32px;
+  }
+  .how_to_work_summary__title {
+    font-size: 22px;
+  }
+  .how_to_work_summary__sub {
+    font-size: 14px;
+  }
   .workflow_box {
-    width: 1400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
